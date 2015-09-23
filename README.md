@@ -1,5 +1,6 @@
 # notduetodaynotdotoday
-CSE305 - Auction project
+
+CSE 305 -- Auction project
 
 
 CSE 305 -- Principles of Database Systems
