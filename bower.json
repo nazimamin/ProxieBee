@@ -11,7 +11,8 @@
         "angular-sanitize": "^1.4.0",
         "angular-touch": "^1.4.0",
         "OwlCarousel2": "https://github.com/jonahbron/OwlCarousel2.git",
-        "angular-owl-carousel": "https://github.com/jonahbron/angular-owl-carousel.git"
+        "angular-owl-carousel": "https://github.com/jonahbron/angular-owl-carousel.git",
+        "font-awesome": "~4.4.0"
     },
     "devDependencies": {
         "angular-mocks": "^1.4.0"
