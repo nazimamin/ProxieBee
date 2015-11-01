@@ -1,7 +1,26 @@
+<div class="staffpicks-container-title">
+    <h5>STAFF PICKS</h5>
+</div>
 <div class="staffPicks-slider" ng-controller="StaffPicksCtrl as picks">
     <slick init-onload=true data="picks.awesomeThings" accessibility="true" dots=true infinite=false speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1 class="slider one-time">
         <div ng-repeat="item in picks.awesomeThings">
-            <div>{{item}}</div>
+            <div class="staffpicks-item-container">
+                <div class="staffpicks-item-image">
+                    <img src="../images/bike.png">
+
+                    <div class="staffpicks-item-desc-div">
+                        <div class="staffpicks-item-price">
+                            <span>{{item.bidAmount}} bid</span>
+                            <span>{{item.numberOfBids}} bids</span>
+                            <span>{{daysRemaining}} days to go</span>
+                        </div>
+                        <div class="staffpicks-item-title">
+                            <h4>{{item.title}}</h4>
+                            <h6>{{item.description}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </slick>
 </div>

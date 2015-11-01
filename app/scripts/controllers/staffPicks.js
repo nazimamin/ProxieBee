@@ -9,7 +9,52 @@
  */
 angular.module('ndtndtApp')
     .controller('StaffPicksCtrl', function () {
-        this.awesomeThings = ['item1',
-                      'item2', 'item3', 'ite42', 'item432', 'item232', 'item3223322'
-                     ];
+        this.awesomeThings = [{
+                "title": "Mint Bike: Do you feel my Rage",
+                "description": "This Bike is in mint condition and works perfectly.",
+                "image": "../images/bike.png",
+                "bidAmount": "$119",
+                "numberOfBids": "20",
+                "daysRemaining": "2",
+                "bidder": {
+                    "name": "Jun Sucks",
+                    "profileImage": "../images/bike.png",
+                    "ratings": "4",
+                    "purchased": "20",
+                    "sold": "10"
+                }
+},
+            {
+                "title": "Mint Bike: Do you feel my Rage",
+                "description": "This Bike is in mint condition and works perfectly.",
+                "image": "../images/bike.png",
+                "bidAmount": "$119",
+                "numberOfBids": "20",
+                "daysRemaining": "2",
+                "bidder": {
+                    "name": "Jun Sucks",
+                    "profileImage": "../images/bike.png",
+                    "ratings": "4",
+                    "purchased": "20",
+                    "sold": "10"
+                }
+},
+            {
+                "title": "Mint Bike: Do you feel my Rage",
+                "description": "This Bike is in mint condition and works perfectly.",
+                "image": "../images/bike.png",
+                "bidAmount": "$119",
+                "numberOfBids": "20",
+                "daysRemaining": "2",
+                "bidder": {
+                    "name": "Jun Sucks",
+                    "profileImage": "../images/bike.png",
+                    "ratings": "4",
+                    "purchased": "20",
+                    "sold": "10"
+                }
+}
+
+];
+
     });
