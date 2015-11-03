@@ -9,7 +9,6 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css" />
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css" />
     <!-- endbower -->
@@ -27,27 +26,27 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed navbar-rotate" data-toggle="collapse" data-target="#navbar-header-collapse-down" aria-expanded="false">
+
+                    <button type="button" class="navbar-toggle collapsed navbar-rotate" data-toggle="collapse" data-target="#navbar-header-collapse-down">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar top-bar"></span>
-                        <span class="icon-bar middle-bar"></span>
-                        <span class="icon-bar bottom-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
+
                     <a class="navbar-brand" href="#/">
                         <img alt="NDTNDT" src="images/logo.png">
                     </a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-header-collapse-down">
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#/">Home</a></li>
-                        <li><a href="#/about">About</a></li>
+                        <li><a ng-href="#/about">About</a></li>
                         <li><a href="#/profile" data-role='mobile'>Profile</a></li>
                         <li>
                             <button class="login-icon" title="Profile">
@@ -62,10 +61,8 @@
                         <!--    <button type="submit" class="btn btn-default">Submit</button>-->
                     </form>
                 </div>
-                <!-- /.navbar-collapse -->
             </div>
-            <!-- /.container-fluid -->
-        </nav>
+        </div>
     </div>
 
     <div class="container set-container-margin">
@@ -100,9 +97,10 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>

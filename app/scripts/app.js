@@ -12,13 +12,14 @@ angular
     .module('ndtndtApp', [
     'ngAnimate',
     'ngCookies',
+    'ngMessages',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
     'slick'
   ])
-    .config(function ($routeProvider, $locationProvider) {
+    .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
