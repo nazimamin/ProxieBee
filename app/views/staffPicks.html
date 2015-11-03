@@ -2,17 +2,28 @@
     <h5>STAFF PICKS</h5>
 </div>
 <div class="staffPicks-slider" ng-controller="StaffPicksCtrl as picks">
-    <slick init-onload=true data="picks.awesomeThings" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1 class="slider autoplay">
-        <div ng-repeat="item in picks.awesomeThings">
+    <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1 class="slider autoplay">
+        <div ng-repeat="item in staffPicksItems">
             <div class="staffpicks-item-container">
                 <div class="staffpicks-item-image">
-                    <img src="../images/bike.png">
-
+                    <img src="{{item.image}}">
                     <div class="staffpicks-item-desc-div">
                         <div class="staffpicks-item-price">
-                            <span>{{item.bidAmount}} bid</span>
-                            <span>{{item.numberOfBids}} bids</span>
-                            <span>{{daysRemaining}} days to go</span>
+                            <div class="staff-picks-left">
+                                <h4>{{item.bidAmount}}</h4>
+                                <h5>bid</h5>
+
+                            </div>
+                            <span class="verticle-divider"></span>
+                            <div class="staff-picks-left">
+                                <h4>{{item.numberOfBids}}</h4>
+                                <h5>bids</h5>
+                            </div>
+                            <span class="verticle-divider"></span>
+                            <div class="staff-picks-left">
+                                <h4>{{item.daysRemaining}}</h4>
+                                <h5>days to go</h5>
+                            </div>
                         </div>
                         <div class="staffpicks-item-title">
                             <h4>{{item.title}}</h4>

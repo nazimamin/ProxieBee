@@ -16,7 +16,9 @@ module.exports = function (grunt) {
     require('jit-grunt')(grunt, {
         useminPrepare: 'grunt-usemin',
         ngtemplates: 'grunt-angular-templates',
-        cdnify: 'grunt-google-cdn'
+        cdnify: 'grunt-google-cdn',
+        watch: 'grunt-contrib-watch',
+        browserSync: 'grunt-browser-sync'
     });
 
     // Configurable paths for the application
@@ -65,12 +67,59 @@ module.exports = function (grunt) {
         ]
             }
         },
-        // The actual grunt server settings
+        browserSync: {
+            options: {
+                notify: false,
+                background: true,
+                watchOptions: {
+                    ignored: ''
+                }
+            },
+            livereload: {
+                options: {
+                    files: [
+            '<%= yeoman.app %>/{,*/}*.html',
+            '.tmp/styles/{,*/}*.css',
+            '<%= yeoman.app %>/images/{,*/}*',
+            '.tmp/scripts/{,*/}*.js'
+          ],
+                    port: 9000,
+                    server: {
+                        baseDir: ['.tmp', appConfig.app],
+                        routes: {
+                            '/bower_components': './bower_components'
+                        }
+                    }
+                }
+            },
+            test: {
+                options: {
+                    port: 9001,
+                    open: false,
+                    logLevel: 'silent',
+                    host: 'localhost',
+                    server: {
+                        baseDir: ['.tmp', './test', appConfig.app],
+                        routes: {
+                            '/bower_components': './bower_components'
+                        }
+                    }
+                }
+            },
+            dist: {
+                options: {
+                    background: false,
+                    server: '<%= yeoman.dist %>'
+                }
+            }
+        },
+        /*
+         //The actual grunt server settings
         connect: {
             options: {
                 port: 9000,
                 // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
+                hostname: '0.0.0.0',
                 livereload: 35729
             },
             livereload: {
@@ -114,7 +163,7 @@ module.exports = function (grunt) {
                     base: '<%= yeoman.dist %>'
                 }
             }
-        },
+        },*/
 
         // Make sure there are no obvious mistakes
         jshint: {
@@ -391,7 +440,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'bower_components/font-awesome',
                     src: 'fonts/*',
-                    dest: '<%= config.dist %>'
+                    dest: '<%= yeoman.dist %>'
                 }, {
                     expand: true,
                     cwd: 'bower_components/bootstrap/dist',
@@ -431,18 +480,18 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.registerTask('serve', 'start the server and preview your app', function (target) {
 
-    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
         if (target === 'dist') {
-            return grunt.task.run(['build', 'connect:dist:keepalive']);
+            return grunt.task.run(['build', 'browserSync:dist']);
         }
 
         grunt.task.run([
       'clean:server',
       'wiredep',
       'concurrent:server',
-      'postcss:server',
-      'connect:livereload',
+      'postcss',
+      'browserSync:livereload',
       'watch'
     ]);
     });
@@ -452,14 +501,22 @@ module.exports = function (grunt) {
         grunt.task.run(['serve:' + target]);
     });
 
-    grunt.registerTask('test', [
-    'clean:server',
-    'wiredep',
-    'concurrent:test',
-    'postcss',
-    'connect:test',
-    'karma'
-  ]);
+
+    grunt.registerTask('test', function (target) {
+        if (target !== 'watch') {
+            grunt.task.run([
+        'clean:server',
+        'concurrent:test',
+        'postcss'
+      ]);
+        }
+
+        grunt.task.run([
+      'browserSync:test',
+      'karma'
+    ]);
+    });
+
 
     grunt.registerTask('build', [
     'clean:dist',
@@ -482,6 +539,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
     'newer:jshint',
     'newer:jscs',
+        'watch',
     'test',
     'build'
   ]);

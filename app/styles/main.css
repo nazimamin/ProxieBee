@@ -307,7 +307,7 @@
         margin-top: 20px;
         margin-bottom: 30px;
         width: 100%;
-        height: 390px;
+        height: 440px;
     }
     
     .staffPicks-slider .slick-list .draggable {
@@ -333,7 +333,7 @@
     
     .staffpicks-item-container {
         width: 100%;
-        height: 330px !important;
+        height: 390px !important;
     }
     
     .staffpicks-item-container .staffpicks-item-image {
@@ -351,7 +351,7 @@
         padding: 10px;
         position: absolute;
         width: inherit;
-        opacity: 0.8;
+        opacity: 0.9;
         bottom: 0;
         height: 90px;
         background-color: #F8F9FA;
@@ -361,8 +361,33 @@
         float: left;
         text-align: left;
         letter-spacing: 0.5px;
+        font-size: 15.88;
+        color: #7F8187;
     }
     
     .staffpicks-item-container .staffpicks-item-desc-div .staffpicks-item-title {
         float: right;
+    }
+    
+    .staffpicks-item-container .staffpicks-item-desc-div .staff-picks-left {
+        text-align: center;
+        padding: 5px;
+        float: left;
+    }
+    
+    .staffpicks-item-container .staffpicks-item-desc-div .staff-picks-left h5 {
+        text-align: left !important;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .verticle-divider {
+        height: 4em;
+        border-right: 1px solid #534E4F;
+        opacity: .6;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        float: left;
+        transform: rotate(30deg);
     }
