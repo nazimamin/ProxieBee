@@ -2,36 +2,41 @@
     <h5>STAFF PICKS</h5>
 </div>
 <div class="staffPicks-slider" ng-controller="StaffPicksCtrl">
-    <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1 class="slider autoplay">
+    <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1>
         <div ng-repeat="item in staffPicksItems">
             <div class="staffpicks-item-container">
-                <div class="staffpicks-item-image">
-                    <img src="{{item.image}}">
-                    <div class="staffpicks-item-desc-div">
-                        <div class="staffpicks-item-price">
-                            <div class="staff-picks-left">
-                                <h4>{{item.bidAmount}}</h4>
-                                <h5>bid</h5>
+                <div class="left-side">
+                    <div class="item-title">
+                        <h3>{{item.title | uppercase}}</h3>
+                        <span><i class="fa fa-eye"></i> {{item.totalbids}} bids                 </span><span><i class="fa fa-hourglass-end"></i> {{item.expire}} days remaining</span>
 
-                            </div>
-                            <span class="verticle-divider"></span>
-                            <div class="staff-picks-left">
-                                <h4>{{item.numberOfBids}}</h4>
-                                <h5>bids</h5>
-                            </div>
-                            <span class="verticle-divider"></span>
-                            <div class="staff-picks-left">
-                                <h4>{{item.daysRemaining}}</h4>
-                                <h5>days to go</h5>
+                    </div>
+                    <div class="item-image">
+                        <img src="{{item.image}}">
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="item-and-profile">
+                        <div class="profile-info">
+                            <a href="{{item.bidder.url}}">
+                                <img src="{{item.bidder.image}}" alt="Profile Image">
+                                <div class="profile-desc">
+                                    <h4>{{item.bidder.name | uppercase}}</h4>
+                                    <div class="rate">{{item.bidder.rating}} <i class="fa fa-star-o"></i></div>
+                            </a>
+                            <hr>
                             </div>
                         </div>
-                        <div class="staffpicks-item-title">
-                            <h4>{{item.title}}</h4>
-                            <h6>{{item.description}}</h6>
+                        <div class="item-desc"><i class="fa fa-align-left"></i> {{item.desc}}
+
                         </div>
+                        <div class="quantity">
+                            Quantity - <span> {{item.quantity}} available</span></div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </slick>
 </div>
