@@ -411,8 +411,22 @@
                 margin-top: 10px;
                 font-size: 14px;
                 color: $Swatch10;
-                span{
+                span {
                     font-weight: 300;
+                }
+            }
+            .hold-tags {
+                img {
+                    width: 60px;
+                    height: 60px;
+                }
+                span {
+                    width: 60px;
+                    height: 60px;
+                    border: 1px solid $Swatch3;
+                    border-radius: 50%;
+                    padding: 1px 1px 1px 1px;
+                    float: left;
                 }
             }
         }
