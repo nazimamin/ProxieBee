@@ -14,7 +14,7 @@ angular.module('ndtndtApp')
             "desc": "This Bike is in mint condition and works perfectly.",
             "url": "http://ndtndt.com/url",
             "image": "../images/bike.png",
-            "bidAmount": "$119",
+            "bidAmount": "119",
             "totalbids": "20",
             "expire": "2",
             "quantity": "2",
@@ -28,8 +28,8 @@ angular.module('ndtndtApp')
             "title": "Mint Bike: pre-owned",
             "desc": "This Bike is in mint condition and works perfectly.",
             "url": "http://ndtndt.com/url",
-            "image": "../images/bike.png",
-            "bidAmount": "$119",
+            "image": "../images/camera.jpg",
+            "bidAmount": "119",
             "totalbids": "20",
             "expire": "2",
             "bidder": {
@@ -43,7 +43,7 @@ angular.module('ndtndtApp')
             "desc": "This Bike is in mint condition and works perfectly.",
             "url": "http://ndtndt.com/url",
             "image": "../images/bike.png",
-            "bidAmount": "$119",
+            "bidAmount": "119",
             "totalbids": "20",
             "expire": "2",
             "bidder": {
@@ -57,7 +57,7 @@ angular.module('ndtndtApp')
             "desc": "This Bike is in mint condition and works perfectly.",
             "url": "http://ndtndt.com/url",
             "image": "../images/bike.png",
-            "bidAmount": "$119",
+            "bidAmount": "119.99",
             "totalbids": "20",
             "expire": "2",
             "bidder": {
@@ -71,7 +71,7 @@ angular.module('ndtndtApp')
             "desc": "This Bike is in mint condition and works perfectly.",
             "url": "http://ndtndt.com/url",
             "image": "../images/bike.png",
-            "bidAmount": "$119",
+            "bidAmount": "119",
             "totalbids": "20",
             "expire": "2",
             "bidder": {

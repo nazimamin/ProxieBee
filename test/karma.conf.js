@@ -34,6 +34,7 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/slick-carousel/slick/slick.min.js',
       'bower_components/angular-slick/dist/slick.js',
+      'bower_components/angular-adaptive-background/dist/angular-adaptive-backgrounds.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

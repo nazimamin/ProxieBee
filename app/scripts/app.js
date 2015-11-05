@@ -17,7 +17,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'slick'
+    'slick',
+    'mb-adaptive-backgrounds'
   ])
     .config(function ($routeProvider) {
         $routeProvider

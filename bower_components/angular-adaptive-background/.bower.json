@@ -1,0 +1,14 @@
+{
+  "name": "angular-adaptive-background",
+  "homepage": "https://github.com/brandly/angular-adaptive-backgrounds",
+  "version": "0.2.3",
+  "_release": "0.2.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.3",
+    "commit": "1f629e549760e96009d465ece4d3f218c4249f8b"
+  },
+  "_source": "https://github.com/brandly/angular-adaptive-backgrounds.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/brandly/angular-adaptive-backgrounds.git"
+}
