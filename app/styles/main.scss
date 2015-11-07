@@ -529,3 +529,38 @@
             float: left;
             transform: rotate(25deg);
         }
+        
+        section#topseller {
+            margin-top: 30px;
+            background-color: #ffffff;
+            font-weight: 300;
+            .title {
+                font-size: 36px;
+                line-height: 40px;
+                color: #333;
+                padding: 50px 0;
+            }
+            .categories {
+                .category {
+                    width: 20% !important;
+                    margin-bottom: 20px;
+                    height: 230px !important;
+                    a {
+                        text-decoration: none;
+                        margin: 0 auto;
+                        width: inherit;
+                        height: inherit;
+                        img {
+                            width: inherit !important;
+                            height: inherit !important;
+                        }
+                        h5 {
+                            text-align: center;
+                            padding-top: 12px;
+                            font-size: 14px;
+                            color: #414141;
+                        }
+                    }
+                }
+            }
+        }

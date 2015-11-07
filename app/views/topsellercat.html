@@ -1,1 +1,18 @@
-<p>This is the topSellerCat view.</p>
+<section id="topseller" ng-controller="TopsellercatCtrl">
+    <div class="container">
+        <div class="title open-sans-light">
+            Save by bidding from top seller categories
+        </div>
+
+        <div class="categories clearfix rows">
+            <div ng-repeat="category in topsellercategory">
+                <div class="category col-xs-6 col-md-4">
+                    <a ng-href="{{category.url}}">
+                        <img ng-src="{{category.image}}">
+                        <h5>{{category.title}}</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
