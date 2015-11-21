@@ -18,6 +18,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'slick',
+    'ngMaterial',
     'mb-adaptive-backgrounds'
   ])
     .config(function ($routeProvider) {
@@ -27,10 +28,10 @@ angular
                 controller: 'MainCtrl',
                 controllerAs: 'main'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl',
-                controllerAs: 'about'
+            .when('/products', {
+                templateUrl: 'views/products.html',
+                controller: 'ProductsCtrl',
+                controllerAs: 'products'
             })
             .otherwise({
                 redirectTo: '/'

@@ -1,0 +1,17 @@
+<div class="container">
+  <div ng-controller="ProductsCtrl as p" ng-cloak="" class="gridListdemoDynamicTiles">
+  <md-grid-list
+        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+        md-row-height-gt-md="2:2" md-row-height="2:1"
+        md-gutter="8px" md-gutter-gt-sm="10px" >
+    <md-grid-tile ng-repeat="item in p.items"
+                  md-rowspan="{{item.rowspan}}"
+                  md-colspan="{{item.colspan}}"
+                  md-colspan-sm="1"
+                  ng-class="item.color">
+      <img ng-src="{{item.icon}}" class="md-icon">
+      <md-grid-tile-footer><h3>{{item.title}}</h3></md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
+</div>

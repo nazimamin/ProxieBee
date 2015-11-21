@@ -1,18 +1,17 @@
-<section id="topseller" ng-controller="TopsellercatCtrl">
+<section id="topseller" ng-controller="TopsellercatCtrl" flex ng-cloak>
     <div class="container">
-        <div class="title open-sans-light">
+        <div class="title">
             Save by bidding from top seller categories
         </div>
-
-        <div class="categories clearfix rows">
-            <div ng-repeat="category in topsellercategory">
-                <div class="category col-xs-6 col-md-4">
-                    <a ng-href="{{category.url}}">
-                        <img ng-src="{{category.image}}">
-                        <h5>{{category.title}}</h5>
-                    </a>
-                </div>
-            </div>
+        <div class="categories">
+            <a ng-href="{{category.url}}" class="card" ng-repeat="category in topsellercategory">
+                <md-card>
+                    <img class="md-card-image" ng-src="{{category.image}}">
+                    <md-card-content>
+                        <h5 class="md-title">{{category.title}}</h5>
+                    </md-card-content>
+                </md-card>
+            </a>
         </div>
     </div>
 </section>
