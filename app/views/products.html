@@ -1,30 +1,30 @@
-<section id="products" flex ng-cloak="" >
-  <div class="container">
-    <div class="products-page" ng-controller="ProductsCtrl as p">
-      <a class="card" ng-href="{{category.url}}" ng-repeat="item in p.items">
-        <md-card>
-          <img class="md-card-image" ng-src="../images/bike.png">
-          <div class="card-info">
-            <div class="left">
-              <span class="item-price">{{item.currentbid | currency}}</span>
-            </div>
-            <div class="left">
-              <img ng-src="../images/profile.png">
-            </div>
-            <div class="left">
-                <span class="num-bid"><i class="fa fa-eye"></i> 20 </span>
-            </div>
-          </div>
-          <md-card-content>
-            <div class="left">
-              <h5 class="md-title">{{item.itemname}}</h5>
-            </div>
-            <div class="right">
-              <md-button class="md-primary">Bid</md-button>
-            </div>
-          </md-card-content>
-        </md-card>
-      </a>
+<section id="products" flex ng-cloak="">
+    <div class="container">
+        <div class="products-page" ng-controller="ProductsCtrl as p">
+            <a class="card" ng-href="{{category.url}}" ng-repeat="item in p.items">
+                <md-card>
+                    <img class="md-card-image" ng-src="../images/bike.png">
+                    <div class="card-info">
+                        <div class="left">
+                            <span class="item-price">{{item.currentbid | currency}}</span>
+                        </div>
+                        <div class="left">
+                            <img ng-src="../images/profile.png">
+                        </div>
+                        <div class="left">
+                            <span class="num-bid"><i class="fa fa-eye"></i> 20 </span>
+                        </div>
+                    </div>
+                    <md-card-content>
+                        <div class="left">
+                            <h5 class="md-title">{{item.itemname}}</h5>
+                        </div>
+                        <div class="right">
+                            <md-button class="md-primary">Bid</md-button>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </a>
+        </div>
     </div>
-  </div>
 </section>

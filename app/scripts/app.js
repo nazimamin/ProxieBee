@@ -10,31 +10,19 @@
  */
 angular
     .module('ndtndtApp', [
-    'ngAnimate',
+	'ui.router',
+    'app.routes',
+	'ngFileUpload',
+	'ngAnimate',
     'ngCookies',
     'ngMessages',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
     'ngTouch',
     'slick',
     'ngMaterial',
     'mb-adaptive-backgrounds'
-  ])
-    .config(function ($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl',
-                controllerAs: 'main'
-            })
-            .when('/products', {
-                templateUrl: 'views/products.html',
-                controller: 'ProductsCtrl',
-                controllerAs: 'products'
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
-        // $locationProvider.html5Mode(true);
-    });
+	])
+    .controller('RootCtrl', ['$rootScope', '$q', '$state', RootCtrl]);
+
+function RootCtrl($rootScope, $q, $state) {}
