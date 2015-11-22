@@ -9,7 +9,7 @@
  */
 angular.module('ndtndtApp')
   .controller('ProductsCtrl', function($scope) {
-    this.items = colorTiles($scope.auctions);
+    this.items = geta();
   });
 
 function colorTiles() {
@@ -62,9 +62,9 @@ function geta (){
   return [{
         "auctionid": "2",
         "itemname": "Nissan Sentra",
-        "openbid": "1000.0000",
+        "openbid": "100.0000",
         "bidincrement": "10.0000",
-        "currentbid": "2.0000",
+        "currentbid": "120.0000",
         "sellerid": "john",
         "itemtype": "Car",
         "yearmanufactured": "2007",

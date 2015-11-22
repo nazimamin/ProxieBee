@@ -48,14 +48,15 @@
                 <div class="collapse navbar-collapse" id="navbar-header-collapse-down">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#/">Home</a></li>
-                        <li><a ng-href="#/products">Products</a></li>
-                        <li><a href="#/profile" data-role='mobile'>Profile</a></li>
-                        <li>
-                            <button class="login-icon" title="Profile">
-                                <img class="round-icon" src="images/login-icon.png" alt="Profile">
-                            </button>
-                        </li>
+                        <li><a href="#/"><md-button class="login">
+                            home
+                        </md-button></a></li>
+                        <li><a ng-href="#/products"><md-button class="login">
+                            products
+                        </md-button></a></li>
+                        <li><a ng-href="#/"><md-button class="login">
+                            login
+                        </md-button></a></li>
                     </ul>
                     <form class="navbar-form" id="search" role="search">
                         <div class="form-group">
@@ -69,7 +70,7 @@
     </div>
 
     <div class="">
-        <div ng-view=""></div>
+        <div ng-view class="main-page"></div>
     </div>
 
     <div class="footer">

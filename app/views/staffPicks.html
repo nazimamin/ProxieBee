@@ -1,4 +1,4 @@
-<div class="staffPicks-slider" ng-controller="StaffPicksCtrl" flex ng-cloak>
+<div class="staffPicks-slider" ng-controller="StaffPicksCtrl" flex ng-cloak="">
     <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1>
         <div ng-repeat="item in staffPicksItems">
             <div class="staffpicks-item-container">
@@ -12,7 +12,7 @@
                         <div class="staffpicks-container-title">
                             STAFF PICKS
                         </div>
-                        <img src="{{item.image}}">
+                        <img ng-src="{{item.image}}">
                     </div>
                 </div>
                 <div class="right-side">
@@ -57,11 +57,11 @@
                             </span>
                         </div>
                         <div class="price-and-buy">
-                            <span class="price-button"><h4>$</h4><h1>{{item.bidAmount}}</h1><h6>Current bid</h6></span>
+                            <span class="price-button"><h1>{{item.bidAmount | currency}}</h1><h6>Current bid</h6></span>
                             <span class="price-button">
                             <span class="bid-button hvr-underline-from-right">
                                 <h4>BID THIS NOW</h4>
-                             <img src="../images/bidnow.svg">
+                             <img ng-src="../images/bidnow.svg">
                             </span>
                             </span>
                         </div>

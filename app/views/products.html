@@ -1,17 +1,30 @@
-<div class="container">
-  <div ng-controller="ProductsCtrl as p" ng-cloak="" class="gridListdemoDynamicTiles">
-  <md-grid-list
-        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
-        md-row-height-gt-md="2:2" md-row-height="2:1"
-        md-gutter="8px" md-gutter-gt-sm="10px" >
-    <md-grid-tile ng-repeat="item in p.items"
-                  md-rowspan="{{item.rowspan}}"
-                  md-colspan="{{item.colspan}}"
-                  md-colspan-sm="1"
-                  ng-class="item.color">
-      <img ng-src="{{item.icon}}" class="md-icon">
-      <md-grid-tile-footer><h3>{{item.title}}</h3></md-grid-tile-footer>
-    </md-grid-tile>
-  </md-grid-list>
-</div>
-</div>
+<section id="products" flex ng-cloak="" >
+  <div class="container">
+    <div class="products-page" ng-controller="ProductsCtrl as p">
+      <a class="card" ng-href="{{category.url}}" ng-repeat="item in p.items">
+        <md-card>
+          <img class="md-card-image" ng-src="../images/bike.png">
+          <div class="card-info">
+            <div class="left">
+              <span class="item-price">{{item.currentbid | currency}}</span>
+            </div>
+            <div class="left">
+              <img ng-src="../images/profile.png">
+            </div>
+            <div class="left">
+                <span class="num-bid"><i class="fa fa-eye"></i> 20 </span>
+            </div>
+          </div>
+          <md-card-content>
+            <div class="left">
+              <h5 class="md-title">{{item.itemname}}</h5>
+            </div>
+            <div class="right">
+              <md-button class="md-primary">Bid</md-button>
+            </div>
+          </md-card-content>
+        </md-card>
+      </a>
+    </div>
+  </div>
+</section>

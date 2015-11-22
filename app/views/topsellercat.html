@@ -1,4 +1,4 @@
-<section id="topseller" ng-controller="TopsellercatCtrl" flex ng-cloak>
+<section id="topseller" ng-controller="TopsellercatCtrl" ng-cloak>
     <div class="container">
         <div class="title">
             Save by bidding from top seller categories
@@ -6,9 +6,15 @@
         <div class="categories">
             <a ng-href="{{category.url}}" class="card" ng-repeat="category in topsellercategory">
                 <md-card>
-                    <img class="md-card-image" ng-src="{{category.image}}">
+                  <!--  <img class="md-card-image" ng-src="{{category.image}}">-->
+                    <md-icon md-svg-src="../images/categories/{{category.title}}.svg"></md-icon>
                     <md-card-content>
-                        <h5 class="md-title">{{category.title}}</h5>
+                        <div class="left">
+                          <h5 class="md-title">{{category.title}}</h5>
+                        </div>
+                        <div class="right">
+                          <span><i class="fa fa-tags fa-rotate-90"></i> {{category.items}}</span>
+                        </div>
                     </md-card-content>
                 </md-card>
             </a>
