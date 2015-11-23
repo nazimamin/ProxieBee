@@ -1,30 +1,66 @@
-<section id="products" flex ng-cloak="">
-    <div class="container">
-        <div class="products-page" ng-controller="ProductsCtrl as p">
-            <a class="card" ng-href="{{category.url}}" ng-repeat="item in p.items">
-                <md-card>
-                    <img class="md-card-image" ng-src="../images/bike.png">
-                    <div class="card-info">
-                        <div class="left">
-                            <span class="item-price">{{item.currentbid | currency}}</span>
-                        </div>
-                        <div class="left">
-                            <img ng-src="../images/profile.png">
-                        </div>
-                        <div class="left">
-                            <span class="num-bid"><i class="fa fa-eye"></i> 20 </span>
-                        </div>
-                    </div>
-                    <md-card-content>
-                        <div class="left">
-                            <h5 class="md-title">{{item.itemname}}</h5>
-                        </div>
-                        <div class="right">
-                            <md-button class="md-primary">Bid</md-button>
-                        </div>
-                    </md-card-content>
-                </md-card>
-            </a>
+<section id="products" flex ng-cloak>
+  <div class="container">
+    <div class="products-page" ng-controller="ProductsCtrl as p">
+      <div class="form-group">
+        <div layout="row">
+          <input class="search-input" placeholder="Search for products" type="text">
+          <md-input-container class="md-block sortby">
+          <label>Sort items</label>
+          <md-select ng-model="orderBy">
+            <md-optgroup label="Sort items by">
+              <md-optgroup label="Price">
+                <md-option value="price-high-low">High</md-option>
+                <md-option value="price-low-high">Low</md-option>
+              </md-optgroup>
+              <md-optgroup label="Total Bids">
+                <md-option value="bids-high-low">High</md-option>
+                <md-option value="bids-low-high">Low</md-option>
+              </md-optgroup>
+              <md-optgroup label="Year Manufactured">
+                <md-option value="year-high-low">Newest</md-option>
+                <md-option value="year-low-high">Oldest</md-option>
+              </md-optgroup>
+              <md-optgroup label="Post Date">
+                <md-option value="post-high-low">Newest</md-option>
+                <md-option value="post-low-high">Oldest</md-option>
+              </md-optgroup>
+              <md-optgroup label="Expire Date">
+                <md-option value="exp-high-low">Newest</md-option>
+                <md-option value="exp-low-high">Oldest</md-option>
+              </md-optgroup>
+            </md-optgroup>
+          </md-select>
+        </md-input-container>
         </div>
+      </div>
+
+      <a class="card" ng-href="{{category.url}}" ng-repeat="item in p.items | orderBy:[orderByPrice, orderByBids ,orderByYear, orderByPost, orderByExp]">
+        <md-card>
+          <img class="md-card-image" ng-src="../images/bike.png">
+          <div class="card-info">
+            <div class="left">
+              <span class="item-price">{{item.currentbid | currency}}</span>
+            </div>
+            <div class="left">
+              <img ng-src="../images/profile.png">
+            </div>
+            <div class="left">
+              <span class="num-bid">
+                <i class="fa fa-eye"></i>
+                {{item.totalbids}}
+              </span>
+            </div>
+          </div>
+          <md-card-content>
+            <div class="left">
+              <h5 class="md-title">{{item.itemname}}</h5>
+            </div>
+            <div class="right">
+              <md-button class="md-primary">Bid</md-button>
+            </div>
+          </md-card-content>
+        </md-card>
+      </a>
     </div>
+  </div>
 </section>

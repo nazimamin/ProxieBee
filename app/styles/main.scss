@@ -109,10 +109,11 @@ body {
 }
 
 .search-input {
-    display: block;
-    width: 100%;
+    float: left;
+    display: inline-block;
+    width: 60%;
     height: 34px;
-    padding: 6px 12px;
+    /*padding: 6px 12px;*/
     font-size: 14px;
     line-height: 28px;
     border: none;
@@ -122,7 +123,7 @@ body {
 }
 
 input.search-input {
-    width: 520px;
+    /*width: 520px;*/
     background: url(../images/search-icon.png) no-repeat scroll 9px 9px;
     padding-left: 30px;
 }
@@ -235,7 +236,7 @@ input.search-input:focus {
 
 .main-page.ng-enter,
 .main-page.ng-leave {
-    transition: all 400ms ease-out 80ms;
+    transition: all 800ms ease-out 80ms;
 }
 
 .main-page.ng-enter {
@@ -317,9 +318,9 @@ input.search-input:focus {
 }
 
 @media all and (max-width: 1000px) {
-    input.search-input {
+    /* input.search-input {
         width: 420px;
-    }
+    }*/
 }
 
 @media all and (max-width: 768px) {
@@ -337,10 +338,10 @@ input.search-input:focus {
     }
     input.search-input {
         margin: 5px 12px 0;
-        width: 95%;
-        border-color: #ffffff;
+        /*width: 95%;*/
+        /*border-color: #ffffff;*/
         background: url(../images/search-icon-light.png) no-repeat scroll 9px 9px;
-        color: #ffffff;
+        /* color: #ffffff;*/
     }
     .navbar-nav li {
         text-align: center;
@@ -700,6 +701,13 @@ section#products {
             width: 100%;
             height: 75%;
         }
+        .sortby {
+            margin-right: 10px;
+            width: 20%;
+        }
+        md-input-container {
+            margin-right: 10px;
+        }
         md-card {
             width: 300px;
             height: 300px;
@@ -774,4 +782,9 @@ section#products {
             margin: 0 auto;
         }
     }
+}
+
+md-select-menu.md-default-theme,
+md-select-menu md-optgroup {
+    z-index: 99999;
 }
