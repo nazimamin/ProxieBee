@@ -9,19 +9,27 @@
  */
 angular.module('ndtndtApp')
   .controller('ProductsCtrl', function($scope) {
+
     this.items = geta();
-
+    $scope.items = this.items;
+    //holds avilable filter categories
     $scope.filter = {};
-
+    //ng-model to hold the text entered in the input box
+    $scope.searchText = '';
+    //returns the unique categories
     $scope.getCat = function() {
-      return (items || []).map(function(item) {
+      return ($scope.items).map(function(item) {
         return item.itemtype;
       }).filter(function(item, index, mappedArray) {
         return mappedArray.indexOf(item) === index;
       });
     };
+    //filters the item based on category selected
+    $scope.filterByCategory = function (item) {
+        return $scope.filter[item.itemtype] || isPresent($scope.filter);
+    };
 
-
+    // all the avilable sorts
     $scope.orderByPrice = function(item) {
       if ($scope.orderBy == 'price-high-low') {
         return -parseFloat(item.currentbid);
@@ -64,6 +72,10 @@ angular.module('ndtndtApp')
     };
   });
 
+function isPresent(filter) {
+
+  }
+
 function geta() {
   return [{
     "auctionid": "2",
@@ -72,7 +84,7 @@ function geta() {
     "bidincrement": "10.0000",
     "currentbid": "200.00",
     "sellerid": "john",
-    "itemtype": "Car",
+    "itemtype": "House",
     "yearmanufactured": "2008",
     "postdate": "2015-11-17T01:25:41.227",
     "expiredates": "2016-11-17T01:25:41.227",
@@ -87,7 +99,7 @@ function geta() {
     "itemtype": "Car",
     "yearmanufactured": "2007",
     "postdate": "2015-12-18T04:36:54.243",
-    "expiredates": "2017-11-17T01:25:41.227",
+    "expiredates": "2018-11-17T01:25:41.227",
     "totalbids": "20"
   }, {
     "auctionid": "3",
@@ -96,7 +108,7 @@ function geta() {
     "bidincrement": "10.0000",
     "currentbid": "350.00",
     "sellerid": "john",
-    "itemtype": "Car",
+    "itemtype": "Pet",
     "yearmanufactured": "2007",
     "postdate": "2015-12-18T04:36:54.243",
     "expiredates": "2017-11-17T01:25:41.227",

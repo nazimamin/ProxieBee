@@ -111,7 +111,7 @@ body {
 .search-input {
     float: left;
     display: inline-block;
-    width: 60%;
+    width: 100%;
     height: 34px;
     /*padding: 6px 12px;*/
     font-size: 14px;
@@ -694,6 +694,10 @@ section#topseller {
 section#products {
     padding-top: 30px;
     background: #F8F9FB;
+    .filter-sort {
+        text-align: center;
+        display: block;
+    }
     .products-page {
         display: block;
         text-align: center;

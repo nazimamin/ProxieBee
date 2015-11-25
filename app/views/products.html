@@ -1,40 +1,63 @@
-<section id="products" flex ng-cloak>
-  <div class="container">
-    <div class="products-page" ng-controller="ProductsCtrl as p">
-      <div class="form-group">
-        <div layout="row">
-          <input class="search-input" placeholder="Search for products" type="text">
-          <md-input-container class="md-block sortby">
-          <label>Sort items</label>
-          <md-select ng-model="orderBy">
-            <md-optgroup label="Sort items by">
-              <md-optgroup label="Price">
-                <md-option value="price-high-low">High</md-option>
-                <md-option value="price-low-high">Low</md-option>
-              </md-optgroup>
-              <md-optgroup label="Total Bids">
-                <md-option value="bids-high-low">High</md-option>
-                <md-option value="bids-low-high">Low</md-option>
-              </md-optgroup>
-              <md-optgroup label="Year Manufactured">
-                <md-option value="year-high-low">Newest</md-option>
-                <md-option value="year-low-high">Oldest</md-option>
-              </md-optgroup>
-              <md-optgroup label="Post Date">
-                <md-option value="post-high-low">Newest</md-option>
-                <md-option value="post-low-high">Oldest</md-option>
-              </md-optgroup>
-              <md-optgroup label="Expire Date">
-                <md-option value="exp-high-low">Newest</md-option>
-                <md-option value="exp-low-high">Oldest</md-option>
-              </md-optgroup>
-            </md-optgroup>
-          </md-select>
-        </md-input-container>
-        </div>
-      </div>
+<section flex id="products" ng-cloak ng-controller="ProductsCtrl as p">
+  <div class="container filter-sort">
+    <div class="search-bar" layout="column">
+      <input class="search-input" placeholder="Search for products" type="text">
+    </div>
+    <div class="filter-bar" layout="row">
+      <md-input-container class="md-block sortby">
+        <label>Price</label>
+        <md-select ng-model="orderBy" aria-label="soert-by-selections">
+          <md-optgroup label="Price">
+            <md-option value="price-high-low">High</md-option>
+            <md-option value="price-low-high">Low</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block sortby">
+        <label>Bids</label></label>
+        <md-select ng-model="orderBy" aria-label="soert-by-selections">
+          <md-optgroup label="Total Bids">
+            <md-option value="bids-high-low">High</md-option>
+            <md-option value="bids-low-high">Low</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block sortby">
+        <label>Year</label></label>
+        <md-select ng-model="orderBy" aria-label="soert-by-selections">
+          <md-optgroup label="Year Manufactured">
+            <md-option value="year-high-low">High</md-option>
+            <md-option value="year-low-high">Low</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block sortby">
+        <label>Post Date</label>
+        <md-select ng-model="orderBy" aria-label="soert-by-selections">
+          <md-optgroup label="Post Date">
+            <md-option value="post-high-low">Newest</md-option>
+            <md-option value="post-low-high">Oldest</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block sortby">
+              <label>Expire Date</label>
+        <md-select ng-model="orderBy" aria-label="soert-by-selections">
+          <md-optgroup label="Expire Date">
+            <md-option value="exp-high-low">Newest</md-option>
+            <md-option value="exp-low-high">Oldest</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
 
-      <a class="card" ng-href="{{category.url}}" ng-repeat="item in p.items | orderBy:[orderByPrice, orderByBids ,orderByYear, orderByPost, orderByExp]">
+      <div ng-repeat="categories in getCat()">
+        <md-checkbox aria-label="{{categories}}" class="md-primary" ng-model="filter[categories]">{{categories}}</md-checkbox>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="products-page">
+      <a class="card" ng-href="{{item.url}}" ng-repeat="item in filtered=(items | filter:filterByCategory) | orderBy:[orderByPrice, orderByBids ,orderByYear, orderByPost, orderByExp]">
         <md-card>
           <img class="md-card-image" ng-src="../images/bike.png">
           <div class="card-info">
