@@ -73,7 +73,12 @@ angular.module('ndtndtApp')
   });
 
 function isPresent(filter) {
-
+      for (var value in filter) {
+          if (filter[value]) {
+              return false;
+          }
+      }
+      return true;
   }
 
 function geta() {
@@ -107,6 +112,19 @@ function geta() {
     "openbid": "100.0000",
     "bidincrement": "10.0000",
     "currentbid": "350.00",
+    "sellerid": "john",
+    "itemtype": "Pet",
+    "yearmanufactured": "2007",
+    "postdate": "2015-12-18T04:36:54.243",
+    "expiredates": "2017-11-17T01:25:41.227",
+    "totalbids": "15"
+  },
+  {
+    "auctionid": "4",
+    "itemname": "This is not anything",
+    "openbid": "100.0000",
+    "bidincrement": "10.0000",
+    "currentbid": "50.00",
     "sellerid": "john",
     "itemtype": "Pet",
     "yearmanufactured": "2007",
