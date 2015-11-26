@@ -5,7 +5,8 @@
                 <div class="left-side">
                     <div class="item-title">
                         <h3>{{item.title | uppercase}}</h3>
-                        <span><i class="fa fa-eye"></i> {{item.totalbids}} bids                 </span><span><i class="fa fa-hourglass-end"></i> {{item.expire}} days remaining</span>
+                        <span><i class="mdi mdi-eye"></i> {{item.totalbids}} bids                 </span>
+                        <span><i class="mdi mdi-timer"></i> {{item.expire}} days remaining</span>
 
                     </div>
                     <div class="item-image" adaptive-background>
@@ -22,7 +23,7 @@
                                 <img ng-src="{{item.bidder.image}}" alt="Profile Image">
                                 <div class="profile-desc">
                                     <h4>{{item.bidder.name | uppercase}}</h4>
-                                    <div class="rate">{{item.bidder.rating}} <i class="fa fa-star-o"></i></div>
+                                    <div class="rate">{{item.bidder.rating}} <i class="mdi mdi-star-outline"></i></div>
                                 </div>
                             </a>
                             <hr>

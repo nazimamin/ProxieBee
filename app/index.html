@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/hover/css/hover.css" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.css" />
+    <link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -62,8 +64,8 @@
                             </a>
                         </li>
                         <li>
-                            <a ui-sref="auth">
-                                <md-button class="login">
+                            <a ng-controller="AuthCtrl as auth">
+                                <md-button class="login" ng-click="showLoginSignupDialog($event)">
                                     login
                                 </md-button>
                             </a>
@@ -80,7 +82,7 @@
         </div>
     </div>
 
-    <div class="">
+    <div class="" md-theme="ndtndt">
         <div ui-view class="main-page"></div>
     </div>
 
@@ -130,13 +132,19 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
     <script src="scripts/app.js"></script>
     <script src="scripts/app.routes.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/products.js"></script>
     <script src="scripts/controllers/staffPicks.js"></script>
     <script src="scripts/controllers/topsellercat.js"></script>
+    <script src="scripts/controllers/auth.js"></script>
+
     <script src="scripts/services/filterService.js"></script>
+<script src="scripts/services/ProductServices.js"></script>
+    <script src="scripts/controllers/products.js"></script>
+
+
     <!-- endbuild -->
 </body>
 

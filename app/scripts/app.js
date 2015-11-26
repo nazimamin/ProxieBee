@@ -21,7 +21,8 @@ angular
     'ngTouch',
     'slick',
     'ngMaterial',
-    'mb-adaptive-backgrounds'
+    'mb-adaptive-backgrounds',
+    'ProductServices'
 	])
     .controller('RootCtrl', ['$rootScope', '$q', '$state', RootCtrl]);
 

@@ -1,3 +1,102 @@
-<div class="auth">
-    <h3>LOGIN</h3>
+<div class="loginsignup" ng-controller="AuthCtrl as auth">
+    <md-dialog aria-label="Login and signup">
+        <form>
+            <md-dialog-content style="max-width:800px;max-height:810px; ">
+                <md-tabs md-dynamic-height md-border-bottom md-center-tabs>
+                    <md-tab label="Login">
+                        <md-content class="md-padding">
+                            <md-content layout-padding class="more-padding">
+                                <md-input-container required class="md-block">
+                                    <label class="mdi mdi-account"> UserID</label>
+                                    <input ng-model="user.ssn" ng-required="true" type="text">
+                                </md-input-container>
+                                <md-input-container md-no-float class="md-block">
+                                    <label class="mdi mdi-account-key"> Password</label>
+                                    <input ng-model="user.userpassword" ng-required="true" type="password">
+                                </md-input-container>
+                                <md-input-container>
+                                    <md-button class="md-primary mdi mdi-account-check">
+                                        SUBMIT
+                                    </md-button>
+                                </md-input-container>
+                            </md-content>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Signup ">
+                        <md-content class="md-padding ">
+                            <md-content layout-padding class="more-padding" flex>
+
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label class="mdi mdi-account"> UserID</label>
+                                        <input ng-model="user.ssn" ng-required="true" type="text">
+                                    </md-input-container>
+                                    <md-input-container md-no-float flex>
+                                        <label class="mdi mdi-account-key"> Password</label>
+                                        <input ng-model="user.userpassword" ng-required="true" type="password">
+                                    </md-input-container>
+                                </div>
+
+
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label class="mdi mdi-account"> First Name</label>
+                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    </md-input-container>
+
+                                    <md-input-container flex>
+                                        <label class="mdi mdi-account"> Last Name</label>
+                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    </md-input-container>
+                                </div>
+
+                                <md-input-container class="md-block">
+                                    <label class="mdi mdi-home-variant"> Address</label>
+                                    <input ng-model="user.userid" ng-required="true" type="text">
+                                </md-input-container>
+
+
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label class="mdi mdi-city"> City</label>
+                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    </md-input-container>
+
+                                    <md-input-container flex>
+                                        <label class="mdi mdi-map-marker"> ZipCode</label>
+                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    </md-input-container>
+
+                                </div>
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label class="mdi mdi-phone"> Telephone</label>
+                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    </md-input-container>
+
+
+                                    <md-input-container flex>
+                                        <label class="mdi mdi-credit-card"> CreditCard number</label>
+                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    </md-input-container>
+                                </div>
+
+                                <md-input-container>
+                                    <md-button class="md-primary mdi mdi-account-check">
+                                        SUBMIT
+                                    </md-button>
+                                </md-input-container>
+                            </md-content>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </md-dialog-content>
+        </form>
+        <md-dialog-actions layout="row ">
+            <span flex></span>
+            <md-button ng-click="close()" class="mdi mdi-close-circle">
+                CLOSE
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>
 </div>

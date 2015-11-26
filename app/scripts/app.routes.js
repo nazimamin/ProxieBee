@@ -10,9 +10,12 @@
  */
 angular
     .module('app.routes', [])
-    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', AppRoutes]);
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', AppRoutes])
+    .run(function ($rootScope) {
+        $rootScope.restServer = 'https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net'
+    });
 
-function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
+function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootScope) {
     $stateProvider
         .state('mainpage', {
             url: '/',
