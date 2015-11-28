@@ -800,12 +800,17 @@ section#products {
             }
         }
         md-card-content {
-            padding: 12px;
+            padding: 12px 5px 12px 12px;
             .md-title {
                 padding-top: 4px;
                 font-size: 16px;
                 color: #645b9a;
                 /*#9fa8d5;*/
+            }
+            .right {
+                .md-button {
+                    min-width: 40px !important;
+                }
             }
         }
         .card {
@@ -910,6 +915,9 @@ md-select-menu md-optgroup {
 
 // this is login and singup page style
 .loginsignup {
+    .mdi-close-circle {
+        color: $Swatch6-navbar-color;
+    }
     md-dialog {
         margin-top: 50px;
         min-width: 500px;
@@ -942,5 +950,38 @@ md-select-menu md-optgroup {
     md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-ink-bar {
         color: rgba(57, 73, 171, 1);
         background: $Swatch6-navbar-color;
+    }
+}
+
+.auction-button {
+    .md-button.md-raised:not([disabled]) {
+        box-shadow: none !important;
+    }
+}
+
+.create-auction {
+    .md-datepicker-button {
+        margin-left: -5px !important;
+        padding-left: -5px !important;
+    }
+    .md-datepicker-input-container {
+        margin-left: 0 !important;
+    }
+    md-icon.md-ndtndt-theme {
+        color: rgba(0, 0, 0, 0.30);
+    }
+    md-dialog {
+        margin-top: 50px;
+        min-width: 500px;
+        min-height: 250px;
+    }
+    md-card {
+        box-shadow: none;
+    }
+    .time-picker {
+        md-input-container {
+            margin-top: 5px !important;
+        }
+        padding-top: 0 !important;
     }
 }

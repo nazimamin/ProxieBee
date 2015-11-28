@@ -8,8 +8,8 @@
  * Controller of the ndtndtApp
  */
 angular.module('ndtndtApp')
-    .controller('MainCtrl', function () {
-
+    .controller('MainCtrl', function ($rootScope, UserServices) {
+        var main = this;
     }).config(function ($mdThemingProvider) {
         $mdThemingProvider.definePalette('ndtndt', {
             "50": "#ffffff",

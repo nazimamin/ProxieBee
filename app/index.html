@@ -45,9 +45,8 @@
                         <img alt="NDTNDT" src="images/logo.png">
                     </a>
                 </div>
-
                 <div class="collapse navbar-collapse" id="navbar-header-collapse-down">
-
+                    <!--data-toggle="collapse" data-target=".navbar-collapse" -->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a ui-sref="mainpage">
@@ -63,10 +62,33 @@
                                 </md-button>
                             </a>
                         </li>
-                        <li>
+                        <li ng-show="currentUser.id">
+                            <a ui-sref="profile">
+                                <md-button class="login">
+                                    Profile
+                                </md-button>
+                            </a>
+                        </li>
+                        <li ng-show="currentUser.id">
+                            <a ng-click="root.logout()">
+                                <md-button class="login">
+                                    Logout
+                                </md-button>
+                            </a>
+                        </li>
+
+                        <li ng-show="!currentUser.id">
                             <a ng-controller="AuthCtrl as auth">
                                 <md-button class="login" ng-click="showLoginSignupDialog($event)">
-                                    login
+                                    Login
+                                </md-button>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a ng-controller="AuctionCtrl as auction" class="auction-button">
+                                <md-button class="login auction-button md-raised md-primary" ng-click="showAuctionDialog($event)">
+                                    POST
                                 </md-button>
                             </a>
                         </li>
@@ -128,6 +150,7 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/ng-currency/dist/ng-currency.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -138,12 +161,14 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/staffPicks.js"></script>
     <script src="scripts/controllers/topsellercat.js"></script>
-    <script src="scripts/controllers/auth.js"></script>
 
     <script src="scripts/services/filterService.js"></script>
-<script src="scripts/services/ProductServices.js"></script>
+    <script src="scripts/services/ProductServices.js"></script>
+    <script src="scripts/services/UserServices.js"></script>
     <script src="scripts/controllers/products.js"></script>
-
+    <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/controllers/auction.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
 
     <!-- endbuild -->
 </body>

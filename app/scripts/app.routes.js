@@ -12,7 +12,7 @@ angular
     .module('app.routes', [])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', AppRoutes])
     .run(function ($rootScope) {
-        $rootScope.restServer = 'https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net'
+        $rootScope.restServer = 'http://192.168.29.150:3000/api'
     });
 
 function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootScope) {
@@ -47,6 +47,11 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootS
             url: '/bid/{id}',
             templateUrl: 'views/bid.html',
             controller: 'BidCtrl as bid'
+        })
+        .state('auction', {
+            url: '/auction',
+            templateUrl: 'views/auction.html',
+            controller: 'AuctionCtrl as auction'
         })
         .state('admin', {
             url: '/admin',

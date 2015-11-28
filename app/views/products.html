@@ -70,13 +70,13 @@
         <div class="products-page ">
             <a class="card " ng-href="{{item.url}} " ng-repeat="item in filtered=(items | filter:filterByCategory) | filter:searchText | orderBy:[orderByPrice, orderByBids ,orderByYear, orderByPost, orderByExp] ">
                 <md-card>
-                    <img class="md-card-image" ng-src="data:image/png;base64,{{item.itemimg}}">
+                    <img class="md-card-image" data-ng-src="data:image/png;base64,{{item.itemimg}}">
                     <div class="card-info ">
                         <div class="left ">
                             <span class="item-price ">{{item.currentbid | currency}}</span>
                         </div>
                         <div class="left ">
-                            <img ng-src="../images/profile.png ">
+                            <img data-ng-src="data:image/png;base64,{{item.personimg}}">
                         </div>
                         <div class="left ">
                             <span class="num-bid ">
@@ -90,7 +90,7 @@
                             <h5 class="md-title ">{{item.itemname}}</h5>
                         </div>
                         <div class="right ">
-                            <md-button class="md-primary ">Bid</md-button>
+                            <md-button class="md-primary" flex="15">Bid</md-button>
                         </div>
                     </md-card-content>
                 </md-card>

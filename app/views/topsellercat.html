@@ -7,13 +7,13 @@
             <a ng-href="{{category.url}}" class="card" ng-repeat="category in topsellercategory">
                 <md-card>
                     <!--  <img class="md-card-image" ng-src="{{category.image}}">-->
-                    <md-icon md-svg-src="../images/categories/{{category.title}}.svg"></md-icon>
+                    <md-icon md-svg-src="../images/categories/{{category.itemtype}}.svg"></md-icon>
                     <md-card-content>
                         <div class="left">
-                            <h5 class="md-title">{{category.title}}</h5>
+                            <h5 class="md-title">{{category.itemtype}}</h5>
                         </div>
                         <div class="right">
-                            <span><i class="mdi mdi-tag-text-outline"></i> {{category.items}}</span>
+                            <span><i class="mdi mdi-tag-text-outline"></i> {{category.item}}</span>
                         </div>
                     </md-card-content>
                 </md-card>

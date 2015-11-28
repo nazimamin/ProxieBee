@@ -1,0 +1,88 @@
+<div class="create-auction loginsignup" ng-controller="AuctionCtrl as auction">
+    <md-dialog aria-label="Login and signup">
+        <form name="login" ng-submit="login.$valid && user.loginF()" novalidate>
+            <md-dialog-content style="max-width:800px;max-height:810px; ">
+                <md-content class="md-padding">
+                    <md-content layout-padding class="">
+                        <md-card>
+                            <md-card-header>
+                                <md-card-avatar>
+                                    <img class="md-user-avatar" ng-src="../images/profile.png" />
+                                </md-card-avatar>
+                                <md-card-header-text>
+                                    <span class="md-title">{{(seller.firstname + " " +seller.lastname) | uppercase}}</span>
+                                    <span class="md-subhead"> posting as</span>
+                                </md-card-header-text>
+                            </md-card-header>
+                            <md-card-content>
+                                <form name="auctionForm" ng-submit="auctionForm.$valid && auction.post()" novalidate>
+
+                                    <md-input-container layout="column">
+                                        <label class="mdi"> Item name</label>
+                                        <input name="itemname" ng-model="auction.info.itemname" type="text" ng-required="true">
+                                        <div ng-messages="auctionForm.itemname.$error" ng-if="auctionForm.$submitted">
+                                            <div ng-message="required"> Item name is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <div layout layout-sm="column">
+                                        <md-input-container md-no-float class="md-block" ng-required="true" class="md-block">
+                                            <label class="mdi"> Category</label>
+                                            <md-select ng-model="auction.info.itemtype" ng-required="true" name="itemtype">
+                                                <md-option ng-repeat="cat in catOptions" value="{{cat.itemtype}}" required="true">
+                                                    {{cat.itemtype | uppercase}}
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+
+                                        <md-input-container>
+                                            <label class="mdi"> Year</label>
+                                            <input name="itemyear" ng-model="auction.info.year" type="number" ng-required="true">
+                                        </md-input-container>
+
+                                        <md-input-container layout="column">
+                                            <label class="mdi"> Item in stock</label>
+                                            <input name="itemname" ng-model="auction.info.instock" ng-required="true" type="number">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout layout-sm="column">
+                                        <md-input-container layout="column">
+                                            <label class="mdi"> Open bid</label>
+                                            <input name="itemname" ng-model="auction.info.openbid" type="text" ng-currency min="1" fraction="0" ng-required="true">
+                                        </md-input-container>
+
+                                        <md-input-container layout="column">
+                                            <label class="mdi"> Bid increment</label>
+                                            <input name="itemname" ng-model="auction.info.bidincrement" type="text" ng-currency min="1" fraction="0" ng-required="true">
+                                        </md-input-container>
+
+                                        <md-input-container required layout="column">
+                                            <label class="mdi"> Reserved price</label>
+                                            <input name="itemname" ng-model="auction.info.reservePrice" type="text" ng-currency min="1" fraction="0" ng-required="true">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout layout="column" class="time-picker">
+                                        <md-datepicker flex name="dateField" ng-model="auction.info.expiredate" md-placeholder="Expire date" ng-required="true" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+                                        <md-input-container flex layout="column">
+                                            <label class="mdi mdi-timer">Expire time (HH:mm:ss)</label>
+                                            <input type="time" name="timeField" ng-model="auction.info.expiretime" ng-required="true" />
+                                        </md-input-container>
+                                    </div>
+                                </form>
+                            </md-card-content>
+                        </md-card>
+
+                    </md-content>
+                </md-content>
+                <md-dialog-actions layout="row">
+                    <span flex></span>
+                    <md-button ng-click="close()" class="mdi mdi-close-circle" aria-label="Close form">
+                        CLOSE
+                    </md-button>
+                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="auction.post()">
+                        POST
+                    </md-button>
+                </md-dialog-actions>
+            </md-dialog-content>
+        </form>
+    </md-dialog>
+</div>

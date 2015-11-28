@@ -1,100 +1,137 @@
 <div class="loginsignup" ng-controller="AuthCtrl as auth">
     <md-dialog aria-label="Login and signup">
-        <form>
-            <md-dialog-content style="max-width:800px;max-height:810px; ">
-                <md-tabs md-dynamic-height md-border-bottom md-center-tabs>
-                    <md-tab label="Login">
-                        <md-content class="md-padding">
-                            <md-content layout-padding class="more-padding">
-                                <md-input-container required class="md-block">
+        <md-dialog-content style="max-width:800px;max-height:810px; ">
+            <md-tabs md-dynamic-height md-border-bottom md-center-tabs>
+                <md-tab id="login" label="Login">
+                    <md-content class="md-padding">
+                        <md-content layout-padding class="more-padding">
+                            <form name="login" ng-submit="login.$valid && user.loginF()" novalidate>
+                                <md-input-container required class="md-block" md-is-error="login.userID.$invalid && (login.$submitted || login.userID.$touched)">
                                     <label class="mdi mdi-account"> UserID</label>
-                                    <input ng-model="user.ssn" ng-required="true" type="text">
+                                    <input name="userID" ng-model="user.login.ssn" required type="text">
+                                    <div ng-messages="login.userID.$error" ng-if="login.$submitted">
+                                        <div ng-message="required">UserID is required.</div>
+                                    </div>
                                 </md-input-container>
-                                <md-input-container md-no-float class="md-block">
+                                <md-input-container md-no-float class="md-block" required class="md-block" md-is-error="login.userpassword.$invalid && (login.$submitted || login.userpassword.$touched)">
                                     <label class="mdi mdi-account-key"> Password</label>
-                                    <input ng-model="user.userpassword" ng-required="true" type="password">
+                                    <input name="userpassword" ng-model="user.login.userpassword" required type="password">
+                                    <div ng-messages="login.userpassword.$error" ng-if="login.$submitted">
+                                        <div ng-message="required">Password is required.</div>
+                                    </div>
                                 </md-input-container>
-                                <md-input-container>
-                                    <md-button class="md-primary mdi mdi-account-check">
+                                <md-input-container layout="column">
+                                    <md-button class="md-primary mdi mdi-account-check" type="submit">
                                         SUBMIT
                                     </md-button>
                                 </md-input-container>
-                            </md-content>
+                            </form>
                         </md-content>
-                    </md-tab>
-                    <md-tab label="Signup ">
-                        <md-content class="md-padding ">
-                            <md-content layout-padding class="more-padding" flex>
+                    </md-content>
+                </md-tab>
 
+                <md-tab id="signup" label="Signup ">
+                    <md-content class="md-padding ">
+                        <md-content layout-padding class="more-padding" flex>
+                            <form name="signup" ng-submit="signup.$valid && user.signupF()" novalidate>
                                 <div layout layout-sm="column">
-                                    <md-input-container flex>
+                                    <md-input-container required md-is-error="signup.userID.$invalid && (signup.$submitted || signup.userID.$touched)" flex>
                                         <label class="mdi mdi-account"> UserID</label>
-                                        <input ng-model="user.ssn" ng-required="true" type="text">
+                                        <input name="userID" ng-model="user.signup.ssn" ng-required="true" type="text">
+                                        <div ng-messages="signup.userID.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">UserID is required.</div>
+                                        </div>
                                     </md-input-container>
-                                    <md-input-container md-no-float flex>
-                                        <label class="mdi mdi-account-key"> Password</label>
-                                        <input ng-model="user.userpassword" ng-required="true" type="password">
+                                    <md-input-container required md-is-error="signup.userpassword.$invalid && (signup.$submitted || signup.userpassword.$touched)" flex>
+                                        <label name="userpassword" class="mdi mdi-account-key"> Password</label>
+                                        <input name="userpassword" ng-model="user.signup.userpassword" ng-required="true" type="password">
+                                        <div ng-messages="signup.userpassword.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">Password is required.</div>
+                                        </div>
                                     </md-input-container>
                                 </div>
+
 
 
                                 <div layout layout-sm="column">
-                                    <md-input-container flex>
-                                        <label class="mdi mdi-account"> First Name</label>
-                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    <md-input-container flex required md-is-error="signup.firstname.$invalid && (signup.$submitted || signup.firstname.$touched)">
+                                        <label name="firstname" class="mdi mdi-account"> First Name</label>
+                                        <input name="firstname" ng-model="user.signup.firstname" ng-required="true" type="text">
+                                        <div ng-messages="signup.firstname.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">Firstname is required.</div>
+                                        </div>
                                     </md-input-container>
 
-                                    <md-input-container flex>
-                                        <label class="mdi mdi-account"> Last Name</label>
-                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    <md-input-container flex required md-is-error="signup.lastname.$invalid && (signup.$submitted || signup.lastname.$touched)">
+                                        <label name="lastname" class="mdi mdi-account"> Last Name</label>
+                                        <input name="lastname" ng-model="user.signup.lastname" ng-required="true" type="text">
+                                        <div ng-messages="signup.lastname.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">Last name is required.</div>
+                                        </div>
                                     </md-input-container>
                                 </div>
-
-                                <md-input-container class="md-block">
-                                    <label class="mdi mdi-home-variant"> Address</label>
-                                    <input ng-model="user.userid" ng-required="true" type="text">
+                                <md-input-container class="md-block" required md-is-error="signup.email.$invalid && (signup.$submitted || signup.email.$touched)">
+                                    <label name="email" class="mdi mdi-email"> Email</label>
+                                    <input name="email" ng-model="user.signup.email" type="email" ng-required="true">
+                                    <div ng-messages="signup.email.$error" ng-if="signup.$submitted">
+                                        <div ng-message="required">Email is required.</div>
+                                    </div>
                                 </md-input-container>
-
-
+                                <md-input-container class="md-block" required md-is-error="signup.address.$invalid && (signup.$submitted || signup.address.$touched)">
+                                    <label name="address" class="mdi mdi-home-variant"> Address</label>
+                                    <input name="address" ng-model="user.signup.address" ng-required="true" type="text">
+                                    <div ng-messages="signup.address.$error" ng-if="signup.$submitted">
+                                        <div ng-message="required">Address is required.</div>
+                                    </div>
+                                </md-input-container>
                                 <div layout layout-sm="column">
-                                    <md-input-container flex>
-                                        <label class="mdi mdi-city"> City</label>
-                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    <md-input-container flex required md-is-error="signup.city.$invalid && (signup.$submitted || signup.city.$touched)">
+                                        <label name="city" class="mdi mdi-city"> City</label>
+                                        <input name="city" ng-model="user.signup.city" ng-required="true" type="text">
+                                        <div ng-messages="signup.city.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">City is required.</div>
+                                        </div>
                                     </md-input-container>
 
-                                    <md-input-container flex>
-                                        <label class="mdi mdi-map-marker"> ZipCode</label>
-                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    <md-input-container flex required md-is-error="signup.zipcode.$invalid && (signup.$submitted || signup.zipcode.$touched)">
+                                        <label name="zipcode" class="mdi mdi-map-marker"> ZipCode</label>
+                                        <input name="zipcode" ng-model="user.signup.zipcode" ng-required="true" type="text" ng-pattern="/^[0-9]{5}$/" maxlength="5">
+                                        <div ng-messages="signup.zipcode.$error" role="alert" ng-if="signup.$submitted">
+                                            <div ng-message="required">ZipCode is required.</div>
+                                            <div ng-message="pattern">Not a valid zipcode.</div>
+                                        </div>
                                     </md-input-container>
-
                                 </div>
                                 <div layout layout-sm="column">
-                                    <md-input-container flex>
-                                        <label class="mdi mdi-phone"> Telephone</label>
-                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    <md-input-container flex required md-is-error="signup.telephone.$invalid && (signup.$submitted || signup.telephone.$touched)">
+                                        <label name="telephone" class="mdi mdi-phone"> Telephone</label>
+                                        <input name="telephone" ng-model="user.signup.telephone" ng-required="true" type="tel">
+                                        <div ng-messages="signup.telephone.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">Telephone is required.</div>
+                                        </div>
                                     </md-input-container>
-
-
-                                    <md-input-container flex>
-                                        <label class="mdi mdi-credit-card"> CreditCard number</label>
-                                        <input ng-model="user.userid" ng-required="true" type="text">
+                                    <md-input-container flex required md-is-error="signup.creditcard.$invalid && (signup.$submitted || signup.creditcard.$touched)">
+                                        <label name="creditcard" class="mdi mdi-credit-card"> CreditCard number</label>
+                                        <input name="creditcard" ng-model="user.signup.creditcardnum" ng-required="true" type="text">
+                                        <div ng-messages="signup.creditcard.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">CreditCard is required.</div>
+                                        </div>
                                     </md-input-container>
                                 </div>
-
-                                <md-input-container>
-                                    <md-button class="md-primary mdi mdi-account-check">
+                                <md-input-container layout="column">
+                                    <md-button class="md-primary mdi mdi-account-check" type="submit">
                                         SUBMIT
                                     </md-button>
                                 </md-input-container>
-                            </md-content>
+                            </form>
                         </md-content>
-                    </md-tab>
-                </md-tabs>
-            </md-dialog-content>
-        </form>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
         <md-dialog-actions layout="row ">
             <span flex></span>
-            <md-button ng-click="close()" class="mdi mdi-close-circle">
+            <md-button ng-click="close()" class="mdi mdi-close-circle" aria-label="Close form">
                 CLOSE
             </md-button>
         </md-dialog-actions>
