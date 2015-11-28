@@ -1,14 +1,15 @@
 angular
     .module('UserServices', [])
-    .factory('UserServices', ['$http', '$q', '$rootScope', UserServices]);
+    .factory('UserServices', ['$http', '$q', '$rootScope', 'Upload', UserServices]);
 
-function UserServices($http, $q, $rootScope) {
+function UserServices($http, $q, $rootScope, Upload) {
 
     return {
         currentUser: currentUser,
         login: login,
         signup: signup,
-        logout: logout
+        logout: logout,
+        PostImage: PostImage
     };
 
     function currentUser() {
@@ -68,6 +69,32 @@ function UserServices($http, $q, $rootScope) {
                     err: status
                 });
             });
+        return defer.promise;
+    }
+    //taken from https://github.com/danialfarid/ng-file-upload#usage
+    function PostImage(file) {
+        var defer = $q.defer();
+        if (file) {
+            file.upload = Upload.upload({
+                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                data: {
+                    file: file
+                }
+            });
+
+            file.upload.then(function (response) {
+                file.result = response.data;
+                defer.resolve(file.result);
+            }, function (response) {
+                if (response.status > 0) {
+                    defer.reject(response.status);
+                }
+
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 *
+                    evt.loaded / evt.total));
+            });
+        }
         return defer.promise;
     }
 

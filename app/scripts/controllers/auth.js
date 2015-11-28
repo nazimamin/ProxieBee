@@ -16,6 +16,28 @@ angular.module('ndtndtApp')
         $scope.user.signupF = signupF;
         $scope.user.loginF = loginF;
 
+
+        $scope.PostImage = function (data, errFiles) {
+            $scope.f = data;
+            UserServices.PostImage(data)
+                .then(function (data) {
+                    if (data) {
+                        /*$rootScope.currentUser.id = data.customerid;
+                        $rootScope.currentUser.role = data.role;
+                        $rootScope.currentUser.personimg = data.personimg;
+                        $rootScope.currentUser.restinfo = data;
+                        */
+                        console.log(data);
+                        // $scope.close();
+                    } else {
+                        $rootScope.currentUser.personimg = null;
+                        $mdToast.showSimple("Posting failed. Please try again.");
+                    }
+                }, function () {
+                    $mdToast.showSimple("Posting failed. Please try again.");
+                });
+        }
+
         function signupF() {
             UserServices.signup($scope.user.signup)
                 .then(function (data) {

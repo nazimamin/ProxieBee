@@ -1,13 +1,14 @@
 angular
     .module('ProductServices', [])
-    .factory('ProductServices', ['$q', '$http', '$rootScope', ProductServices]);
+    .factory('ProductServices', ['$q', '$http', '$rootScope', 'Upload', ProductServices]);
 
-function ProductServices($q, $http, $rootScope) {
+function ProductServices($q, $http, $rootScope, Upload) {
     return {
         getAllProducts: getAllProducts,
         getTopCategories: getTopCategories,
         getCategoryOptions: getCategoryOptions,
-        createAuction: createAuction
+        createAuction: createAuction,
+        PostImage: PostImage
     };
 
 
@@ -57,7 +58,7 @@ function ProductServices($q, $http, $rootScope) {
     //create an auciton
 
     function createAuction(data) {
-        console.log(JSON.stringify(data));
+
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -75,6 +76,33 @@ function ProductServices($q, $http, $rootScope) {
                     err: status
                 });
             });
+        return defer.promise;
+    }
+
+    //taken from https://github.com/danialfarid/ng-file-upload#usage
+    function PostImage(file) {
+        var defer = $q.defer();
+        if (file) {
+            file.upload = Upload.upload({
+                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                data: {
+                    file: file
+                }
+            });
+
+            file.upload.then(function (response) {
+                file.result = response.data;
+                defer.resolve(file.result);
+            }, function (response) {
+                if (response.status > 0) {
+                    defer.reject(response.status);
+                }
+
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 *
+                    evt.loaded / evt.total));
+            });
+        }
         return defer.promise;
     }
 

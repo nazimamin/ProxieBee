@@ -17,6 +17,7 @@ $Swatch2: #2D2648;
 $Swatch3: #D9DDE4;
 $Swatch4: #645B9A;
 $Swatch5: #9E7393;
+$Swatch5-fab-hover: #9E7393;
 $Swatch6-navbar-color: #9FA8D5;
 $Swatch5-TEXT-COLOR: #8E979D;
 $Swatch7: #D48692;
@@ -798,6 +799,21 @@ section#products {
                     }
                 }
             }
+            .reserved-top {
+                margin-top: 10px;
+                padding-top: 5px !important;
+                position: absolute;
+                width: 120px;
+                height: 24px;
+                background-color: #FFD45F;
+                color: $Swatch8;
+                text-align: center;
+                vertical-align: middle;
+                font-weight: 300;
+                font-size: 12px;
+                font-family: sans-serif;
+                padding-top: 2px;
+            }
         }
         md-card-content {
             padding: 12px 5px 12px 12px;
@@ -915,6 +931,42 @@ md-select-menu md-optgroup {
 
 // this is login and singup page style
 .loginsignup {
+    md-card md-card-header:last-child md-card-avatar {
+        margin-left: 41%;
+    }
+    md-card-header {
+        align-items: center;
+    }
+    #file-input {
+        display: none;
+    }
+    .md-button.md-fab {
+        box-shadow: none;
+    }
+    a.md-button.md-default-theme.md-fab,
+    a.md-button.md-fab,
+    .md-button.md-default-theme.md-fab,
+    .md-button.md-fab {
+        background-color: rgb(159, 168, 213);
+        color: rgb(255, 255, 255);
+    }
+    .md-fab:hover,
+    .md-fab.md-focused {
+        background-color: $Swatch9 !important;
+    }
+    .md-fab {
+        cursor: pointer;
+        label {
+            cursor: pointer;
+        }
+    }
+    md-card {
+        box-shadow: none;
+        margin: 0;
+    }
+    md-card md-card-header {
+        padding: 0;
+    }
     .mdi-close-circle {
         color: $Swatch6-navbar-color;
     }
@@ -960,6 +1012,16 @@ md-select-menu md-optgroup {
 }
 
 .create-auction {
+    .item-image {
+        float: right;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.54);
+        img {
+            width: 150px !important;
+            height: 100px !important;
+            border-radius: 2px !important;
+        }
+    }
     .md-datepicker-button {
         margin-left: -5px !important;
         padding-left: -5px !important;
@@ -983,5 +1045,14 @@ md-select-menu md-optgroup {
             margin-top: 5px !important;
         }
         padding-top: 0 !important;
+    }
+}
+
+md-card md-card-header md-card-avatar {
+    width: 56px;
+    height: 56px;
+    img {
+        width: 56px;
+        height: 56px;
     }
 }

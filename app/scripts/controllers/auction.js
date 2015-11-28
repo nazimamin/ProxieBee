@@ -22,6 +22,27 @@ angular.module('ndtndtApp')
             aDay.getMonth(),
             aDay.getDate() + 30);
 
+        $scope.PostImage = function (data, errFiles) {
+            $scope.f = data;
+            ProductServices.PostImage(data)
+                .then(function (data) {
+                    if (data) {
+                        /*$rootScope.currentUser.id = data.customerid;
+                        $rootScope.currentUser.role = data.role;
+                        $rootScope.currentUser.personimg = data.personimg;
+                        $rootScope.currentUser.restinfo = data;
+                        */
+                        console.log(data);
+                        // $scope.close();
+                    } else {
+                        $rootScope.currentUser.personimg = null;
+                        $mdToast.showSimple("Posting failed. Please try again.");
+                    }
+                }, function () {
+                    $mdToast.showSimple("Posting failed. Please try again.");
+                });
+        }
+
         ProductServices.getCategoryOptions()
             .then(function (res) {
                 $scope.catOptions = res;
@@ -31,6 +52,14 @@ angular.module('ndtndtApp')
 
 
         function post() {
+            $scope.auction.info.openedate = new Date(
+                $scope.auction.info.opendate.getFullYear(),
+                $scope.auction.info.openedate.getMonth(),
+                $scope.auction.info.openedate.getDate(),
+                $scope.auction.info.opentime.getHours(),
+                $scope.auction.info.opentime.getMinutes(),
+                $scope.auction.info.opentime.getSeconds()
+            );
             $scope.auction.info.expiredate = new Date(
                 $scope.auction.info.expiredate.getFullYear(),
                 $scope.auction.info.expiredate.getMonth(),
@@ -39,6 +68,7 @@ angular.module('ndtndtApp')
                 $scope.auction.info.expiretime.getMinutes(),
                 $scope.auction.info.expiretime.getSeconds()
             );
+
             ProductServices.createAuction($scope.auction.info)
                 .then(function (data) {
                     if (data) {
@@ -57,6 +87,7 @@ angular.module('ndtndtApp')
                     $mdToast.showSimple("Posting failed. Please try again.");
                 });
         }
+
 
         $scope.showAuctionDialog = function (ev) {
             $mdDialog.show({

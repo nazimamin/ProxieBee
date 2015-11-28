@@ -34,6 +34,25 @@
                     <md-content class="md-padding ">
                         <md-content layout-padding class="more-padding" flex>
                             <form name="signup" ng-submit="signup.$valid && user.signupF()" novalidate>
+                                <md-card>
+                                    <md-card-header>
+                                        <md-card-avatar>
+                                            <img class="md-user-avatar" ngf-src="!f.$error &amp;&amp; f" />
+                                            <md-button class="md-fab" aria-label="upload image" ng-hide="!f.$error &amp;&amp; f">
+                                                <label for="file-input">
+                                                    <md-icon md-svg-icon="../images/camera.svg"></md-icon>
+                                                </label>
+                                            </md-button>
+                                            <input id="file-input" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+
+                                        </md-card-avatar>
+                                        <md-card-header-text ng-show="!f.$error &amp;&amp; f">
+                                            <span class="md-title">{{(user.signup.firstname + " " + user.signup.lastname) | uppercase}}</span>
+                                            <span class="md-subhead"> you'll appear as</span>
+                                        </md-card-header-text>
+                                    </md-card-header>
+                                </md-card>
+
                                 <div layout layout-sm="column">
                                     <md-input-container required md-is-error="signup.userID.$invalid && (signup.$submitted || signup.userID.$touched)" flex>
                                         <label class="mdi mdi-account"> UserID</label>
@@ -70,20 +89,25 @@
                                         </div>
                                     </md-input-container>
                                 </div>
-                                <md-input-container class="md-block" required md-is-error="signup.email.$invalid && (signup.$submitted || signup.email.$touched)">
-                                    <label name="email" class="mdi mdi-email"> Email</label>
-                                    <input name="email" ng-model="user.signup.email" type="email" ng-required="true">
-                                    <div ng-messages="signup.email.$error" ng-if="signup.$submitted">
-                                        <div ng-message="required">Email is required.</div>
-                                    </div>
-                                </md-input-container>
-                                <md-input-container class="md-block" required md-is-error="signup.address.$invalid && (signup.$submitted || signup.address.$touched)">
-                                    <label name="address" class="mdi mdi-home-variant"> Address</label>
-                                    <input name="address" ng-model="user.signup.address" ng-required="true" type="text">
-                                    <div ng-messages="signup.address.$error" ng-if="signup.$submitted">
-                                        <div ng-message="required">Address is required.</div>
-                                    </div>
-                                </md-input-container>
+                                <div layout layout-sm="column">
+                                    <md-input-container flex class="md-block" required md-is-error="signup.email.$invalid && (signup.$submitted || signup.email.$touched)">
+                                        <label name="email" class="mdi mdi-email"> Email</label>
+                                        <input name="email" ng-model="user.signup.email" type="email" ng-required="true">
+                                        <div ng-messages="signup.email.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">Email is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex class="md-block" required md-is-error="signup.address.$invalid && (signup.$submitted || signup.address.$touched)">
+                                        <label name="address" class="mdi mdi-home-variant"> Address</label>
+                                        <input name="address" ng-model="user.signup.address" ng-required="true" type="text">
+                                        <div ng-messages="signup.address.$error" ng-if="signup.$submitted">
+                                            <div ng-message="required">Address is required.</div>
+                                        </div>
+                                    </md-input-container>
+
+                                </div>
+
+
                                 <div layout layout-sm="column">
                                     <md-input-container flex required md-is-error="signup.city.$invalid && (signup.$submitted || signup.city.$touched)">
                                         <label name="city" class="mdi mdi-city"> City</label>
@@ -118,7 +142,7 @@
                                         </div>
                                     </md-input-container>
                                 </div>
-                                <md-input-container layout="column">
+                                <md-input-container layout="column" flex>
                                     <md-button class="md-primary mdi mdi-account-check" type="submit">
                                         SUBMIT
                                     </md-button>

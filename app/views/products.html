@@ -70,6 +70,9 @@
         <div class="products-page ">
             <a class="card " ng-href="{{item.url}} " ng-repeat="item in filtered=(items | filter:filterByCategory) | filter:searchText | orderBy:[orderByPrice, orderByBids ,orderByYear, orderByPost, orderByExp] ">
                 <md-card>
+                    <div class="reserved-top" ng-show="{{item.reserveprice}}">
+                        RESERVED PRICE
+                    </div>
                     <img class="md-card-image" data-ng-src="data:image/png;base64,{{item.itemimg}}">
                     <div class="card-info ">
                         <div class="left ">
