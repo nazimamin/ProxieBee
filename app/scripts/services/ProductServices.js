@@ -84,11 +84,13 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         if (file) {
             file.upload = Upload.upload({
-                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-                data: {
-                    file: file
-                }
+              url: $rootScope.restServer + '/upload',
+              headers: {
+                'optional-header': 'header-value'
+              },
+              data: {file: file}
             });
+
 
             file.upload.then(function (response) {
                 file.result = response.data;
