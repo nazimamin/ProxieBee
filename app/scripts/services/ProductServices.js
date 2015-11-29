@@ -1,3 +1,4 @@
+<< << << < HEAD
 angular
     .module('ProductServices', [])
     .factory('ProductServices', ['$q', '$http', '$rootScope', 'Upload', ProductServices]);
@@ -84,11 +85,13 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         if (file) {
             file.upload = Upload.upload({
-              url: $rootScope.restServer + '/upload',
-              headers: {
-                'optional-header': 'header-value'
-              },
-              data: {file: file}
+                url: $rootScope.restServer + '/upload',
+                headers: {
+                    'optional-header': 'header-value'
+                },
+                data: {
+                    file: file
+                }
             });
 
 
