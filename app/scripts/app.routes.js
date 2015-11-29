@@ -12,7 +12,7 @@ angular
     .module('app.routes', [])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', AppRoutes])
     .run(function ($rootScope) {
-        $rootScope.restServer = 'http://192.168.29.150:3000/api'
+        $rootScope.restServer = 'https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net'
     });
 
 function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootScope) {
