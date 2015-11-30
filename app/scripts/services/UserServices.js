@@ -29,7 +29,9 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
     }
 
     function signup(data, file) {
-
+        var randomString = Math.random().toString(36).substring(7);
+        console.log(data);
+        var FilePath = "profile" + data.ssn + randomString + ".jpg";
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -40,7 +42,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
                 }
             })
             .success(function (res) {
-                PostImage(file);
+                PostImage(file, FilePath);
                 defer.resolve(res);
             })
             .error(function (err, status) {
@@ -76,9 +78,12 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
 
 
     //taken from https://github.com/danialfarid/ng-file-upload#usage
-    function PostImage(file) {
+    function PostImage(file, FilePath) {
         var defer = $q.defer();
         if (file) {
+            Upload.rename(file, FilePath);
+            console.log(FilePath);
+            console.log(file);
             file.upload = Upload.upload({
                 url: $rootScope.restServer + '/upload',
                 data: {

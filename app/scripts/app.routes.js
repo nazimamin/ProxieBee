@@ -12,7 +12,7 @@ angular
     .module('app.routes', [])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', AppRoutes])
     .run(function ($rootScope) {
-        $rootScope.restServer = 'http://192.168.29.150:3000/api'
+        $rootScope.restServer = 'http://192.168.29.150:4000'
     });
 
 function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootScope) {

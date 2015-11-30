@@ -76,7 +76,9 @@ function ProductServices($q, $http, $rootScope, Upload) {
 
     //create an auciton
     function createAuction(data, file) {
+        var randomString = Math.random().toString(36).substring(7);
         console.log(data);
+        var FilePath = "item" + data.sellerid + randomString + ".jpg";
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -87,7 +89,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
                 }
             })
             .success(function (res) {
-                PostImage(file);
+                PostImage(file, FilePath);
                 defer.resolve(res);
             })
             .error(function (err, status) {
@@ -100,7 +102,6 @@ function ProductServices($q, $http, $rootScope, Upload) {
 
     //pllace a bid
     function placeBid(data) {
-        console.log(data);
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -122,9 +123,12 @@ function ProductServices($q, $http, $rootScope, Upload) {
     }
 
     //taken from https://github.com/danialfarid/ng-file-upload#usage
-    function PostImage(file) {
+    function PostImage(file, FilePath) {
         var defer = $q.defer();
         if (file) {
+            Upload.rename(file, FilePath);
+            console.log(FilePath);
+            console.log(file);
             file.upload = Upload.upload({
                 url: $rootScope.restServer + '/upload',
                 data: {
