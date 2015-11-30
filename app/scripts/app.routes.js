@@ -11,8 +11,13 @@
 angular
     .module('app.routes', [])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', AppRoutes])
+    .config(['$httpProvider', function ($httpProvider) {
+            $httpProvider.defaults.useXDomain = true;
+            delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+])
     .run(function ($rootScope) {
-        $rootScope.restServer = 'http://192.168.29.150:4000'
+        $rootScope.restServer = 'https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net'
     });
 
 function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootScope) {

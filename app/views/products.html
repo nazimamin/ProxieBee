@@ -73,6 +73,7 @@
                     <div class="reserved-top" ng-show="{{item.reserveprice}}">
                         RESERVED PRICE
                     </div>
+                    <!--   <img class="md-card-image" data-ng-src="{{item.itemimg}}" ui-sref="product({ auctionId: item.auctionid })">-->
                     <img class="md-card-image" data-ng-src="{{item.itemimg}}" ui-sref="product({ auctionId: item.auctionid })">
                     <div class=" card-info ">
                         <div class="left ">
@@ -89,7 +90,7 @@
                         </div>
                     </div>
                     <md-card-content>
-                        <div class="left" ui-sref="product({ auctionId: item.auctionid })">
+                        <div class="left">
                             <h5 class="md-title ">{{item.itemname}}</h5>
                         </div>
                         <div class="right " ng-if="currentUser.id " ng-controller="BidCtrl as bid ">
