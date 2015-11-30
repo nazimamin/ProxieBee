@@ -1,15 +1,16 @@
 angular
     .module('UserServices', [])
-    .factory('UserServices', ['$http', '$q', '$rootScope', 'Upload', UserServices]);
+    .factory('UserServices', ['$http', '$q', '$rootScope', 'Upload', '$window', UserServices]);
 
-function UserServices($http, $q, $rootScope, Upload) {
+function UserServices($http, $q, $rootScope, Upload, $window) {
 
     return {
         currentUser: currentUser,
         login: login,
         signup: signup,
         logout: logout,
-        PostImage: PostImage
+        PostImage: PostImage,
+        isLoggedIn: isLoggedIn
     };
 
     function currentUser() {
@@ -27,8 +28,8 @@ function UserServices($http, $q, $rootScope, Upload) {
         return defer.promise;
     }
 
-    function signup(data) {
-        console.log(data);
+    function signup(data, file) {
+
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -39,6 +40,7 @@ function UserServices($http, $q, $rootScope, Upload) {
                 }
             })
             .success(function (res) {
+                PostImage(file);
                 defer.resolve(res);
             })
             .error(function (err, status) {
@@ -71,12 +73,14 @@ function UserServices($http, $q, $rootScope, Upload) {
             });
         return defer.promise;
     }
+
+
     //taken from https://github.com/danialfarid/ng-file-upload#usage
     function PostImage(file) {
         var defer = $q.defer();
         if (file) {
             file.upload = Upload.upload({
-                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                url: $rootScope.restServer + '/upload',
                 data: {
                     file: file
                 }
@@ -96,6 +100,25 @@ function UserServices($http, $q, $rootScope, Upload) {
             });
         }
         return defer.promise;
+    }
+
+
+    function isLoggedIn() {
+        var isLoggedIn;
+        if ($window.sessionStorage) {
+            if ($window.sessionStorage.getItem('currentUser')) {
+                var data = JSON.parse($window.sessionStorage.getItem('currentUser'));
+                $rootScope.currentUser = data;
+                $rootScope.currentUser.id = data.customerid;
+                $rootScope.currentUser.role = data.role;
+                $rootScope.currentUser.personimg = data.personimg;
+                $rootScope.currentUser.restinfo = data;
+                isLoggedIn = true;
+            }
+        } else {
+            $rootScope.currentUser = {};
+        }
+        return $rootScope.currentUser;
     }
 
     function logout() {

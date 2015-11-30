@@ -1,4 +1,3 @@
-<< << << < HEAD
 angular
     .module('ProductServices', [])
     .factory('ProductServices', ['$q', '$http', '$rootScope', 'Upload', ProductServices]);
@@ -9,7 +8,9 @@ function ProductServices($q, $http, $rootScope, Upload) {
         getTopCategories: getTopCategories,
         getCategoryOptions: getCategoryOptions,
         createAuction: createAuction,
-        PostImage: PostImage
+        PostImage: PostImage,
+        placeBid: placeBid,
+        getProduct: getProduct
     };
 
 
@@ -29,6 +30,23 @@ function ProductServices($q, $http, $rootScope, Upload) {
 
         return defer.promise;
     }
+    //get single product
+    function getProduct(id) {
+        var defer = $q.defer();
+        var products = [];
+        $http.get($rootScope.restServer + '/getitem/' + id)
+            .success(function (res) {
+                products = res;
+                console.log(res);
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
     // get all top categories
     function getTopCategories() {
         var defer = $q.defer();
@@ -57,13 +75,36 @@ function ProductServices($q, $http, $rootScope, Upload) {
     }
 
     //create an auciton
-
-    function createAuction(data) {
-
+    function createAuction(data, file) {
+        console.log(data);
         var defer = $q.defer();
         $http({
                 method: 'POST',
                 url: $rootScope.restServer + '/createitem',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .success(function (res) {
+                PostImage(file);
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject({
+                    err: status
+                });
+            });
+        return defer.promise;
+    }
+
+    //pllace a bid
+    function placeBid(data) {
+        console.log(data);
+        var defer = $q.defer();
+        $http({
+                method: 'POST',
+                url: $rootScope.restServer + '/bidding',
                 data: data,
                 headers: {
                     'Content-Type': 'application/json'
@@ -86,14 +127,10 @@ function ProductServices($q, $http, $rootScope, Upload) {
         if (file) {
             file.upload = Upload.upload({
                 url: $rootScope.restServer + '/upload',
-                headers: {
-                    'optional-header': 'header-value'
-                },
                 data: {
                     file: file
                 }
             });
-
 
             file.upload.then(function (response) {
                 file.result = response.data;

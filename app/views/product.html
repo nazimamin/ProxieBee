@@ -1,0 +1,75 @@
+<div class="create-auction loginsignup biddialog" ng-controller="ProductCtrl as product">
+    <md-card>
+        <div class="reserved-top" ng-show="{{auction.reserveprice}}">
+            THIS ITEM HAS RESERVED PRICE SET BY SELLER
+        </div>
+        <img ng-src="{{auction.itemimg}}" class="md-card-image" alt="{{auction.itemname}}">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{auction.itemname | uppercase}}</span>
+            </md-card-title-text>
+
+        </md-card-title>
+        <md-card-header>
+            <md-card-avatar>
+                <img ng-src="{{auction.personimg}}" alt="{{auction.firstname}}">
+            </md-card-avatar>
+            <md-card-header-text>
+                <span class="md-subhead">Seller</span>
+                <span class="md-title">{{(auction.firstname + " "+ auction.lastname) | uppercase }}</span>
+            </md-card-header-text>
+            <md-card-header-text>
+                <span class="md-subhead">Rating </span></span>
+                <span class="md-title center">{{(auction.rating ) | uppercase }}<span class="mdi mdi-star"></span>
+            </md-card-header-text>
+            <md-card-header-text>
+                <span class="md-subhead">Total bids</span>
+                <span class="md-title center">{{(auction.totalbidders) | number }}</span>
+            </md-card-header-text>
+        </md-card-header>
+
+        <md-card-content>
+            <div layout="row">
+                <div flex>
+                    <h5 class="bid-italic">
+                        Item Overview:
+                    </h5>
+                    <div class="item-overview">
+                        <p>Description: {{auction.descriptions}}</p>
+                        <ul>
+                            <li>
+                                Opened: {{auction.postdate | date:"MM/dd/yyyy 'at' h:mma"}}
+                            </li>
+                            <li>
+                                Ending: {{auction.expiredates | date:"MM/dd/yyyy 'at' h:mma"}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div flex>
+                    <form name="bid" ng-submit="bid.$valid && auction.post()" novalidate>
+                        <md-input-container required class="md-block" md-is-error="bid.bidamount.$invalid && (bid.$submitted || bid.bidamount.$touched)">
+                            <label class="mdi mdi-cart"> Enter Bid Amount</label>
+                            <input name="bidamount" ng-model="auction.bidprice" required type="number" min="{{auction.bidincrement}}">
+                            <div ng-messages=" bid.bidamount.$error " ng-if="bid.$submitted || bid.bidamount.$invalid">
+                                <div ng-message="required ">bidamount can't be empty.</div>
+                                <div ng-message="min">Bid amount atleast be {{auction.bidincrement | currency}}</div>
+                            </div>
+                            <h6 class="mdi "> Enter {{((auction.bidincrement)| currency:"USD$")}} or more</h6>
+                        </md-input-container>
+                    </form>
+                </div>
+            </div>
+        </md-card-content>
+
+    </md-card>
+    </md-dialog-content>
+    <md-dialog-actions layout="row ">
+        <span flex></span>
+        <md-button ng-click="close() " class="mdi mdi-close-circle " aria-label="Close form ">
+            CLOSE
+        </md-button>
+        <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="auction.post() ">
+            PLACE BID
+        </md-button>
+</div>

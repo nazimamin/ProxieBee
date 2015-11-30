@@ -24,14 +24,14 @@ angular.module('ndtndtApp')
 
         $scope.PostImage = function (data, errFiles) {
             $scope.f = data;
-            ProductServices.PostImage(data)
+            /*  ProductServices.PostImage(data)
                 .then(function (data) {
                     if (data) {
                         /*$rootScope.currentUser.id = data.customerid;
                         $rootScope.currentUser.role = data.role;
                         $rootScope.currentUser.personimg = data.personimg;
                         $rootScope.currentUser.restinfo = data;
-                        */
+                        
                         console.log(data);
                         // $scope.close();
                     } else {
@@ -41,35 +41,43 @@ angular.module('ndtndtApp')
                 }, function () {
                     $mdToast.showSimple("Posting failed. Please try again.");
                 });
+*/
         }
+        $scope.catOptions = [{
+                "itemtype": "DVD"
 
-        ProductServices.getCategoryOptions()
-            .then(function (res) {
-                $scope.catOptions = res;
-            }, function (err) {
-                console.log(err, "@ getCategoryOptions");
-            })
+  }, {
+                "itemtype": "CAR"
+  }, {
+                "itemtype": "PETS"
+  },
+            {
+                "itemtype": "Furniture"
+ }, {
+                "itemtype": "House"
+ }];
 
 
         function post() {
-            $scope.auction.info.openedate = new Date(
-                $scope.auction.info.opendate.getFullYear(),
-                $scope.auction.info.openedate.getMonth(),
-                $scope.auction.info.openedate.getDate(),
-                $scope.auction.info.opentime.getHours(),
-                $scope.auction.info.opentime.getMinutes(),
-                $scope.auction.info.opentime.getSeconds()
+            $scope.auction.info.postdate = new Date(
+                $scope.auction.info.postdate.getFullYear(),
+                $scope.auction.info.postdate.getMonth(),
+                $scope.auction.info.postdate.getDate(),
+                $scope.auction.info.posttime.getHours(),
+                $scope.auction.info.posttime.getMinutes(),
+                $scope.auction.info.posttime.getSeconds()
             );
-            $scope.auction.info.expiredate = new Date(
-                $scope.auction.info.expiredate.getFullYear(),
-                $scope.auction.info.expiredate.getMonth(),
-                $scope.auction.info.expiredate.getDate(),
+            $scope.auction.info.expiredates = new Date(
+                $scope.auction.info.expiredates.getFullYear(),
+                $scope.auction.info.expiredates.getMonth(),
+                $scope.auction.info.expiredates.getDate(),
                 $scope.auction.info.expiretime.getHours(),
                 $scope.auction.info.expiretime.getMinutes(),
                 $scope.auction.info.expiretime.getSeconds()
             );
 
-            ProductServices.createAuction($scope.auction.info)
+            $scope.auction.info.sellerid = $rootScope.currentUser.id;
+            ProductServices.createAuction($scope.auction.info, $scope.f)
                 .then(function (data) {
                     if (data) {
                         /*$rootScope.currentUser.id = data.customerid;

@@ -11,6 +11,7 @@ angular.module('ndtndtApp')
     .controller('TopsellercatCtrl', function ($scope, ProductServices) {
         ProductServices.getTopCategories()
             .then(function (data) {
+                console.log(data);
                 $scope.topsellercategory = data;
             });
     });

@@ -8,7 +8,7 @@
  * Controller of the ndtndtApp
  */
 angular.module('ndtndtApp')
-    .controller('AuthCtrl', function ($scope, $state, $mdDialog, $mdToast, UserServices, $rootScope) {
+    .controller('AuthCtrl', function ($scope, $state, $mdDialog, $mdToast, UserServices, $rootScope, $window) {
         $scope.user = this;
         $scope.user.login = {};
         $scope.user.signup = {};
@@ -16,30 +16,29 @@ angular.module('ndtndtApp')
         $scope.user.signupF = signupF;
         $scope.user.loginF = loginF;
 
-
         $scope.PostImage = function (data, errFiles) {
             $scope.f = data;
-            UserServices.PostImage(data)
-                .then(function (data) {
-                    if (data) {
-                        /*$rootScope.currentUser.id = data.customerid;
-                        $rootScope.currentUser.role = data.role;
-                        $rootScope.currentUser.personimg = data.personimg;
-                        $rootScope.currentUser.restinfo = data;
-                        */
-                        console.log(data);
-                        // $scope.close();
-                    } else {
-                        $rootScope.currentUser.personimg = null;
-                        $mdToast.showSimple("Posting failed. Please try again.");
-                    }
-                }, function () {
-                    $mdToast.showSimple("Posting failed. Please try again.");
-                });
+            /* UserServices.PostImage(data)
+                 .then(function (data) {
+                     if (data) {
+                         /*$rootScope.currentUser.id = data.customerid;
+                         $rootScope.currentUser.role = data.role;
+                         $rootScope.currentUser.personimg = data.personimg;
+                         $rootScope.currentUser.restinfo = data;
+                         
+                         console.log(data);
+                         // $scope.close();
+                     } else {
+                         $rootScope.currentUser.personimg = null;
+                         $mdToast.showSimple("Posting failed. Please try again.");
+                     }
+                 }, function () {
+                     $mdToast.showSimple("Posting failed. Please try again.");
+                 });*/
         }
 
         function signupF() {
-            UserServices.signup($scope.user.signup)
+            UserServices.signup($scope.user.signup, $scope.f)
                 .then(function (data) {
                     if (data) {
                         /*$rootScope.currentUser.id = data.customerid;
@@ -55,6 +54,7 @@ angular.module('ndtndtApp')
                         $mdToast.showSimple("Signup failed. Please try again.");
                     }
                 }, function () {
+                    $rootScope.currentUser = {};
                     $mdToast.showSimple("Signup failed. Please try again.");
                 });
         }
@@ -63,19 +63,20 @@ angular.module('ndtndtApp')
         function loginF() {
             UserServices.login($scope.user.login)
                 .then(function (data) {
-                    console.log(data.customerid);
+                    console.log(data);
                     if (data.customerid) {
                         $rootScope.currentUser.id = data.customerid;
                         $rootScope.currentUser.role = data.role;
                         $rootScope.currentUser.personimg = data.personimg;
                         $rootScope.currentUser.restinfo = data;
+                        $window.sessionStorage.setItem('currentUser', JSON.stringify(data));
                         $scope.close();
-                        $state.go('mainpage');
                     } else {
                         $rootScope.currentUser = {};
                         $mdToast.showSimple("Login failed. Please try again.");
                     }
                 }, function () {
+                    $rootScope.currentUser = {};
                     $mdToast.showSimple("Login failed. Please try again.");
                 });
         }
@@ -91,6 +92,7 @@ angular.module('ndtndtApp')
             });
         }
     });
+
 
 function DialogController($scope, $mdDialog) {
     $scope.close = function () {

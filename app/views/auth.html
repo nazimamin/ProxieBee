@@ -47,13 +47,13 @@
 
                                         </md-card-avatar>
                                         <md-card-header-text ng-show="!f.$error &amp;&amp; f">
-                                            <span class="md-title">{{(user.signup.firstname + " " + user.signup.lastname) | uppercase}}</span>
                                             <span class="md-subhead"> you'll appear as</span>
+                                            <span class="md-title">{{(user.signup.firstname + " " + user.signup.lastname) | uppercase}}</span>
                                         </md-card-header-text>
                                     </md-card-header>
                                 </md-card>
 
-                                <div layout layout-sm="column">
+                                <div layout layout="column">
                                     <md-input-container required md-is-error="signup.userID.$invalid && (signup.$submitted || signup.userID.$touched)" flex>
                                         <label class="mdi mdi-account"> UserID</label>
                                         <input name="userID" ng-model="user.signup.ssn" ng-required="true" type="text">
@@ -72,7 +72,7 @@
 
 
 
-                                <div layout layout-sm="column">
+                                <div layout layout="column">
                                     <md-input-container flex required md-is-error="signup.firstname.$invalid && (signup.$submitted || signup.firstname.$touched)">
                                         <label name="firstname" class="mdi mdi-account"> First Name</label>
                                         <input name="firstname" ng-model="user.signup.firstname" ng-required="true" type="text">
@@ -89,7 +89,7 @@
                                         </div>
                                     </md-input-container>
                                 </div>
-                                <div layout layout-sm="column">
+                                <div layout layout="column">
                                     <md-input-container flex class="md-block" required md-is-error="signup.email.$invalid && (signup.$submitted || signup.email.$touched)">
                                         <label name="email" class="mdi mdi-email"> Email</label>
                                         <input name="email" ng-model="user.signup.email" type="email" ng-required="true">
@@ -108,7 +108,7 @@
                                 </div>
 
 
-                                <div layout layout-sm="column">
+                                <div layout layout="column">
                                     <md-input-container flex required md-is-error="signup.city.$invalid && (signup.$submitted || signup.city.$touched)">
                                         <label name="city" class="mdi mdi-city"> City</label>
                                         <input name="city" ng-model="user.signup.city" ng-required="true" type="text">
@@ -126,7 +126,7 @@
                                         </div>
                                     </md-input-container>
                                 </div>
-                                <div layout layout-sm="column">
+                                <div layout layout="column">
                                     <md-input-container flex required md-is-error="signup.telephone.$invalid && (signup.$submitted || signup.telephone.$touched)">
                                         <label name="telephone" class="mdi mdi-phone"> Telephone</label>
                                         <input name="telephone" ng-model="user.signup.telephone" ng-required="true" type="tel">

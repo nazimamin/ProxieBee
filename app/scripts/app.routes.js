@@ -1,5 +1,4 @@
-<< << << < HEAD
-    'use strict';
+'use strict';
 
 /**
  * @ngdoc overview
@@ -13,7 +12,7 @@ angular
     .module('app.routes', [])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', AppRoutes])
     .run(function ($rootScope) {
-        $rootScope.restServer = 'https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net'
+        $rootScope.restServer = 'http://192.168.29.150:3000/api'
     });
 
 function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootScope) {
@@ -28,11 +27,21 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootS
             templateUrl: 'views/auth.html',
             controller: 'AuthCtrl as auth'
         })
+        /*  .state('product', {
+              url: '/product/{auctionid}',
+              templateUrl: 'views/product.html',
+              controller: 'ProductCtrl as product'
+          })*/
         .state('product', {
-            url: '/product/{auctionid}',
+            url: '/auction?auctionId',
             templateUrl: 'views/product.html',
             controller: 'ProductCtrl as product'
         })
+        /* .state('product', {
+             url: '/product/{id}',
+             templateUrl: 'views/product.html',
+             controller: 'ProductCtrl as product'
+         })*/
         .state('products', {
             url: '/products',
             templateUrl: 'views/products.html',
@@ -45,7 +54,7 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootS
         })
         //when a customer bids, open as a dialog
         .state('bid', {
-            url: '/bid/{id}',
+            url: '/bid',
             templateUrl: 'views/bid.html',
             controller: 'BidCtrl as bid'
         })

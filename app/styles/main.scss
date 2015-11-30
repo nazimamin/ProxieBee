@@ -651,9 +651,9 @@ section#topseller {
             }
         }
         md-card {
-            background: #bce4c1;
+            background: #fff;
             width: 300px;
-            height: 300px;
+         
             border-radius: 2px;
             box-sizing: border-box;
             overflow: hidden;
@@ -662,7 +662,7 @@ section#topseller {
             cursor: pointer;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.01), 0 1px 1px 0 rgba(0, 0, 0, 0.10), 0 2px 1px -1px rgba(0, 0, 0, 0.01);
             md-card-content {
-                background: rgba(87, 188, 102, 0.5);
+                background: rgb(159, 168, 213);
                 .left {
                     float: left;
                 }
@@ -813,6 +813,8 @@ section#products {
                 font-size: 12px;
                 font-family: sans-serif;
                 padding-top: 2px;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
             }
         }
         md-card-content {
@@ -1055,4 +1057,68 @@ md-card md-card-header md-card-avatar {
         width: 56px;
         height: 56px;
     }
+}
+
+.biddialog {
+    md-dialog {
+        margin-top: 50px;
+        max-width: 500px;
+        min-height: 250px;
+        .reserved-top {
+            right: 0px;
+            margin-top: 10px;
+            padding-top: 5px !important;
+            position: absolute;
+            width: 300px;
+            height: 24px;
+            background-color: #FFD45F;
+            color: $Swatch8;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 300;
+            font-size: 12px;
+            font-family: sans-serif;
+            padding-top: 2px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        md-card {
+            md-card-header {
+                padding-left: 10px;
+            }
+            md-card-header-text {
+                padding-left: 5px;
+            }
+            .md-title {
+                padding-top: 4px;
+                font-size: 16px;
+                color: #645b9a;
+                /*#9fa8d5;*/
+            }
+            .center {}
+            .md-subhead {}
+            li {
+                margin-left: -20px;
+                list-style-type: none;
+            }
+            ul,
+            ol {
+                margin-bottom: 20px !important;
+            }
+            .item-overview {
+                font-family: open-sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                line-height: 1.42857143;
+                p {
+                    margin-left: 20px;
+                    font-size: 14px;
+                    line-height: 1.42857143;
+                }
+            }
+        }
+    }
+}
+
+.md-card-image {
+    max-height: 250px !important;
 }

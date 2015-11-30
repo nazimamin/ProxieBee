@@ -26,28 +26,24 @@ angular
     'ProductServices',
     'UserServices'
 	])
-    .controller('RootCtrl', ['$rootScope', '$q', '$state', 'UserServices', RootCtrl]);
+    .controller('RootCtrl', ['$rootScope', '$q', '$state', 'UserServices', '$window', '$scope', RootCtrl]);
 
-function RootCtrl($rootScope, $q, $state, UserServices) {
+function RootCtrl($rootScope, $q, $state, UserServices, $window, $scope) {
     var root = this;
 
     //bind the function to the controller
-    root.isLoggedIn = isLoggedIn;
     root.logout = logout;
 
     //will hold the info about a user i.e id / picture
     $rootScope.currentUser = {};
+    $rootScope.currentUser = UserServices.isLoggedIn();
 
-    //will return if a user is logged in
-    function isLoggedIn() {
-        if ($rootScope.currentUser.id !== null) {
-            return true;
-        }
-        return false;
-    }
     //will logout a user
     function logout() {
-        return $rootScope.currentUser = {};
+        $window.sessionStorage.removeItem('currentUser');
+        UserServices.isLoggedIn();
+        $rootScope.currentUser = {};
+        $state.go('mainpage');
     }
 
 

@@ -73,27 +73,30 @@
                     <div class="reserved-top" ng-show="{{item.reserveprice}}">
                         RESERVED PRICE
                     </div>
-                    <img class="md-card-image" data-ng-src="data:image/png;base64,{{item.itemimg}}">
-                    <div class="card-info ">
+                    <img class="md-card-image" data-ng-src="{{item.itemimg}}" ui-sref="product({ auctionId: item.auctionid })">
+                    <div class=" card-info ">
                         <div class="left ">
                             <span class="item-price ">{{item.currentbid | currency}}</span>
                         </div>
                         <div class="left ">
-                            <img data-ng-src="data:image/png;base64,{{item.personimg}}">
+                            <img data-ng-src="{{item.personimg}} ">
                         </div>
                         <div class="left ">
                             <span class="num-bid ">
-                <i class="mdi mdi-eye"></i>
-                {{item.TotalBidders}}
+                <i class="mdi mdi-eye "></i>
+                {{item.totalbidders}}
               </span>
                         </div>
                     </div>
                     <md-card-content>
-                        <div class="left ">
+                        <div class="left" ui-sref="product({ auctionId: item.auctionid })">
                             <h5 class="md-title ">{{item.itemname}}</h5>
                         </div>
-                        <div class="right ">
-                            <md-button class="md-primary" flex="15">Bid</md-button>
+                        <div class="right " ng-if="currentUser.id " ng-controller="BidCtrl as bid ">
+                            <md-button class="md-primary " flex="15 " ng-click="showBidDialog($event, item) ">Bid</md-button>
+                        </div>
+                        <div class="right " ng-if="!currentUser.id " ng-controller="AuthCtrl as auth ">
+                            <md-button class="md-primary " flex="15 " ng-click="showLoginSignupDialog($event) ">Bid</md-button>
                         </div>
                     </md-card-content>
                 </md-card>
