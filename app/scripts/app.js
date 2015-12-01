@@ -30,7 +30,7 @@ angular
 
 function RootCtrl($rootScope, $q, $state, UserServices, $window, $scope) {
     var root = this;
-
+    $state.rootServer = "https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net";
     //bind the function to the controller
     root.logout = logout;
 

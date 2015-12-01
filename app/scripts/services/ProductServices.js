@@ -79,6 +79,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var randomString = Math.random().toString(36).substring(7);
         console.log(data);
         var FilePath = "item" + data.sellerid + randomString + ".jpg";
+        data.itemimg = $rootScope.restServer + "/uploads/" + FilePath;
         var defer = $q.defer();
         $http({
                 method: 'POST',

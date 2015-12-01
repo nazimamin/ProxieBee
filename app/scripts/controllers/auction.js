@@ -14,14 +14,13 @@ angular.module('ndtndtApp')
         $scope.auction = this;
         $scope.auction.info = {};
         $scope.auction.post = post;
-
         var aDay = new Date();
         $scope.minDate = new Date();
         $scope.maxDate = new Date(
             aDay.getFullYear(),
             aDay.getMonth(),
             aDay.getDate() + 30);
-
+        console.log($scope.minDate);
         $scope.PostImage = function (data, errFiles) {
             $scope.f = data;
             /*  ProductServices.PostImage(data)
@@ -59,6 +58,9 @@ angular.module('ndtndtApp')
 
 
         function post() {
+            if (!$scope.auction.info.reservePrice) {
+                $scope.auction.info.reservePrice = 0;
+            }
             $scope.auction.info.postdate = new Date(
                 $scope.auction.info.postdate.getFullYear(),
                 $scope.auction.info.postdate.getMonth(),
@@ -67,10 +69,10 @@ angular.module('ndtndtApp')
                 $scope.auction.info.posttime.getMinutes(),
                 $scope.auction.info.posttime.getSeconds()
             );
-            $scope.auction.info.expiredates = new Date(
-                $scope.auction.info.expiredates.getFullYear(),
-                $scope.auction.info.expiredates.getMonth(),
-                $scope.auction.info.expiredates.getDate(),
+            $scope.auction.info.expiredate = new Date(
+                $scope.auction.info.expiredate.getFullYear(),
+                $scope.auction.info.expiredate.getMonth(),
+                $scope.auction.info.expiredate.getDate(),
                 $scope.auction.info.expiretime.getHours(),
                 $scope.auction.info.expiretime.getMinutes(),
                 $scope.auction.info.expiretime.getSeconds()
@@ -86,7 +88,7 @@ angular.module('ndtndtApp')
                         $rootScope.currentUser.restinfo = data;
                         */
                         console.log(data);
-                        // $scope.close();
+                        $scope.close();
                     } else {
                         $rootScope.currentUser = {};
                         $mdToast.showSimple("Posting failed. Please try again.");

@@ -32,6 +32,8 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         var randomString = Math.random().toString(36).substring(7);
         console.log(data);
         var FilePath = "profile" + data.ssn + randomString + ".jpg";
+        data.personimg = $rootScope.restServer + "/" + FilePath;
+
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -62,7 +64,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
                 url: $rootScope.restServer + '/login',
                 data: data,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': undefined
                 }
             })
             .success(function (res) {

@@ -37,10 +37,17 @@
                                         <div ng-message="required"> Item name is required.</div>
                                     </div>
                                 </md-input-container>
+                                <md-input-container layout="column">
+                                    <label class="mdi"> Item Description</label>
+                                    <input name="itemdescription" ng-model="auction.info.descriptions" type="text" ng-required="true">
+                                    <div ng-messages="auctionForm.itemdescription.$error" ng-if="auctionForm.$submitted">
+                                        <div ng-message="required"> Item description is required.</div>
+                                    </div>
+                                </md-input-container>
                                 <div layout layout="column">
                                     <md-input-container md-no-float flex class="md-block" ng-required="true" class="md-block">
                                         <label class="mdi"> Category</label>
-                                        <md-select ng-model="auction.info.itemtype" ng-required="true" name="itemtype">
+                                        <md-select ng-model="auction.info.category" ng-required="true" name="itemtype">
                                             <md-option ng-repeat="cat in catOptions" value="{{cat.itemtype}}" required="true">
                                                 {{cat.itemtype | uppercase}}
                                             </md-option>
@@ -66,7 +73,7 @@
 -->
                                     <md-input-container flex required layout="column">
                                         <label class="mdi"> Reserved price</label>
-                                        <input name="itemname" ng-model="auction.info.reservePrice" type="text" ng-currency min="1" ng-required="true">
+                                        <input name="itemname" ng-model="auction.info.reservePrice" type="text" ng-currency ng-required="false">
                                     </md-input-container>
                                 </div>
                                 <div layout layout="column" class="time-picker">
@@ -77,7 +84,7 @@
                                     </md-input-container>
                                 </div>
                                 <div layout layout="column" class="time-picker">
-                                    <md-datepicker flex name="expiredateField" ng-model="auction.info.expiredates" md-placeholder="Expire date" ng-required="true" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+                                    <md-datepicker flex name="expiredateField" ng-model="auction.info.expiredate" md-placeholder="Expire date" ng-required="true" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
                                     <md-input-container flex layout="column">
                                         <label class="mdi mdi-timer">Expire time (HH:mm:ss)</label>
                                         <input type="time" name="expiretimeField" ng-model="auction.info.expiretime" ng-required="true" />
