@@ -9,12 +9,16 @@
  */
 angular.module('ndtndtApp')
     .controller('ProductCtrl', function ($scope, ProductServices, $rootScope, $mdDialog, $mdToast, $stateParams) {
-        //$scope.auctionId = $stateParams.auctionId;
+        $scope.auctionId = $stateParams.auctionId;
         ProductServices.getProduct($stateParams.auctionId)
             .then(function (data) {
                 $scope.auction = data;
             });
-
+        ProductServices.getAuctionHistory($stateParams.auctionId)
+            .then(function (data) {
+                $scope.auctionhistory = data;
+                console.log(data);
+            });
         //shows the modal to login/signup
         $scope.showBidDialog = function (ev) {
             $mdDialog.show({

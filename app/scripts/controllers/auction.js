@@ -15,7 +15,11 @@ angular.module('ndtndtApp')
         $scope.auction.info = {};
         $scope.auction.post = post;
         var aDay = new Date();
-        $scope.minDate = new Date();
+        $scope.minDate = new Date(
+            aDay.getFullYear(),
+            aDay.getMonth(),
+            aDay.getDate()
+        );
         $scope.maxDate = new Date(
             aDay.getFullYear(),
             aDay.getMonth(),
@@ -68,7 +72,12 @@ angular.module('ndtndtApp')
             {
                 "itemtype": "CLEANING PRODUCTS"
  }];
-
+        ProductServices.getMonitors()
+            .then(function (data) {
+                if (data.length > 0) {
+                    $scope.monitors = data;
+                }
+            });
 
         function post() {
             if (!$scope.auction.info.reservePrice) {

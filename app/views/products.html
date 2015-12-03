@@ -54,10 +54,10 @@
             <span class="filter-holder">
             <md-input-container>
                 <label>Category</label>
-                <md-select ng-model="slectedCategory " aria-label="filter-by-selections " multiple="true ">
+                <md-select ng-model="slectedCategory" aria-label="filter-by-selections" multiple="true">
                     <md-optgroup label="Filter by category ">
-                        <md-option ng-repeat="categories in getCat() " ng-value="categories ">
-                            <md-checkbox aria-label="{{categories}} " ng-value="{{categories}} " class="md-primary " ng-model="filter[categories] ">{{categories}}</md-checkbox>
+                        <md-option ng-repeat="categories in getCat()" ng-value="categories">
+                            <md-checkbox aria-label="{{categories}}" ng-value="{{categories}}" class="md-primary" ng-model="filter[categories] ">{{categories}}</md-checkbox>
                         </md-option>
                     </md-optgroup>
                 </md-select>
@@ -68,7 +68,7 @@
     <div class="container ">
         <div class="products-page ">
             <div ng-show="!items">
-                <h2>NO ITEMS FOUND IN THE DATABASE</h2>
+                <h2>LOADING...</h2>
             </div>
 
             <a class="card " ng-href="{{item.url}} " ng-repeat="item in filtered=(items | filter:filterByCategory) | filter:searchText | orderBy:[orderByPrice, orderByBids ,orderByYear, orderByPost, orderByExp] ">

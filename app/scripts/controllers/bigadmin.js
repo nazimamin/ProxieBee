@@ -8,32 +8,146 @@
  * Controller of the ndtndtApp
  */
 angular.module('ndtndtApp')
-    .controller('BigAdminCtrl', function ($scope, UserServices, $rootScope, $mdDialog, $mdToast, $stateParams) {
+    .controller('BigAdminCtrl', function ($scope, UserServices, $rootScope, $mdDialog, $mdToast, $stateParams, shareData, ProductServices) {
         $scope.profile = this;
         $scope.profile = $rootScope.currentUser.restinfo;
         $scope.profile.userpassword = "";
+
+        $scope.init = function () {
+            $scope.getAllEmployee();
+        }
         $scope.PostImage = function (data, errFiles) {
             $scope.f = data;
         }
 
+        var aDay = new Date();
+        $scope.minDate = new Date(
+            aDay.getFullYear(),
+            aDay.getMonth(),
+            aDay.getDate()
+        );
 
-        //shows the modal to login/signup
-        $scope.showBidDialog = function (ev) {
+        $scope.maxDate = new Date(
+            aDay.getFullYear(),
+            aDay.getMonth(),
+            aDay.getDate() + 30);
+
+        $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+            'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+            'WY').split(' ').map(function (state) {
+            return {
+                abbrev: state
+            };
+        });
+        $scope.user = this;
+        $scope.user.signup = {};
+        $scope.user.signupF = signupF;
+        $scope.user.deleteEmployee = deleteEmployee;
+        $scope.user.listsalecustomer_button = listsalecustomer_button;
+        // $scope.user.updateEmployee = updateEmployee;
+
+        function signupF() {
+            UserServices.CreateEmployee($scope.user.signup, $scope.f)
+                .then(function (data) {
+                    if (data) {
+                        $mdToast.showSimple("Employee Successfully created!");
+                        $scope.user.signup = {};
+                    } else {
+                        $mdToast.showSimple("Employee creation failed. Please try again.");
+                    }
+                }, function () {
+                    $mdToast.showSimple("Employee creation failed. Please try again.");
+                });
+        }
+
+        function deleteEmployee(data) {
+            if (data) {
+                data.ssn = data.customerid;
+                UserServices.DeleteEmployee(data)
+                    .then(function (data) {
+                        if (data.status == 'success') {
+                            console.log(data.status);
+                            $scope.getAllEmployee();
+                            $mdToast.showSimple("Employee Deleted Successfully!");
+                        } else {
+                            $mdToast.showSimple("Employee Deletion failed!");
+                        }
+                    }, function () {
+                        $mdToast.showSimple("Employee Deletion failed!");
+                    });
+            } else {
+                $mdToast.showSimple("Employee Deletion failed!");
+            }
+        }
+
+        $scope.getAllEmployee = function () {
+            UserServices.GetEmployees()
+                .then(function (data) {
+                    if (data.length > 0) {
+                        $scope.employees = data;
+                    }
+                });
+
+        }
+
+        function listsalecustomer_button(id) {
+            ProductServices.listofsalesbycustomerid(id)
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.customerSales = data;
+                    }
+                });
+        }
+
+
+        $scope.showUpdateDialog = function (ev, data) {
+            $scope.employee = data;
+            console.log($scope.employee);
             $mdDialog.show({
-                controller: BidController,
-                templateUrl: 'views/bid.html',
+                locals: {
+                    auctionDataFromProductsCtrl: data
+                },
+                controller: UpdateDialogController,
+                templateUrl: 'views/updateemployee.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true
             });
         }
+        $scope.init();
     });
 
-function BidController($scope, $mdDialog) {
+function UpdateDialogController($scope, $mdDialog, shareData, auctionDataFromProductsCtrl, UserServices, $mdToast) {
+    $scope.employee = auctionDataFromProductsCtrl;
+    $scope.employee.UpdateEmployee = updateEmployee;
+    $scope.employee.UpdateImage = updateImage;
+
+    function updateImage(data, errFiles) {
+        console.log(data);
+        $scope.employee.ff = data;
+    }
+    console.log(JSON.stringify($scope.employee));
+
+    function updateEmployee(data) {
+        data.ssn = data.customerid;
+        UserServices.UpdateEmployee(data, $scope.employee.ff)
+            .then(function (data) {
+                if (data) {
+                    $mdToast.showSimple("Profile updated successfully!");
+                    $scope.close();
+                } else {
+                    $mdToast.showSimple("Profile Update failed. Please refresh and try again.");
+                }
+            }, function () {
+                $mdToast.showSimple("Profile Update failed. Please refresh and try again.");
+            });
+    }
     $scope.close = function () {
         $mdDialog.hide();
     };
 }
+
 
 function isPresent(filter) {
     for (var value in filter) {

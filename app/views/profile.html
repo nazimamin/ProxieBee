@@ -4,7 +4,7 @@
             <md-tabs md-dynamic-height md-border-bottom md-center-tabs md-border-bottom md-autoselect>
                 <md-tab id="profile" label="My Profile">
                     <md-content class="md-padding center-card">
-                        <md-content layout-padding class="more-padding">
+                        <md-content layout-padding class="more-padding card-stuff">
                             <md-card>
                                 <md-card-header>
                                     <md-card-avatar>
@@ -58,16 +58,20 @@
                                     </div>
                                     <md-divider></md-divider>
                                     <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
+                                        <md-list-item class="secondary-button-padding width-short" flex>
                                             <span class="sub-info">City: </span>
                                             <p inline-edit="profile.city" inline-edit-on-blur="save" inline-edit-on-click></p>
                                         </md-list-item>
-
-                                        <md-list-item class="secondary-button-padding list-right" flex>
+                                        <md-list-item class="secondary-button-padding width-short" flex>
+                                            <span class="sub-info">State: </span>
+                                            <p inline-edit="profile.state" inline-edit-on-blur="save" inline-edit-on-click></p>
+                                        </md-list-item>
+                                        <md-list-item class="secondary-button-padding width-short" flex>
                                             <span class="sub-info">ZipCode: </span>
                                             <p inline-edit="profile.zipcode" inline-edit-on-blur="save" inline-edit-on-click></p>
 
                                         </md-list-item>
+
                                     </div>
                                     <md-divider></md-divider>
                                     <div layout class="profile-info-text">

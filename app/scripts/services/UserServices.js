@@ -12,7 +12,12 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         PostImage: PostImage,
         isLoggedIn: isLoggedIn,
         UpdateProfile: UpdateProfile,
-        DeleteProfile: DeleteProfile
+        DeleteProfile: DeleteProfile,
+        CreateEmployee: CreateEmployee,
+        GetEmployees: GetEmployees,
+        UpdateEmployee: UpdateEmployee,
+        DeleteEmployee: DeleteEmployee
+
     };
 
     function currentUser() {
@@ -39,7 +44,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         } else {
             data.personimg = $rootScope.restServer + "/uploads/profile.jpg";
         }
-        console.log(data);
+        console.log(JSON.stringify(data));
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -127,6 +132,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
                 }
             })
             .success(function (res) {
+
                 defer.resolve(res);
             })
             .error(function (err, status) {
@@ -201,4 +207,110 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         return defer.promise;
     }
 
+    function CreateEmployee(data, file) {
+        if (file) {
+            console.log(file);
+            var randomString = Math.random().toString(36).substring(7);
+            var FilePath = "profile" + data.ssn + randomString + ".jpg";
+            data.personimg = $rootScope.restServer + "/uploads/" + FilePath;
+        } else {
+            data.personimg = $rootScope.restServer + "/uploads/profile.jpg";
+        }
+        console.log(JSON.stringify(data));
+        var defer = $q.defer();
+        $http({
+                method: 'POST',
+                url: $rootScope.restServer + '/createemployee',
+                data: data,
+                headers: {
+                    'Content-Type': undefined
+                }
+            })
+            .success(function (res) {
+                if (file) {
+                    PostImage(file, FilePath);
+                }
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject({
+                    err: status
+                });
+            });
+        return defer.promise;
+    }
+
+    function UpdateEmployee(data, file) {
+        if (file) {
+            var randomString = Math.random().toString(36).substring(7);
+            var FilePath = "profile" + data.ssn + randomString + ".jpg";
+            data.personimg = $rootScope.restServer + "/uploads/" + FilePath;
+        }
+        console.log(JSON.stringify(data));
+        var defer = $q.defer();
+        $http({
+                method: 'POST',
+                url: $rootScope.restServer + '/updateemployee',
+                data: data,
+                headers: {
+                    'Content-Type': undefined
+                }
+            })
+            .success(function (res) {
+                if (file) {
+                    PostImage(file, FilePath);
+                }
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject({
+                    err: status
+                });
+            });
+        return defer.promise;
+    }
+
+    function DeleteEmployee(data) {
+        var defer = $q.defer();
+        console.log(JSON.stringify(data));
+        $http({
+                method: 'POST',
+                url: $rootScope.restServer + '/deleteemployee',
+                data: data,
+                headers: {
+                    'Content-Type': undefined
+                }
+            })
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject({
+                    err: status
+                });
+            });
+        return defer.promise;
+    }
+
+    function GetEmployees() {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/employeedatalist')
+            .success(function (res) {
+                console.log(res);
+                if (res instanceof Array && res.length > 1) {
+                    console.log(res);
+                    // defer.resolve(res[0]);
+                } else {
+                    //res = [res];
+                    defer.resolve(res);
+                }
+                defer.resolve(res);
+
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
 }

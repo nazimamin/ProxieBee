@@ -17,13 +17,13 @@
                             <div class="item-image">
                                 <img class="md-user-avatar" ngf-src="!f.$error &amp;&amp; f" />
                                 <md-button class="md-fab" aria-label="upload image" ng-hide="!f.$error &amp;&amp; f">
-                                    <label for="file-input">
+                                    <label for="file-input-auction">
                                         <md-icon md-svg-icon="../images/camera.svg"></md-icon>
                                     </label>
 
                                 </md-button>
                                 <h6 ng-hide="!f.$error &amp;&amp; f">upload item image</h6>
-                                <input id="file-input" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
+                                <input id="file-input-auction" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
                             </div>
 
                         </md-card-header>
@@ -56,9 +56,9 @@
 
                                     <md-input-container md-no-float flex class="md-block" ng-required="true" class="md-block">
                                         <label class="mdi"> Select Rep</label>
-                                        <md-select ng-model="auction.info.category" ng-required="true" name="itemtype">
-                                            <md-option ng-repeat="cat in catOptions" value="{{cat.itemtype}}" required="true">
-                                                {{cat.itemtype | uppercase}}
+                                        <md-select ng-model="auction.info.monitor" ng-required="true" name="itemtype">
+                                            <md-option ng-repeat="cat in monitors" value="{{cat.monitorssn}}" required="true">
+                                                {{(cat.monitorfirstname + " " +cat.monitorlastname) | uppercase}}
                                             </md-option>
                                         </md-select>
                                     </md-input-container>
