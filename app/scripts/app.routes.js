@@ -70,14 +70,14 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootS
             controller: 'AuctionCtrl as auction'
         })
         .state('bigadmin', {
-            url: '/bigadmin',
+            url: '/manager-admin',
             templateUrl: 'views/bigadmin.html',
             controller: 'BigAdminCtrl as admin'
         })
-        .state('littledmin', {
-            url: '/littleadmin',
+        .state('littleadmin', {
+            url: '/customer-rep',
             templateUrl: 'views/littleadmin.html',
-            controller: 'LittleAdminCtrl as admin'
+            controller: 'LittleAdminCtrl as little'
         });
 
     $urlRouterProvider.otherwise('/');

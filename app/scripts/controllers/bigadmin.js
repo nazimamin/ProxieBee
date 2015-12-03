@@ -45,6 +45,15 @@ angular.module('ndtndtApp')
         $scope.user.deleteEmployee = deleteEmployee;
         $scope.user.listsalecustomer_button = listsalecustomer_button;
         // $scope.user.updateEmployee = updateEmployee;
+        $scope.user.listsalesitem_button = listsalesitem_button;
+        //revenue
+        $scope.user.revenueitemtype_button = revenueitemtype_button;
+        $scope.user.revenueitemid_button = revenueitemid_button;
+        $scope.user.revenuebysellerid_button = revenuebysellerid_button;
+        $scope.user.revenuebysellerid_button = revenuebysellerid_button;
+        $scope.user.staffrevenue_button = staffrevenue_button;
+        $scope.user.customerrevenue_button = customerrevenue_button;
+        $scope.user.revenuebymonth_button = revenuebymonth_button;
 
         function signupF() {
             UserServices.CreateEmployee($scope.user.signup, $scope.f)
@@ -100,6 +109,75 @@ angular.module('ndtndtApp')
                 });
         }
 
+        function listsalesitem_button(id) {
+            ProductServices.listOfitemsByitemID(id)
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.itemSales = data;
+                    }
+                });
+        }
+
+        function revenueitemtype_button(id) {
+            ProductServices.revenueitemtype(id)
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.itemtyperevenue = data;
+                    }
+                });
+        }
+
+        function revenueitemid_button(id) {
+            ProductServices.revenueitemid(id)
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.itemidrevenue = data;
+                    }
+                });
+        }
+
+        function revenuebysellerid_button(id) {
+            ProductServices.revenuebysellerid(id)
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.selleridrevenue = data;
+                    }
+                });
+        }
+
+        function staffrevenue_button() {
+            ProductServices.revenuebystaff()
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.staffRevenue = data;
+                    }
+                });
+        }
+
+        function customerrevenue_button() {
+            ProductServices.revenuebycustomer()
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.customerRevenue = data;
+                    }
+                });
+        }
+
+        function revenuebymonth_button() {
+            ProductServices.revenuebymonth()
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.monthRevenue = data;
+                    }
+                });
+        }
 
         $scope.showUpdateDialog = function (ev, data) {
             $scope.employee = data;

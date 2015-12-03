@@ -1,0 +1,104 @@
+<div class="biddialog updateDialog create-auction">
+    <md-dialog aria-label="Update employee profile">
+        <md-dialog-content style="max-width:1000px;max-height:810px;">
+            <div class="add-more-padding">
+                <md-card>
+                    <md-card-header>
+                        <md-card-avatar>
+                            <img class="md-user-avatar" data-ng-src="{{customer.personimg}}" />
+                        </md-card-avatar>
+                        <md-card-header-text class="name">
+                            <span class="md-subhead"> {{(customer.firstname + " " +customer.lastname) }}'s Profile</span>
+                        </md-card-header-text>
+                        <div class="item-image">
+                            <img class="md-user-avatar" ngf-src="!customer.ff.$error &amp;&amp; customer.ff" />
+                            <md-button class="md-fab" aria-label="upload image" ng-hide="!customer.ff.$error &amp;&amp; customer.ff">
+                                <label for="file-inputt">
+                                    <md-icon md-svg-icon="../images/camera.svg"></md-icon>
+                                </label>
+                            </md-button>
+                            <h6 ng-hide="!customer.ff.$error &amp;&amp; customer.ff" class="pic-change">Change profile pic</h6>
+                            <input id="file-inputt" type="file" ngf-select="customer.UpdateImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
+                        </div>
+                    </md-card-header>
+                    <md-card-content>
+                        <div class="contact-info">
+                            <div class="title">
+                                <div class="edit">Click to edit, anywhere to save, Update button to update.</div>
+                            </div>
+                        </div>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding list-left" flex>
+                                <span class="sub-info">First Name: </span>
+                                <p inline-edit="customer.firstname" inline-edit-on-blur="save" inline-edit-on-click></p>
+                            </md-list-item>
+
+                            <md-list-item class="secondary-button-padding list-right" flex>
+                                <span class="sub-info">Last Name: </span>
+                                <p inline-edit="customer.lastname" inline-edit-on-blur="save" inline-edit-on-click></p>
+
+                            </md-list-item>
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding list-left" flex>
+                                <span class="sub-info">Email: </span>
+                                <p inline-edit="customer.email" inline-edit-on-blur="save" inline-edit-on-click></p>
+                            </md-list-item>
+
+                            <md-list-item class="secondary-button-padding list-right" flex>
+                                <span class="sub-info">Address: </span>
+                                <p inline-edit="customer.address" inline-edit-on-blur="save" inline-edit-on-click></p>
+
+                            </md-list-item>
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding width-short" flex>
+                                <span class="sub-info">City: </span>
+                                <p inline-edit="customer.city" inline-edit-on-blur="save" inline-edit-on-click></p>
+                            </md-list-item>
+                            <md-list-item class="secondary-button-padding width-short" flex>
+                                <span class="sub-info">State: </span>
+                                <p inline-edit="customer.state" inline-edit-on-blur="save" inline-edit-on-click></p>
+                            </md-list-item>
+                            <md-list-item class="secondary-button-padding width-short" flex>
+                                <span class="sub-info">ZipCode: </span>
+                                <p inline-edit="customer.zipcode" inline-edit-on-blur="save" inline-edit-on-click></p>
+
+                            </md-list-item>
+
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding list-left" flex>
+                                <span class="sub-info">Telephone: </span>
+                                <p inline-edit="customer.telephone" inline-edit-on-blur="save" inline-edit-on-click></p>
+                            </md-list-item>
+                            <md-list-item class="secondary-button-padding list-right" flex>
+                                <span class="sub-info">CreditCard: </span>
+                                <p inline-edit="customer.creditcardnum" inline-edit-on-blur="save" inline-edit-on-click></p>
+                            </md-list-item>
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding list-left" flex>
+                                <span class="sub-info">Change password:</span>
+                                <p inline-edit="customer.userpassword" inline-edit-on-blur="save" inline-edit-on-click></p>
+                            </md-list-item>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row ">
+            <span flex></span>
+            <md-button ng-click="close() " class="mdi mdi-close-circle " aria-label="Close form ">
+                CLOSE
+            </md-button>
+            <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="customer.UpdateEmployee(customer)">
+                UPDATE USER
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</div>

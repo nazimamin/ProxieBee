@@ -16,8 +16,10 @@ angular.module('ndtndtApp')
             });
         ProductServices.getAuctionHistory($stateParams.auctionId)
             .then(function (data) {
-                $scope.auctionhistory = data;
-                console.log(data);
+                if (data.length > 0 && (data !== null && data[0] !== null)) {
+                    $scope.auctionhistory = data;
+                    console.log([data].length);
+                }
             });
         //shows the modal to login/signup
         $scope.showBidDialog = function (ev) {

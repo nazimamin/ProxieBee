@@ -54,7 +54,7 @@
             <span class="filter-holder">
             <md-input-container>
                 <label>Category</label>
-                <md-select ng-model="slectedCategory" aria-label="filter-by-selections" multiple="true">
+                <md-select ng-model="slectedCategory" aria-label="filter-by-selections" multiple="fasle">
                     <md-optgroup label="Filter by category ">
                         <md-option ng-repeat="categories in getCat()" ng-value="categories">
                             <md-checkbox aria-label="{{categories}}" ng-value="{{categories}}" class="md-primary" ng-model="filter[categories] ">{{categories}}</md-checkbox>

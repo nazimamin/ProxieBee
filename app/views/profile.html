@@ -107,86 +107,84 @@
                         </md-content>
                     </md-content>
                 </md-tab>
-                <md-tab id="order-history" label="Order History">
+                <md-tab id="order-history" label="Activity History">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
-                            <md-card>
-                                <md-card-header>
-                                    <md-card-avatar>
-                                        <img class="md-user-avatar" data-ng-src="{{profile.personimg}}" />
-                                    </md-card-avatar>
-                                    <md-card-header-text class="name">
-                                        <span class="md-subhead"> Hello, {{(profile.firstname + " " +profile.lastname) }}</span>
-                                    </md-card-header-text>
-                                    <div class="item-image">
-                                        <img class="md-user-avatar" ngf-src="!f.$error &amp;&amp; f" />
-                                        <md-button class="md-fab" aria-label="upload image" ng-hide="!f.$error &amp;&amp; f">
-                                            <label for="file-input">
-                                                <md-icon md-svg-icon="../images/camera.svg"></md-icon>
-                                            </label>
-                                        </md-button>
-                                        <h6 ng-hide="!f.$error &amp;&amp; f" class="pic-change">Change profile pic</h6>
-                                        <input id="file-input" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
-                                    </div>
-                                </md-card-header>
-                                <md-card-content>
-                                    <div class="contact-info">
-                                        <div class="title">
-                                            <div class="info">Contact Information </div>
-                                            <div class="edit">Click to edit, anywhere to save, Update button to update.</div>
-                                        </div>
-                                    </div>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">First Name:</span>
-                                            <p inline-edit="profile.firstname" inline-edit-on-blur="save" inline-edit-on-click></p>
-                                        </md-list-item>
 
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">Last Name:</span>
-                                            <p inline-edit="profile.lastname" inline-edit-on-blur="save" inline-edit-on-click></p>
+                            <md-card ng-show="bidhistory[0]">
+                                <!--<md-subheader class="md-no-sticky">Select</md-subheader>
+                                    <md-list-item ng-repeat="person in bidhistory">
+                                        <img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" />
+                                        <span>{{(person.itemname) | uppercase}}</span>
+                                        <span>Current bid: {{person.currentbid | currency}}</span>
+                                        <md-button ui-sref="product({ auctionId: person.auctionid })">View Item</md-button>
+                                        <md-button class="md-warn" ng-click="user.recordsale(person)">Record sale.</md-button>
+                                        <md-divider md-inset ng-if="!$last"></md-divider>
+                                    </md-list-item>-->
+                                <md-subheader class="md-no-sticky">My Bidding History</md-subheader>
+                                <md-list-item>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Item Name</th>
+                                                <th>Item type</th>
+                                                <th>Current Bid</th>
+                                                <th>Sold</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in bidhistory">
+                                            <tr>
+                                                <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
+                                                <td>{{person.itemname}}</td>
+                                                <td>{{person.itemtype}}</td>
+                                                <td>{{person.currentbid | currency}}</td>
+                                                <td>{{person.sold}}</td>
+                                                <td>{{person.expiredates | date}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </md-list-item>
 
-                                        </md-list-item>
-                                    </div>
-                                    <md-divider></md-divider>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">Email address:</span>
-                                            <p inline-edit="profile.email" inline-edit-on-blur="save" inline-edit-on-click></p>
-                                        </md-list-item>
 
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">Address:</span>
-                                            <p inline-edit="profile.address" inline-edit-on-blur="save" inline-edit-on-click></p>
-
-                                        </md-list-item>
-                                    </div>
-                                    <md-divider></md-divider>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">City: </span>
-                                            <p inline-edit="profile.city" inline-edit-on-blur="save" inline-edit-on-click></p>
-                                        </md-list-item>
-
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">ZipCode: </span>
-                                            <p inline-edit="profile.zipcode" inline-edit-on-blur="save" inline-edit-on-click></p>
-
-                                        </md-list-item>
-                                    </div>
-                                    <md-divider></md-divider>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">Telephone: </span>
-                                            <p inline-edit="profile.telephone" inline-edit-on-blur="save" inline-edit-on-click></p>
-                                        </md-list-item>
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">CreditCard: </span>
-                                            <p inline-edit="profile.creditcardnum" inline-edit-on-blur="save" inline-edit-on-click></p>
-                                        </md-list-item>
-                                    </div>
-                                </md-card-content>
                             </md-card>
+                            <md-card ng-if="sellhistory[0]">
+                                <md-subheader class="md-no-sticky">My Selling History</md-subheader>
+                                <!--<md-subheader class="md-no-sticky">Select</md-subheader>
+                                    <md-list-item ng-repeat="person in bidhistory">
+                                        <img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" />
+                                        <span>{{(person.itemname) | uppercase}}</span>
+                                        <span>Current bid: {{person.currentbid | currency}}</span>
+                                        <md-button ui-sref="product({ auctionId: person.auctionid })">View Item</md-button>
+                                        <md-button class="md-warn" ng-click="user.recordsale(person)">Record sale.</md-button>
+                                        <md-divider md-inset ng-if="!$last"></md-divider>
+                                    </md-list-item>-->
+                                <md-list-item>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Item Name</th>
+                                                <th>Item type</th>
+                                                <th>Current Bid</th>
+                                                <th>Sold</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in sellhistory">
+                                            <tr>
+                                                <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
+                                                <td>{{person.itemname}}</td>
+                                                <td>{{person.itemtype}}</td>
+                                                <td>{{person.currentbid | currency}}</td>
+                                                <td>{{person.sold}}</td>
+                                                <td>{{person.expiredates | date}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <md-divider md-inset ng-if="!$last"></md-divider>
+                                </md-list-item>
+                            </md-card>
+
                         </md-content>
                     </md-content>
                 </md-tab>

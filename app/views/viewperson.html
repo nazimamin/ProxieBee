@@ -1,0 +1,87 @@
+<div class="biddialog updateDialog create-auction">
+    <md-dialog aria-label="Update employee profile">
+        <md-dialog-content style="max-width:1000px;max-height:810px;">
+            <div class="add-more-padding">
+                <md-card>
+                    <md-card-header>
+                        <md-card-avatar>
+                            <img class="md-user-avatar" data-ng-src="{{employee.personimg}}" />
+                        </md-card-avatar>
+                        <md-card-header-text class="name">
+                            <span class="md-subhead"> {{(employee.firstname + " " +employee.lastname) }}'s Profile</span>
+                        </md-card-header-text>
+                    </md-card-header>
+                    <md-card-content>
+                        <div class="contact-info">
+                            <div class="title">
+
+                            </div>
+                        </div>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding list-left" flex>
+                                <span class="sub-info">First Name: </span>
+                                <p>{{employee.firstname}}</p>
+                            </md-list-item>
+
+                            <md-list-item class="secondary-button-padding list-right" flex>
+                                <span class="sub-info">Last Name: </span>
+                                <p>{{employee.lastname}}</p>
+
+                            </md-list-item>
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding list-left" flex>
+                                <span class="sub-info">Email: </span>
+                                <p>{{employee.email}}</p>
+                            </md-list-item>
+
+                            <md-list-item class="secondary-button-padding list-right" flex>
+                                <span class="sub-info">Address: </span>
+                                <p>{{employee.address}}</p>
+
+                            </md-list-item>
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding width-short" flex>
+                                <span class="sub-info">City: </span>
+                                <p>{{employee.city}}</p>
+                            </md-list-item>
+                            <md-list-item class="secondary-button-padding width-short" flex>
+                                <span class="sub-info">State: </span>
+                                <p>{{employee.state}}</p>
+                            </md-list-item>
+                            <md-list-item class="secondary-button-padding width-short" flex>
+                                <span class="sub-info">ZipCode: </span>
+                                <p>{{employee.zipcode}}</p>
+
+                            </md-list-item>
+
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout class="profile-info-text">
+                            <md-list-item class="secondary-button-padding list-left" flex>
+                                <span class="sub-info">Telephone: </span>
+                                <p>{{employee.telephone}}</p>
+                            </md-list-item>
+
+                            <md-list-item class="secondary-button-padding list-left" flex>
+                                <span class="sub-info">Startdate: </span>
+                                <p>{{employee.startdate | date}}</p>
+                            </md-list-item>
+
+                        </div>
+                        <md-divider></md-divider>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row ">
+            <span flex></span>
+            <md-button ng-click="close() " class="mdi mdi-close-circle " aria-label="Close form ">
+                CLOSE
+            </md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</div>

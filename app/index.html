@@ -77,6 +77,13 @@
                                 </md-button>
                             </a>
                         </li>
+                        <li ng-show="currentUser.id && currentUser.admin=='1'">
+                            <a ui-sref="littleadmin">
+                                <md-button class="login">
+                                    Rep - Admin
+                                </md-button>
+                            </a>
+                        </li>
                         <li ng-show="currentUser.id">
                             <a ng-click="root.logout()">
                                 <md-button class="login">

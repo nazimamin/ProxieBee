@@ -14,7 +14,20 @@ function ProductServices($q, $http, $rootScope, Upload) {
         getMonitors: getMonitors,
         getAuctionHistory: getAuctionHistory,
         listofsalesbycustomerid: listofsalesbycustomerid,
-        listOfitemsByitemID: listOfitemsByitemID
+        listOfitemsByitemID: listOfitemsByitemID,
+        SalesReport: SalesReport,
+        revenueitemtype: revenueitemtype,
+        revenueitemid: revenueitemid,
+        revenuebysellerid: revenuebysellerid,
+        revenuebystaff: revenuebystaff,
+        revenuebycustomer: revenuebycustomer,
+        revenuebymonth: revenuebymonth,
+        getListByMonitor: getListByMonitor,
+        recordSale: recordSale,
+        staffpicks: staffpicks,
+        postStaffpicks: postStaffpicks,
+        deleteStaffpicks: deleteStaffpicks
+
     };
 
 
@@ -55,14 +68,10 @@ function ProductServices($q, $http, $rootScope, Upload) {
     // get all top categories
     function getTopCategories() {
         var defer = $q.defer();
-        $http.get($rootScope.restServer + '/bestsellerlist')
+        $http.get($rootScope.restServer + '/topcategory')
             .success(function (res) {
-                if (res[0].length > 1) {
-                    console.log(res[0]);
-                    defer.resolve(res[0]);
-                } else {
-                    defer.resolve(res);
-                }
+                defer.resolve(res);
+
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -192,7 +201,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/auctionhistory/' + id)
             .success(function (res) {
-                defer.resolve(res);
+                console.log(res);
+                if (res instanceof Array && res[0] && res[0].length > 1) {
+                    console.log(res);
+                    defer.resolve(res[0]);
+                } else {
+                    res = [res];
+                    defer.resolve(res);
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -213,7 +229,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
 
         return defer.promise;
     }
-    //get single product
+
     function listofsalesbycustomerid(id) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/listofsalesbycustomerid/' + id)
@@ -226,5 +242,191 @@ function ProductServices($q, $http, $rootScope, Upload) {
 
         return defer.promise;
     }
+    //sales report
+    function SalesReport() {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/salesreport')
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
 
+        return defer.promise;
+    }
+
+    function revenueitemtype(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/revenuebytype/' + id)
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function revenueitemid(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/revenuebyitem/' + id)
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function revenuebysellerid(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/revenuebysellerid/' + id)
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function revenuebystaff() {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/staffrevenue')
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function revenuebycustomer() {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/customerrevenue')
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function revenuebymonth() {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/salesreport')
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function getListByMonitor(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/auctionlistbymonitor/' + id)
+            .success(function (res) {
+                console.log(res);
+                if (res instanceof Array && res[0] && res[0].length > 1) {
+                    console.log(res);
+                    defer.resolve(res[0]);
+                } else {
+                    res = [res];
+                    defer.resolve(res);
+                }
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+
+    function recordSale(data) {
+        var defer = $q.defer();
+
+        $http.get($rootScope.restServer + '/recordsale/' + data.auctionid)
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function staffpicks() {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/staffpicks')
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function postStaffpicks(id) {
+        var defer = $q.defer();
+        $http({
+                method: 'POST',
+                url: $rootScope.restServer + '/staffpicks',
+                data: {
+                    "auctionid": id
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .success(function (res) {
+
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject({
+                    err: status
+                });
+            });
+        return defer.promise;
+    }
+
+    function deleteStaffpicks(id) {
+        var defer = $q.defer();
+        $http({
+                method: 'DELETE',
+                url: $rootScope.restServer + '/staffpicks',
+                data: {
+                    "auctionid": id
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .success(function (res) {
+
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject({
+                    err: status
+                });
+            });
+        return defer.promise;
+    }
 }

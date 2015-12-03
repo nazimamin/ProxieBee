@@ -8,8 +8,15 @@
  * Controller of the ndtndtApp
  */
 angular.module('ndtndtApp')
-    .controller('StaffPicksCtrl', ['$scope', function ($scope) {
-        $scope.staffPicksItems = [{
+    .controller('StaffPicksCtrl', ['$scope', 'ProductServices', function ($scope, ProductServices) {
+
+        ProductServices.staffpicks()
+            .then(function (data) {
+                $scope.staffPicksItems = data[0];
+                console.log(JSON.stringify($scope.staffPicksItems));
+            });
+
+        /* $scope.staffPicksItems = [{
             "title": "Mint Bike: pre-owned",
             "desc": "This Bike is in mint condition and works perfectly.",
             "url": "http://ndtndt.com/url",
@@ -80,6 +87,6 @@ angular.module('ndtndtApp')
                 "rating": "4",
                 "url": "http: //ndtndt.com/url"
             }
-}];
+}];*/
 
     }]);

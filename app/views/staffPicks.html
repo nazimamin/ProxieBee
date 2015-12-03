@@ -2,67 +2,67 @@
     <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1>
         <div ng-repeat="item in staffPicksItems">
             <div class="staffpicks-item-container">
-                <div class="left-side">
-                    <div class="item-title">
-                        <h3>{{item.title | uppercase}}</h3>
-                        <span><i class="mdi mdi-eye"></i> {{item.totalbids}} bids                 </span>
-                        <span><i class="mdi mdi-timer"></i> {{item.expire}} days remaining</span>
+                <div class=" left-side ">
+                    <div class="item-title ">
+                        <h3>{{item.itemname | uppercase}}</h3>
+                        <span><i class="mdi mdi-eye "></i> {{item.bidincrement}} bids                 </span>
+                        <span><i class="mdi mdi-timer "></i> {{item.expiredates | date}} expires on</span>
 
                     </div>
-                    <div class="item-image" adaptive-background>
-                        <div class="staffpicks-container-title">
+                    <div class="item-image " adaptive-background>
+                        <div class="staffpicks-container-title ">
                             STAFF PICKS
                         </div>
-                        <img ng-src="{{item.image}}">
+                        <img ng-src="{{item.itemimg}} ">
                     </div>
                 </div>
-                <div class="right-side">
-                    <div class="item-and-profile">
-                        <div class="profile-info">
-                            <a ng-href="{{item.bidder.url}}">
-                                <img ng-src="{{item.bidder.image}}" alt="Profile Image">
-                                <div class="profile-desc">
-                                    <h4>{{item.bidder.name | uppercase}}</h4>
-                                    <div class="rate">{{item.bidder.rating}} <i class="mdi mdi-star-outline"></i></div>
+                <div class="right-side ">
+                    <div class="item-and-profile ">
+                        <div class="profile-info ">
+                            <a ng-href="{{item.bidder.url}} ">
+                                <!-- <img ng-src="{{item.bidder.image}} " alt="Profile Image ">-->
+                                <div class="profile-desc ">
+                                    <h4>{{(item.firstname + " "+ item.lastname)| uppercase}}</h4>
+                                    <!-- <div class="rate ">{{item.bidder.rating}} <i class="mdi mdi-star-outline "></i></div>-->
                                 </div>
                             </a>
                             <hr>
                         </div>
                     </div>
-                    <!--<div class="item-desc"><i class="fa fa-align-left"></i> {{item.desc}}
+                    <!--<div class="item-desc "><i class="fa fa-align-left "></i> {{item.desc}}
 
                         </div>
-                        <div class="quantity">
+                        <div class="quantity ">
                             Quantity - <span> {{item.quantity}} available</span></div>-->
-                    <div class="item-cont">
-                        <div class="hold-tags">
-                            <span class="item-condition">
-                                <img ng-src="../images/tags.svg">
+                    <div class="item-cont ">
+                        <div class="hold-tags ">
+                            <span class="item-condition ">
+                                <img ng-src="../images/tags.svg ">
                                 <h5>New with Tags</h5>
                                 <h6>Condition</h6>
                             </span>
-                            <span class="item-condition-del">
-                                <img ng-src="../images/fastmail.svg">
+                            <span class="item-condition-del ">
+                                <img ng-src="../images/fastmail.svg ">
                                 <h5>USPS First Class Mail</h5>
                                 <h6>Shipping Service</h6>
                             </span>
-                            <span class="item-condition-ship">
-                                <img ng-src="../images/delivery.svg">
+                            <span class="item-condition-ship ">
+                                <img ng-src="../images/delivery.svg ">
                                 <h5>2-5 Business Days</h5>
                                 <h6>Delivery</h6>
                             </span>
-                            <span class="item-condition-policy">
-                                <img ng-src="../images/moneyback.svg">
+                            <span class="item-condition-policy ">
+                                <img ng-src="../images/moneyback.svg ">
                                 <h5>30 Days Money Back</h5>
                                 <h6>Return Policy</h6>
                             </span>
                         </div>
-                        <div class="price-and-buy">
-                            <span class="price-button"><h1>{{item.bidAmount | currency}}</h1><h6>Current bid</h6></span>
-                            <span class="price-button">
-                            <span class="bid-button hvr-underline-from-right">
+                        <div class="price-and-buy ">
+                            <span class="price-button "><h1>{{item.currentbid | currency}}</h1><h6>Current bid</h6></span>
+                            <span class="price-button ">
+                            <span class="bid-button hvr-underline-from-right "  ui-sref="product({ auctionId: item.auctionid }) ">
                                 <h4>BID THIS NOW</h4>
-                             <img ng-src="../images/bidnow.svg">
+                             <img ng-src="../images/bidnow.svg ">
                             </span>
                             </span>
                         </div>

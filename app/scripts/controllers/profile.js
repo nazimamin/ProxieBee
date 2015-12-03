@@ -74,6 +74,20 @@ angular.module('ndtndtApp')
             }
 
         }
+        UserServices.getCustomerBidHistory($scope.currentUser.id)
+            .then(function (data) {
+                if (data.length > 0) {
+                    console.log(data);
+                    $scope.bidhistory = data;
+                }
+            });
 
+        UserServices.getCustomerSellHistory($scope.currentUser.id)
+            .then(function (data) {
+                if (data.length > 0) {
+                    console.log(data);
+                    $scope.sellhistory = data;
+                }
+            });
 
     });

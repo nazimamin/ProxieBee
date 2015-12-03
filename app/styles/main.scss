@@ -1060,6 +1060,7 @@ md-card md-card-header md-card-avatar {
         width: 56px;
         height: 56px;
     }
+    margin-right: 10px!important;
 }
 
 .biddialog {
@@ -1447,13 +1448,6 @@ md-list-item .md-list-item-inner > md-icon.md-secondary:not(.md-avatar-icon) {
     }
 }
 
-.width-control {
-    width: 600px !important;
-    transform: translate(70%, 0);
-}
-
-.product-single {}
-
 [md-center-tabs] md-pagination-wrapper {
     position: relative;
     width: initial;
@@ -1491,25 +1485,59 @@ md-list-item md-divider[md-inset] {
         background-color: transparent !important;
         margin-left: -15px;
     }
-    md-input-container .md-input {
-        -webkit-order: 2;
-        -ms-flex-order: 2;
-        order: 2;
-        display: block;
-        margin-top: 0;
-        background: none;
-        padding-top: 2px;
-        padding-bottom: 1px;
-        padding-left: 2px;
-        padding-right: 2px;
-        border-width: 0 0 1px 0;
-        line-height: 26px;
-        height: 30px;
-        -ms-flex-preferred-size: 26px;
-        border-radius: 0;
-        border-style: solid;
-        width: 75%;
-        box-sizing: border-box;
-        float: left;
+    .fix-card {
+        md-card {
+            width: 605px !important;
+            height: 100%;
+            padding: 20px !important;
+            border: 1px solid #d8d8d8;
+            margin: 0 !important;
+        }
+        .table > caption + thead > tr:first-child > th,
+        .table > caption + thead > tr:first-child > td,
+        .table > colgroup + thead > tr:first-child > th,
+        .table > colgroup + thead > tr:first-child > td,
+        .table > thead:first-child > tr:first-child > th,
+        .table > thead:first-child > tr:first-child > td {
+            border-top: 0;
+        }
+        .table > thead > tr > th {
+            /* vertical-align: bottom; */
+            /* border-bottom: 2px solid #ddd; */
+        }
+        .table > thead > tr > th,
+        .table > thead > tr > td,
+        .table > tbody > tr > th,
+        .table > tbody > tr > td,
+        .table > tfoot > tr > th,
+        .table > tfoot > tr > td {
+            padding: 8px;
+            line-height: 1.428571429;
+            /* vertical-align: top; */
+            /* border-top: 1px solid #ddd; */
+        }
+        th {
+            text-align: left;
+        }
     }
+}
+
+.width-control {
+    width: 600px !important;
+    transform: translate(70%, 0);
+}
+
+.product-single {
+    md-dialog md-card .md-title {
+        padding-top: 4px;
+        font-size: 14px;
+        color: #645b9a;
+    }
+    .price-tag {
+        margin-left: 100px;
+    }
+}
+
+#file-input-admin-customer {
+    display: none;
 }

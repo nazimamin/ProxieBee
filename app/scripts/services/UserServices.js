@@ -16,7 +16,11 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         CreateEmployee: CreateEmployee,
         GetEmployees: GetEmployees,
         UpdateEmployee: UpdateEmployee,
-        DeleteEmployee: DeleteEmployee
+        DeleteEmployee: DeleteEmployee,
+        GetCustomers: GetCustomers,
+        getCustomerBidHistory: getCustomerBidHistory,
+        getCustomerSellHistory: getCustomerSellHistory
+
 
     };
 
@@ -313,4 +317,67 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
 
         return defer.promise;
     }
+
+    function GetCustomers() {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/emaillist')
+            .success(function (res) {
+                console.log(res);
+                if (res instanceof Array && res.length > 1) {
+                    console.log(res);
+                    // defer.resolve(res[0]);
+                } else {
+                    //res = [res];
+                    defer.resolve(res[0]);
+                }
+                defer.resolve(res);
+
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+    //get auctionhistory
+    function getCustomerBidHistory(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/customerbidhistory/' + id)
+            .success(function (res) {
+                console.log(res);
+                if (res instanceof Array && res[0] && res[0].length > 1) {
+                    console.log(res);
+                    defer.resolve(res[0]);
+                } else {
+                    res = [res];
+                    defer.resolve(res);
+                }
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+    //get auctionhistory
+    function getCustomerSellHistory(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/customersellhistory/' + id)
+            .success(function (res) {
+                console.log(res);
+                if (res instanceof Array && res[0] && res[0].length > 1) {
+                    console.log(res);
+                    defer.resolve(res[0]);
+                } else {
+                    res = [res];
+                    defer.resolve(res);
+                }
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
 }
