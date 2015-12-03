@@ -48,12 +48,25 @@ angular.module('ndtndtApp')
   }, {
                 "itemtype": "CAR"
   }, {
-                "itemtype": "PETS"
+                "itemtype": "Book"
   },
             {
-                "itemtype": "Furniture"
+                "itemtype": "BABY"
  }, {
-                "itemtype": "House"
+                "itemtype": "TOYS"
+ }, {
+                "itemtype": "CLOTHING"
+ }, {
+                "itemtype": "JEWELRY"
+ }, {
+                "itemtype": "ELECTRONICS"
+ }, {
+                "itemtype": "SILVERWARE"
+ }, {
+                "itemtype": "SPORT MEMORABILA"
+ },
+            {
+                "itemtype": "CLEANING PRODUCTS"
  }];
 
 

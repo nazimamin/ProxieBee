@@ -63,10 +63,17 @@
                                 </md-button>
                             </a>
                         </li>
-                        <li ng-show="currentUser.id">
+                        <li ng-show="currentUser.id && !currentUser.admin">
                             <a ui-sref="profile">
                                 <md-button class="login">
                                     Profile
+                                </md-button>
+                            </a>
+                        </li>
+                        <li ng-show="currentUser.id && currentUser.admin=='0'">
+                            <a ui-sref="bigadmin">
+                                <md-button class="login">
+                                    Admin
                                 </md-button>
                             </a>
                         </li>
@@ -155,7 +162,8 @@
     <script src="bower_components/ng-currency/dist/ng-currency.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
+    <link rel="stylesheet" href="bower_components/ng-inline-edit/dist/ng-inline-edit.min.css">
+    <script src="bower_components/ng-inline-edit/dist/ng-inline-edit.min.js"></script>
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
     <script src="scripts/app.js"></script>
@@ -174,7 +182,11 @@
     <script src="scripts/controllers/bid.js"></script>
     <script src="scripts/controllers/product.js"></script>
     <script src="scripts/services/shareData.js"></script>
+    <script src="scripts/controllers/bigadmin.js"></script>
+    <script src="scripts/controllers/littleadmin.js"></script>
     <!-- endbuild -->
+
+
 </body>
 
 </html>

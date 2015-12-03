@@ -50,7 +50,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
     // get all top categories
     function getTopCategories() {
         var defer = $q.defer();
-        $http.get($rootScope.restServer + '/topcategory')
+        $http.get($rootScope.restServer + '/bestsellerlist')
             .success(function (res) {
                 defer.resolve(res);
             })

@@ -17,7 +17,8 @@ angular
     }
 ])
     .run(function ($rootScope) {
-        $rootScope.restServer = 'https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net'
+        $rootScope.restServer = 'https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net';
+        //$rootScope.restServer = 'http://192.168.1.131:3000/api';
     });
 
 function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootScope) {
@@ -68,10 +69,15 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootS
             templateUrl: 'views/auction.html',
             controller: 'AuctionCtrl as auction'
         })
-        .state('admin', {
-            url: '/admin',
-            templateUrl: 'views/admin.html',
-            controller: 'AdminCtrl as admin'
+        .state('bigadmin', {
+            url: '/bigadmin',
+            templateUrl: 'views/bigadmin.html',
+            controller: 'BigAdminCtrl as admin'
+        })
+        .state('littledmin', {
+            url: '/littleadmin',
+            templateUrl: 'views/littleadmin.html',
+            controller: 'LittleAdminCtrl as admin'
         });
 
     $urlRouterProvider.otherwise('/');

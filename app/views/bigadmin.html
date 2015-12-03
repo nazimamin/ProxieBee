@@ -1,6 +1,6 @@
 <div class="container">
     <div class="profile-page loginsignup create-auction">
-        <div ng-controller="ProfileCtrl" layout="column" ng-cloak>
+        <div ng-controller="BigAdminCtrl" layout="column" ng-cloak>
             <md-tabs md-dynamic-height md-border-bottom md-center-tabs md-border-bottom md-autoselect>
                 <md-tab id="profile" label="My Profile">
                     <md-content class="md-padding center-card">
@@ -13,16 +13,6 @@
                                     <md-card-header-text class="name">
                                         <span class="md-subhead"> Hello, {{(profile.firstname + " " +profile.lastname) }}</span>
                                     </md-card-header-text>
-                                    <div class="item-image">
-                                        <img class="md-user-avatar" ngf-src="!f.$error &amp;&amp; f" />
-                                        <md-button class="md-fab" aria-label="upload image" ng-hide="!f.$error &amp;&amp; f">
-                                            <label for="file-input">
-                                                <md-icon md-svg-icon="../images/camera.svg"></md-icon>
-                                            </label>
-                                        </md-button>
-                                        <h6 ng-hide="!f.$error &amp;&amp; f" class="pic-change">Change profile pic</h6>
-                                        <input id="file-input" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
-                                    </div>
                                 </md-card-header>
                                 <md-card-content>
                                     <div class="contact-info">
@@ -34,13 +24,12 @@
                                     <div layout class="profile-info-text">
                                         <md-list-item class="secondary-button-padding list-left" flex>
                                             <span class="sub-info">First Name:</span>
-                                            <p inline-edit="profile.firstname" inline-edit-on-blur="save" inline-edit-on-click></p>
+                                            <p>{{profile.firstname}}</p>
                                         </md-list-item>
 
                                         <md-list-item class="secondary-button-padding list-right" flex>
                                             <span class="sub-info">Last Name:</span>
-                                            <p inline-edit="profile.lastname" inline-edit-on-blur="save" inline-edit-on-click></p>
-
+                                            <p>{{profile.lastnamename}}</p>
                                         </md-list-item>
                                     </div>
                                     <md-divider></md-divider>
@@ -81,24 +70,6 @@
                                         </md-list-item>
                                     </div>
                                 </md-card-content>
-                                <form name="bid" ng-submit="bid.$valid && auction.post()" novalidate>
-                                    <md-input-container layout="row" layout-align="end center" required class="md-block" md-is-error="bid.bidamount.$invalid && (bid.$submitted || bid.bidamount.$touched)">
-                                        <label class="mdi  mdi-account-key"> Re-enter password</label>
-                                        <input name="bidamount" ng-model="profile.userpassword" required type="password">
-                                        <div ng-messages=" bid.bidamount.$error " ng-if="bid.$submitted || bid.bidamount.$invalid">
-                                            <div ng-message="required ">You must re-enter password to update.</div>
-                                        </div>
-                                    </md-input-container>
-                                </form>
-                                <md-card-actions layout="row" layout-align="end center">
-                                    <span flex></span>
-                                    <md-button class="delete-profile md-warn mdi mdi-delete" ng-click="profile.deleteProfile() ">
-                                        DELETE PROFILE
-                                    </md-button>
-                                    <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="profile.post() ">
-                                        UPDATE PROFILE
-                                    </md-button>
-                                </md-card-actions>
                             </md-card>
                         </md-content>
                     </md-content>
@@ -114,16 +85,6 @@
                                     <md-card-header-text class="name">
                                         <span class="md-subhead"> Hello, {{(profile.firstname + " " +profile.lastname) }}</span>
                                     </md-card-header-text>
-                                    <div class="item-image">
-                                        <img class="md-user-avatar" ngf-src="!f.$error &amp;&amp; f" />
-                                        <md-button class="md-fab" aria-label="upload image" ng-hide="!f.$error &amp;&amp; f">
-                                            <label for="file-input">
-                                                <md-icon md-svg-icon="../images/camera.svg"></md-icon>
-                                            </label>
-                                        </md-button>
-                                        <h6 ng-hide="!f.$error &amp;&amp; f" class="pic-change">Change profile pic</h6>
-                                        <input id="file-input" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
-                                    </div>
                                 </md-card-header>
                                 <md-card-content>
                                     <div class="contact-info">

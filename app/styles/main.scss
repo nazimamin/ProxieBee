@@ -234,6 +234,7 @@ input.search-input:focus {
 
 .main-page {
     opacity: 1;
+    background-color: #F8F9FB !important;
 }
 
 .main-page.ng-enter,
@@ -1018,9 +1019,9 @@ md-select-menu md-optgroup {
         text-align: center;
         color: rgba(0, 0, 0, 0.54);
         img {
-            width: 150px !important;
-            height: 100px !important;
-            border-radius: 2px !important;
+            max-width: 150px;
+            max-height: 100px;
+            border-radius: 2px;
         }
     }
     .md-datepicker-button {
@@ -1120,4 +1121,147 @@ md-card md-card-header md-card-avatar {
 
 .md-card-image {
     max-height: 250px !important;
+}
+
+.profile-page {
+    .center-card {
+        transform: translate(18%, 0);
+    }
+    .list-left {
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+        width: 50% !important;
+        float: left !important;
+    }
+    .list-right {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        width: 50% !important;
+        float: right !important;
+    }
+    align-items: center;
+    md-content {
+        background-color: transparent !important;
+    }
+    md-content md-tabs {
+        background: #f6f6f6;
+        border: 1px solid #e1e1e1;
+    }
+    md-content md-tabs md-tabs-wrapper {
+        background: white;
+    }
+    md-content h1:first-child {
+        margin-top: 0;
+    }
+    md-tabs-canvas {
+        height: 70px;
+        md-pagination-wrapper {
+            height: 70px;
+        }
+    }
+    md-toolbar.md-warn > md-tabs.md-default-theme,
+    md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-active,
+    md-toolbar.md-warn > md-tabs.md-default-theme,
+    md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-focused {
+        color: $Swatch6-navbar-color;
+    }
+    md-toolbar.md-warn > md-tabs.md-default-theme,
+    md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
+        color: $Swatch5-TEXT-COLOR;
+    }
+    md-toolbar.md-accent > md-tabs.md-default-theme,
+    md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-ink-bar {
+        color: rgba(57, 73, 171, 1);
+        background: $Swatch6-navbar-color;
+    }
+    md-tabs[md-border-bottom] md-tabs-wrapper {
+        border-width: 0 0 1px;
+        border-style: none !important;
+    }
+    md-card-header-text {
+        .md-subhead {
+            padding-top: 10px;
+            font-size: 21px;
+            color: $Swatch5-fab-hover !important;
+        }
+    }
+    md-card {
+        width: 650px !important;
+        height: 100%;
+        padding: 20px !important;
+        border: 1px solid #d8d8d8;
+        margin: 15px !important;
+    }
+    md-card.md-ndtndt-theme {
+        background-color: transparent;
+        border-radius: 2px;
+    }
+    md-card-content {
+        .create-auction {
+            .item-image {
+                float: right;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.54);
+                img {
+                    max-width: 150px !important;
+                    max-height: 150px !important;
+                    border-radius: 50% !important;
+                }
+            }
+        }
+        .contact-info {
+            border-top: solid 1px #dcdcdc;
+            padding-top: 10px;
+            .title {
+                width: 100%;
+                display: inline-block;
+                font-size: 14px;
+                color: grey;
+                font-weight: 400;
+                padding-bottom: 10px;
+            }
+        }
+        .info {
+            width: 200px;
+            float: left;
+        }
+        .edit {
+            float: right;
+        }
+        .sub-info {
+            margin-right: 10px;
+        }
+        md-list-item.md-no-proxy,
+        md-list-item .md-no-style {
+            font-size: 14px !important;
+            color: #595959 !important;
+            padding: 0px 0px;
+        }
+        .profile-info-text {
+            width: 100%;
+            display: inline-block;
+        }
+        input {
+            background-color: transparent;
+        }
+        .ng-inline-edit__input {
+            border-bottom: 1px dashed #333;
+        }
+        .ng-inline-edit--error .ng-inline-edit__input {
+            border-color: #f00;
+        }
+        .ng-inline-edit__button {
+            color: $Swatch6-navbar-color;
+            margin-left: 5px;
+        }
+    }
+    .delete-profile {
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+        width: 75% !important;
+        float: left !important;
+    }
 }

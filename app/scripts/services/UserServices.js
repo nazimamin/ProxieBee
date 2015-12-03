@@ -10,7 +10,9 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         signup: signup,
         logout: logout,
         PostImage: PostImage,
-        isLoggedIn: isLoggedIn
+        isLoggedIn: isLoggedIn,
+        UpdateProfile: UpdateProfile,
+        DeleteProfile: DeleteProfile
     };
 
     function currentUser() {
@@ -29,22 +31,28 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
     }
 
     function signup(data, file) {
-        var randomString = Math.random().toString(36).substring(7);
+        if (file) {
+            console.log(file);
+            var randomString = Math.random().toString(36).substring(7);
+            var FilePath = "profile" + data.ssn + randomString + ".jpg";
+            data.personimg = $rootScope.restServer + "/uploads/" + FilePath;
+        } else {
+            data.personimg = $rootScope.restServer + "/uploads/profile.jpg";
+        }
         console.log(data);
-        var FilePath = "profile" + data.ssn + randomString + ".jpg";
-        data.personimg = $rootScope.restServer + "/" + FilePath;
-
         var defer = $q.defer();
         $http({
                 method: 'POST',
                 url: $rootScope.restServer + '/createuser',
                 data: data,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': undefined
                 }
             })
             .success(function (res) {
-                PostImage(file, FilePath);
+                if (file) {
+                    PostImage(file, FilePath);
+                }
                 defer.resolve(res);
             })
             .error(function (err, status) {
@@ -55,6 +63,57 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         return defer.promise;
     }
 
+    function UpdateProfile(data, file) {
+        if (file) {
+            var randomString = Math.random().toString(36).substring(7);
+            var FilePath = "profile" + data.ssn + randomString + ".jpg";
+            data.personimg = $rootScope.restServer + "/uploads/" + FilePath;
+        }
+        console.log(JSON.stringify(data));
+        var defer = $q.defer();
+        $http({
+                method: 'POST',
+                url: $rootScope.restServer + '/updateuser',
+                data: data,
+                headers: {
+                    'Content-Type': undefined
+                }
+            })
+            .success(function (res) {
+                if (file) {
+                    PostImage(file, FilePath);
+                }
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject({
+                    err: status
+                });
+            });
+        return defer.promise;
+    }
+
+
+    function DeleteProfile(data) {
+        var defer = $q.defer();
+        $http({
+                method: 'POST',
+                url: $rootScope.restServer + '/deleteuser',
+                data: data,
+                headers: {
+                    'Content-Type': undefined
+                }
+            })
+            .success(function (res) {
+                defer.resolve(res);
+            })
+            .error(function (err, status) {
+                defer.reject({
+                    err: status
+                });
+            });
+        return defer.promise;
+    }
 
     function login(data) {
         console.log(JSON.stringify(data));
@@ -117,9 +176,11 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
                 var data = JSON.parse($window.sessionStorage.getItem('currentUser'));
                 $rootScope.currentUser = data;
                 $rootScope.currentUser.id = data.customerid;
-                $rootScope.currentUser.role = data.role;
                 $rootScope.currentUser.personimg = data.personimg;
+                $rootScope.currentUser.admin = data.maglevel;
                 $rootScope.currentUser.restinfo = data;
+                $rootScope.currentUser.restinfo = data;
+
                 isLoggedIn = true;
             }
         } else {

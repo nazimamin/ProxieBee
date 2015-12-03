@@ -11,65 +11,67 @@ angular.module('ndtndtApp')
     .controller('ProductsCtrl', function ($scope, ProductServices, $rootScope, $mdDialog, $mdToast) {
         ProductServices.getAllProducts()
             .then(function (data) {
-                $scope.items = data;
-                //holds avilable filter categories
-                $scope.filter = {};
-                //ng-model to hold the text entered in the input box
-                $scope.searchText = '';
-                //returns the unique categories
-                $scope.getCat = function () {
-                    return ($scope.items).map(function (item) {
-                        return item.itemtype.toUpperCase();
-                    }).filter(function (item, index, mappedArray) {
-                        return mappedArray.indexOf(item) === index;
-                    });
-                };
-                //filters the item based on category selected
-                $scope.filterByCategory = function (item) {
-                    return $scope.filter[item.itemtype.toUpperCase()] || isPresent($scope.filter);
-                };
+                if (data.length > 0) {
+                    $scope.items = data;
+                    //holds avilable filter categories
+                    $scope.filter = {};
+                    //ng-model to hold the text entered in the input box
+                    $scope.searchText = '';
+                    //returns the unique categories
+                    $scope.getCat = function () {
+                        return ($scope.items).map(function (item) {
+                            return item.itemtype.toUpperCase();
+                        }).filter(function (item, index, mappedArray) {
+                            return mappedArray.indexOf(item) === index;
+                        });
+                    };
+                    //filters the item based on category selected
+                    $scope.filterByCategory = function (item) {
+                        return $scope.filter[item.itemtype.toUpperCase()] || isPresent($scope.filter);
+                    };
 
-                // all the avilable sorts
-                $scope.orderByPrice = function (item) {
-                    if ($scope.orderBy == 'price-high-low') {
-                        return -parseFloat(item.currentbid);
-                    }
-                    if ($scope.orderBy == 'price-low-high') {
-                        return parseFloat(item.currentbid);
-                    }
-                };
-                $scope.orderByBids = function (item) {
-                    if ($scope.orderBy == 'bids-high-low') {
-                        return -parseFloat(item.totalbids);
-                    }
-                    if ($scope.orderBy == 'bids-low-high') {
-                        return parseFloat(item.totalbids);
-                    }
-                };
-                $scope.orderByYear = function (item) {
-                    if ($scope.orderBy == 'year-high-low') {
-                        return -parseInt(item.yearmanufactured);
-                    }
-                    if ($scope.orderBy == 'year-low-high') {
-                        return parseInt(item.yearmanufactured);
-                    }
-                };
-                $scope.orderByPost = function (item) {
-                    if ($scope.orderBy == 'post-high-low') {
-                        return -item.postdate;
-                    }
-                    if ($scope.orderBy == 'post-low-high') {
-                        return item.postdate;
-                    }
-                };
-                $scope.orderByExp = function (item) {
-                    if ($scope.orderBy == 'exp-high-low') {
-                        return -item.expiredates;
-                    }
-                    if ($scope.orderBy == 'exp-low-high') {
-                        return item.expiredates;
-                    }
-                };
+                    // all the avilable sorts
+                    $scope.orderByPrice = function (item) {
+                        if ($scope.orderBy == 'price-high-low') {
+                            return -parseFloat(item.currentbid);
+                        }
+                        if ($scope.orderBy == 'price-low-high') {
+                            return parseFloat(item.currentbid);
+                        }
+                    };
+                    $scope.orderByBids = function (item) {
+                        if ($scope.orderBy == 'bids-high-low') {
+                            return -parseFloat(item.totalbids);
+                        }
+                        if ($scope.orderBy == 'bids-low-high') {
+                            return parseFloat(item.totalbids);
+                        }
+                    };
+                    $scope.orderByYear = function (item) {
+                        if ($scope.orderBy == 'year-high-low') {
+                            return -parseInt(item.yearmanufactured);
+                        }
+                        if ($scope.orderBy == 'year-low-high') {
+                            return parseInt(item.yearmanufactured);
+                        }
+                    };
+                    $scope.orderByPost = function (item) {
+                        if ($scope.orderBy == 'post-high-low') {
+                            return -item.postdate;
+                        }
+                        if ($scope.orderBy == 'post-low-high') {
+                            return item.postdate;
+                        }
+                    };
+                    $scope.orderByExp = function (item) {
+                        if ($scope.orderBy == 'exp-high-low') {
+                            return -item.expiredates;
+                        }
+                        if ($scope.orderBy == 'exp-low-high') {
+                            return item.expiredates;
+                        }
+                    };
+                }
             });
 
         //shows the modal to login/signup

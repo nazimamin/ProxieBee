@@ -54,13 +54,21 @@
                                         </md-select>
                                     </md-input-container>
 
-                                    <md-input-container flex>
-                                        <label class="mdi"> Year Manufactured</label>
-                                        <input name="itemyear" ng-model="auction.info.year" type="number" ng-required="true">
+                                    <md-input-container md-no-float flex class="md-block" ng-required="true" class="md-block">
+                                        <label class="mdi"> Select Rep</label>
+                                        <md-select ng-model="auction.info.category" ng-required="true" name="itemtype">
+                                            <md-option ng-repeat="cat in catOptions" value="{{cat.itemtype}}" required="true">
+                                                {{cat.itemtype | uppercase}}
+                                            </md-option>
+                                        </md-select>
                                     </md-input-container>
 
                                 </div>
                                 <div layout layout="column">
+                                    <md-input-container flex>
+                                        <label class="mdi"> Year Manufactured</label>
+                                        <input name="itemyear" ng-model="auction.info.year" type="number" ng-required="true">
+                                    </md-input-container>
                                     <md-input-container flex layout="column">
                                         <label class="mdi"> Open bid</label>
                                         <input name="itemname" ng-model="auction.info.openbid" type="text" ng-currency min="1" ng-required="true">

@@ -8,12 +8,14 @@
  * Controller of the ndtndtApp
  */
 angular.module('ndtndtApp')
-    .controller('ProductCtrl', function ($scope, ProductServices, $rootScope, $mdDialog, $mdToast, $stateParams) {
-        //$scope.auctionId = $stateParams.auctionId;
-        ProductServices.getProduct($stateParams.auctionId)
-            .then(function (data) {
-                $scope.auction = data;
-            });
+    .controller('BigAdminCtrl', function ($scope, UserServices, $rootScope, $mdDialog, $mdToast, $stateParams) {
+        $scope.profile = this;
+        $scope.profile = $rootScope.currentUser.restinfo;
+        $scope.profile.userpassword = "";
+        $scope.PostImage = function (data, errFiles) {
+            $scope.f = data;
+        }
+
 
         //shows the modal to login/signup
         $scope.showBidDialog = function (ev) {

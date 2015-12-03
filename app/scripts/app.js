@@ -24,7 +24,8 @@ angular
     'mb-adaptive-backgrounds',
     'ng-currency',
     'ProductServices',
-    'UserServices'
+    'UserServices',
+    'angularInlineEdit'
 	])
     .controller('RootCtrl', ['$rootScope', '$q', '$state', 'UserServices', '$window', '$scope', RootCtrl]);
 

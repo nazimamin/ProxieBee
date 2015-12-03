@@ -116,7 +116,14 @@
                                             <div ng-message="required">City is required.</div>
                                         </div>
                                     </md-input-container>
-
+                                    <md-input-container flex>
+                                        <label>State</label>
+                                        <md-select ng-model="user.signup.state">
+                                            <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                                                {{state.abbrev}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
                                     <md-input-container flex required md-is-error="signup.zipcode.$invalid && (signup.$submitted || signup.zipcode.$touched)">
                                         <label name="zipcode" class="mdi mdi-map-marker"> ZipCode</label>
                                         <input name="zipcode" ng-model="user.signup.zipcode" ng-required="true" type="text" ng-pattern="/^[0-9]{5}$/" maxlength="5">
