@@ -1,4 +1,5 @@
-## An ebay like Proxy Bidding System in collaboration with [@Jun Huang](http://github.com/JunXHuang)
+## An ebay like Proxy Bidding System 
+    - in collaboration with [@Jun Huang](http://github.com/JunXHuang)
 
 
 #### ndtndt - NOT DUE TODAY, NOT DO TODAY   -  [credit @JunXHuang]
