@@ -1,5 +1,6 @@
 ## An ebay like Proxy Bidding System 
-    - in collaboration with [@Jun Huang](http://github.com/JunXHuang)
+
+in collaboration with [@Jun Huang](http://github.com/JunXHuang)
 
 
 #### ndtndt - NOT DUE TODAY, NOT DO TODAY   -  [credit @JunXHuang]
@@ -9,7 +10,7 @@
 
 Technology used:
  - Front-end - AngularJS
- - Backend REST  - Python
+ - [Backend REST  - Python](https://github.com/NazimAmin/api.ndtndt)  
  - DB - SQL
 
 ## Build & development & Dependencies front-end
