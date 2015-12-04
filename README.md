@@ -27,6 +27,7 @@ Run `grunt ` for building and `grunt serve` for preview.
 Clone `git clone https://github.com/NazimAmin/api.ndtndt` - 
 
 Run `pip install -r requirement.txt`
+Run `Python api.py`
 
 ## Contributors
 
