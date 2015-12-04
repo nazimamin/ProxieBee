@@ -1,12 +1,36 @@
-# ndtndt
+### An ebay like Proxy Bidding System in collaboration with @JunXHuang
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.14.0.
 
-## Build & development
+#### ndtndt - NOT DUE TODAY, NOT DO TODAY   -  [credit @JunXHuang]
 
-Run `grunt` for building and `grunt serve` for preview.
+#### Includes multiple level of system level service roles.
+#### Options such as add/edit/delete, search, filter, bid, report etc. with an intuitive look.
 
-## Testing
+Technology used:
+ - Front-end - AngularJS
+ - Backend REST  - Python
+ - DB - SQL
 
-Running `grunt test` will run the unit tests with karma.
+## Build & development & Dependencies front-end
+
+Clone `git clone https://github.com/NazimAmin/notduetodaynotdotoday` - 
+
+Run `npm install` to install node_modules
+Run `bower install` to install bower_components
+
+Run `grunt ` for building and `grunt serve` for preview.
+
+## Build & development & Dependencies backend
+
+Clone `git clone https://github.com/NazimAmin/api.ndtndt` - 
+
+Run `pip install -r requirement.txt`
+
+## Contributors
+
+Made with :hotsprings: by [@Nazim](http://github.com/nazimamin) [@Jun Huang](http://github.com/JunXHuang)
+
+
+
+
+
