@@ -1,10 +1,10 @@
-### An ebay like Proxy Bidding System in collaboration with @JunXHuang
+## An ebay like Proxy Bidding System in collaboration with [@Jun Huang](http://github.com/JunXHuang)
 
 
 #### ndtndt - NOT DUE TODAY, NOT DO TODAY   -  [credit @JunXHuang]
 
-#### Includes multiple level of system level service roles.
-#### Options such as add/edit/delete, search, filter, bid, report etc. with an intuitive look.
+  - Includes multiple system level service roles.
+  - Options such as add/edit/delete, search, filter, bid, report etc. with an intuitive look.
 
 Technology used:
  - Front-end - AngularJS
