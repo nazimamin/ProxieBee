@@ -3,7 +3,7 @@
 in collaboration with [@Jun Huang](http://github.com/JunXHuang)
 
 
-#### ndtndt - NOT DUE TODAY, NOT DO TODAY   -  [credit @JunXHuang]
+#### ndtndt - NOT DUE TODAY, NOT DO TODAY   -   [@Jun Huang](http://github.com/JunXHuang)
 
   - Includes multiple system level service roles.
   - Options such as add/edit/delete, search, filter, bid, report etc. with an intuitive look.
