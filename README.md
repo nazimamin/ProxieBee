@@ -18,6 +18,7 @@ Technology used:
 Clone `git clone https://github.com/NazimAmin/notduetodaynotdotoday` - 
 
 Run `npm install` to install node_modules
+
 Run `bower install` to install bower_components
 
 Run `grunt ` for building and `grunt serve` for preview.
@@ -27,6 +28,7 @@ Run `grunt ` for building and `grunt serve` for preview.
 Clone `git clone https://github.com/NazimAmin/api.ndtndt` - 
 
 Run `pip install -r requirement.txt`
+
 Run `Python api.py`
 
 ## Contributors
