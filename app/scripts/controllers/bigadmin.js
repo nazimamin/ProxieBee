@@ -60,11 +60,10 @@ angular.module('ndtndtApp')
             UserServices.CreateEmployee($scope.user.signup, $scope.fadmin)
                 .then(function (data) {
                     if (data) {
-
                         $mdToast.showSimple("Employee Successfully created!");
-                        $scope.getAllEmployee();
                         $scope.user.signup = {};
                         $scope.fadmin = null;
+                        $scope.getAllEmployee();
                     } else {
                         $mdToast.showSimple("Employee creation failed. Please try again.");
                     }

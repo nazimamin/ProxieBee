@@ -60,6 +60,12 @@
                 </div>
             </div>
         </md-card-content>
+        <md-card-actions layout="row ">
+            <span flex></span>
+            <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="product.post() ">
+                PLACE BID
+            </md-button>
+        </md-card-actions>
     </md-card>
     <div class="product-single create-auction  biddialog">
         <md-content layout-padding>
@@ -99,12 +105,4 @@
             </md-card>
         </md-content>
     </div>
-
-    <md-card-actions layout="row ">
-        <span flex></span>
-        <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="product.post() ">
-            PLACE BID
-        </md-button>
-    </md-card-actions>
-
 </div>

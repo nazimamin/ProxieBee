@@ -119,7 +119,7 @@
                         </md-content>
                     </md-content>
                 </md-tab>
-                <md-tab id="customer-lists-monitors" label="Items to Monitor">
+                <md-tab id="customer-lists-monitors" label="Items to Monitor" ng-if="monitors">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>
@@ -174,7 +174,7 @@
                                                     <md-icon md-svg-icon="../images/camera.svg"></md-icon>
                                                 </label>
                                             </md-button>
-                                            <input id="file-input-admin-customer" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                                            <input id="file-input-admin-customer" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
 
                                         </md-card-avatar>
                                         <h6 ng-hide="!ffff.$error &amp;&amp; ffff" aria-hidden="false">upload customer profile image</h6>
