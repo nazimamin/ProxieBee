@@ -107,11 +107,11 @@
                         </md-content>
                     </md-content>
                 </md-tab>
-                <md-tab id="order-history" label="Activity History">
+                <md-tab id="order-history" label="Activity History" ng-if="bidhistory || sellhistory">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
 
-                            <md-card ng-show="bidhistory[0]">
+                            <md-card ng-show="bidhistory">
                                 <!--<md-subheader class="md-no-sticky">Select</md-subheader>
                                     <md-list-item ng-repeat="person in bidhistory">
                                         <img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" />
@@ -131,6 +131,7 @@
                                                 <th>Item type</th>
                                                 <th>Current Bid</th>
                                                 <th>Sold</th>
+                                                <th>Expire Date</th>
                                             </tr>
                                         </thead>
                                         <tbody ng-repeat="person in bidhistory">
@@ -148,7 +149,7 @@
 
 
                             </md-card>
-                            <md-card ng-if="sellhistory[0]">
+                            <md-card ng-if="sellhistory">
                                 <md-subheader class="md-no-sticky">My Selling History</md-subheader>
                                 <!--<md-subheader class="md-no-sticky">Select</md-subheader>
                                     <md-list-item ng-repeat="person in bidhistory">
@@ -167,7 +168,8 @@
                                                 <th>Item Name</th>
                                                 <th>Item type</th>
                                                 <th>Current Bid</th>
-                                                <th>Sold</th>
+                                                <th>Bid Date</th>
+                                                <th>Expire Date</th>
                                             </tr>
                                         </thead>
                                         <tbody ng-repeat="person in sellhistory">
@@ -176,15 +178,47 @@
                                                 <td>{{person.itemname}}</td>
                                                 <td>{{person.itemtype}}</td>
                                                 <td>{{person.currentbid | currency}}</td>
-                                                <td>{{person.sold}}</td>
+                                                <td>{{person.biddate | date}}</td>
                                                 <td>{{person.expiredates | date}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <md-divider md-inset ng-if="!$last"></md-divider>
                                 </md-list-item>
                             </md-card>
 
+                        </md-content>
+                    </md-content>
+                </md-tab>
+                <md-tab id="item-suggestions-foryou" label="Item Suggestions" ng-if="getuserpicks">
+                    <md-content class="md-padding center-card">
+                        <md-content layout-padding class="more-padding">
+                            <md-card ng-show="bidhistory[0]">
+                                <md-subheader class="md-no-sticky">Item Suggestions for You!</md-subheader>
+                                <md-list-item>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Item Name</th>
+                                                <th>Item type</th>
+                                                <th>Current Bid</th>
+                                                <th>Total Bidders</th>
+                                                <th>Expire Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in getuserpicks">
+                                            <tr>
+                                                <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
+                                                <td>{{person.itemname}}</td>
+                                                <td>{{person.itemtype}}</td>
+                                                <td>{{person.currentbid | currency}}</td>
+                                                <td>{{person.totalbidders}}</td>
+                                                <td>{{person.expiredates | date}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </md-list-item>
+                            </md-card>
                         </md-content>
                     </md-content>
                 </md-tab>

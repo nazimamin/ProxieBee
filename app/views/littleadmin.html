@@ -85,12 +85,12 @@
                         </md-content>
                     </md-content>
                 </md-tab>
-                <md-tab id="employee-lists" label="Customer Rep Lists">
+                <md-tab id="employee-lists" label="Rep Lists">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>
                                 <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
-                                <md-list-item ng-repeat="person in employees" ng-click="viewperson(person, $event)">
+                                <md-list-item ng-repeat="person in customerrep" ng-click="viewperson(person, $event)">
                                     <img alt="{{ person.firstname }}" ng-src="{{ person.personimg }}" class="md-avatar" />
                                     <span>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
                                     <span>{{person.email}}</span>
@@ -101,7 +101,7 @@
                         </md-content>
                     </md-content>
                 </md-tab>
-                <md-tab id="customer-lists" label="Customer Email Lists">
+                <md-tab id="customer-lists" label="Customer Lists">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>
@@ -109,8 +109,9 @@
                                 <md-list-item ng-repeat="person in customers">
                                     <img alt="{{ person.firstname }}" ng-src="{{ person.personimg }}" class="md-avatar" />
                                     <span>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
+                                    <span>{{person.customerid}}</span>
                                     <span>{{person.email}}</span>
-                                    <md-icon md-svg-icon="../images/pencil.svg" ng-click="showUpdateDialog($event, person)" aria-label="Update" class="md-primary md-hue-3" class="pencil"></md-icon>
+                                    <md-icon md-svg-icon="../images/pencil.svg" ng-click="showCustomerUpdateDialog($event, person)" aria-label="Update" class="md-primary md-hue-3" class="pencil"></md-icon>
                                     <md-icon md-svg-icon="../images/delete.svg" ng-click="user.deleteEmployee(person)" aria-label="Delete" class="md-secondary md-hue-3"></md-icon>
                                     <md-divider md-inset ng-if="!$last"></md-divider>
                                 </md-list-item>
@@ -139,22 +140,22 @@
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>
-                                <md-subheader class="md-no-sticky">Generate/Delete StaffPicks - require aucitonID</md-subheader>
+                                <md-subheader class="md-no-sticky">Generate StaffPicks</md-subheader>
                                 <md-input-container>
-                                    <input name="auctionid" ng-model="user.signup.auctionid" type="text" aia-label="add staff">
-                                    <md-button class="md-primary" ng-click="user.postStaffPicks(user.signup.auctionid)">ADD STAFF PICKS</md-button>
+                                    <input class="mdi mdi-tag-text-outline" name="auctionid" ng-model="user.signup.auctionid" type="text" aria-label="add staff" placeholder="Enter Auction ID">
+                                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.postStaffPicks(user.signup.auctionid)">ADD STAFF PICKS</md-button>
                                 </md-input-container>
+                                <md-subheader class="md-no-sticky">Delete StaffPicks</md-subheader>
                                 <md-input-container>
-                                    <md-button class="md-primary" ng-click="user.deletestaffpicks(user.signup.auctionid)">DELETE STAFF PICKS</md-button>
+                                    <input class="mdi mdi-tag-text-outline" name="deleteauctionid" ng-model="user.signup.deleteauctionid" type="text" aria-label="add staff" placeholder="Enter Auction ID">
+                                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.deletestaffpicks(user.signup.deleteauctionid)">DELETE STAFF PICKS</md-button>
                                 </md-input-container>
-
-                                <md-subheader class="md-no-sticky"> Generate/Delete UserPicks - reqirer aucitonID</md-subheader>
+                            </md-card>
+                            <md-card>
+                                <md-subheader class="md-no-sticky"> Generate UserPicks </md-subheader>
                                 <md-input-container>
-                                    <input name="auctionid" ng-model="user.signup.auctionid1" type="text" aia-label="add staff">
-                                    <md-button class="md-primary" ng-click="user.postuserpicks(user.signup.autionid1)">ADD USER PICKS</md-button>
-                                </md-input-container>
-                                <md-input-container>
-                                    <md-button class="md-primary" ng-click="user.delteuserpicks(user.signup.autionid1)">DELETE USER PICKS</md-button>
+                                    <input name="auctionid" ng-model="user.signup.auctionid1" type="text" aia-label="add staff" placeholder="Enter Customer ID">
+                                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.postuserpicks(user.signup.auctionid1)">ADD USER PICKS</md-button>
                                 </md-input-container>
                             </md-card>
                         </md-content>

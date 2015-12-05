@@ -24,6 +24,12 @@ angular.module('ndtndtApp')
                 .then(function (data) {
                     console.log(data);
                     if (data) {
+                        ProductServices.getAllProducts()
+                            .then(function (data) {
+                                $rootScope.items = data;
+                            });
+                        $mdToast.showSimple("Bidding Successfull!");
+
                         $scope.close();
 
                     } else {

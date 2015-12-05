@@ -437,8 +437,8 @@ input.search-input:focus {
             }
             img {
                 width: 100%;
-                height: 100%;
-                min-height: 330px;
+                height: 50% !important;
+                max-height: 400px;
             }
         }
     }
@@ -654,6 +654,7 @@ section#topseller {
         md-card {
             background: #fff;
             width: 300px;
+            height: 240px;
             border-radius: 2px;
             box-sizing: border-box;
             overflow: hidden;
@@ -1188,7 +1189,7 @@ md-card md-card-header md-card-avatar {
         border-style: none !important;
     }
     md-card {
-        width: 650px !important;
+        width: 750px !important;
         height: 100%;
         padding: 20px !important;
         border: 1px solid #d8d8d8;
@@ -1514,7 +1515,7 @@ md-list-item md-divider[md-inset] {
             padding: 8px;
             line-height: 1.428571429;
             /* vertical-align: top; */
-            /* border-top: 1px solid #ddd; */
+            /* border-top: 2px solid #ddd;*/
         }
         th {
             text-align: left;
@@ -1524,7 +1525,7 @@ md-list-item md-divider[md-inset] {
 
 .width-control {
     width: 600px !important;
-    transform: translate(70%, 0);
+    transform: translate(60%, 0);
 }
 
 .product-single {
@@ -1540,4 +1541,16 @@ md-list-item md-divider[md-inset] {
 
 #file-input-admin-customer {
     display: none;
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.428571429;
+    vertical-align: top;
+    border-top: 2px solid #ddd;
 }

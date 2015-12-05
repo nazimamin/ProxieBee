@@ -300,14 +300,6 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/employeedatalist')
             .success(function (res) {
-                console.log(res);
-                if (res instanceof Array && res.length > 1) {
-                    console.log(res);
-                    // defer.resolve(res[0]);
-                } else {
-                    //res = [res];
-                    defer.resolve(res);
-                }
                 defer.resolve(res);
 
             })
@@ -344,14 +336,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/customerbidhistory/' + id)
             .success(function (res) {
-                console.log(res);
-                if (res instanceof Array && res[0] && res[0].length > 1) {
-                    console.log(res);
-                    defer.resolve(res[0]);
-                } else {
-                    res = [res];
-                    defer.resolve(res);
-                }
+                defer.resolve(res);
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -364,14 +349,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/customersellhistory/' + id)
             .success(function (res) {
-                console.log(res);
-                if (res instanceof Array && res[0] && res[0].length > 1) {
-                    console.log(res);
-                    defer.resolve(res[0]);
-                } else {
-                    res = [res];
-                    defer.resolve(res);
-                }
+                defer.resolve(res);
             })
             .error(function (err, status) {
                 defer.reject(err);

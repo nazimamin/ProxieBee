@@ -8,17 +8,48 @@
  * Controller of the ndtndtApp
  */
 angular.module('ndtndtApp')
-    .controller('ProductCtrl', function ($scope, ProductServices, $rootScope, $mdDialog, $mdToast, $stateParams) {
+    .controller('ProductCtrl', function ($scope, ProductServices, $rootScope, $mdDialog, $mdToast, $stateParams, shareData) {
         $scope.auctionId = $stateParams.auctionId;
+        $scope.auction = shareData.getAuctionData();
+        $scope.product = this;
+        $scope.product.post = post;
+
+        function post() {
+            $scope.PostData = this;
+            $scope.PostData.auctionid = $scope.auctionId;
+            $scope.PostData.customerid = $rootScope.currentUser.id;
+            $scope.PostData.bidprice = $scope.product.bidprice;
+            ProductServices.placeBid($scope.PostData)
+                .then(function (data) {
+                    console.log(data);
+                    if (data) {
+                        ProductServices.getAuctionHistory()
+                            .then(function (data) {
+                                $scope.auctionhistory = data;
+                                $mdToast.showSimple("Bidding Successfull!");
+                            });
+                    } else {
+                        $mdToast.showSimple("Bidding failes. Please try again.");
+                    }
+                }, function () {
+                    $mdToast.showSimple("Bidding failed. Please try again.");
+                });
+        }
+
+
         ProductServices.getProduct($stateParams.auctionId)
             .then(function (data) {
                 $scope.auction = data;
             });
         ProductServices.getAuctionHistory($stateParams.auctionId)
             .then(function (data) {
-                if (data.length > 0 && (data !== null && data[0] !== null)) {
-                    $scope.auctionhistory = data;
-                    console.log([data].length);
+
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        $scope.auctionhistory = data[0];
+                    } else {
+                        $scope.auctionhistory = data;
+                    }
                 }
             });
         //shows the modal to login/signup

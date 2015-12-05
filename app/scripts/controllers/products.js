@@ -12,14 +12,15 @@ angular.module('ndtndtApp')
         ProductServices.getAllProducts()
             .then(function (data) {
                 if (data.length > 0) {
-                    $scope.items = data;
+                    //$scope.items = data;
+                    $rootScope.items = data;
                     //holds avilable filter categories
                     $scope.filter = {};
                     //ng-model to hold the text entered in the input box
                     $scope.searchText = '';
                     //returns the unique categories
                     $scope.getCat = function () {
-                        return ($scope.items).map(function (item) {
+                        return ($rootScope.items).map(function (item) {
                             return item.itemtype.toUpperCase();
                         }).filter(function (item, index, mappedArray) {
                             return mappedArray.indexOf(item) === index;

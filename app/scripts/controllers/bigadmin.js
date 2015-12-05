@@ -8,7 +8,7 @@
  * Controller of the ndtndtApp
  */
 angular.module('ndtndtApp')
-    .controller('BigAdminCtrl', function ($scope, UserServices, $rootScope, $mdDialog, $mdToast, $stateParams, shareData, ProductServices) {
+    .controller('BigAdminCtrl', function ($scope, UserServices, $rootScope, $mdDialog, $mdToast, $stateParams, shareData, ProductServices, $state) {
         $scope.profile = this;
         $scope.profile = $rootScope.currentUser.restinfo;
         $scope.profile.userpassword = "";
@@ -17,7 +17,7 @@ angular.module('ndtndtApp')
             $scope.getAllEmployee();
         }
         $scope.PostImage = function (data, errFiles) {
-            $scope.f = data;
+            $scope.fadmin = data;
         }
 
         var aDay = new Date();
@@ -41,7 +41,7 @@ angular.module('ndtndtApp')
         });
         $scope.user = this;
         $scope.user.signup = {};
-        $scope.user.signupF = signupF;
+        $scope.user.signupFAdmin = signupFAdmin;
         $scope.user.deleteEmployee = deleteEmployee;
         $scope.user.listsalecustomer_button = listsalecustomer_button;
         // $scope.user.updateEmployee = updateEmployee;
@@ -54,13 +54,17 @@ angular.module('ndtndtApp')
         $scope.user.staffrevenue_button = staffrevenue_button;
         $scope.user.customerrevenue_button = customerrevenue_button;
         $scope.user.revenuebymonth_button = revenuebymonth_button;
+        $scope.user.bestitemlist_button = bestitemlist_button;
 
-        function signupF() {
-            UserServices.CreateEmployee($scope.user.signup, $scope.f)
+        function signupFAdmin() {
+            UserServices.CreateEmployee($scope.user.signup, $scope.fadmin)
                 .then(function (data) {
                     if (data) {
+
                         $mdToast.showSimple("Employee Successfully created!");
+                        $scope.getAllEmployee();
                         $scope.user.signup = {};
+                        $scope.fadmin = null;
                     } else {
                         $mdToast.showSimple("Employee creation failed. Please try again.");
                     }
@@ -175,6 +179,16 @@ angular.module('ndtndtApp')
                     if (data.length > 0) {
                         console.log(data);
                         $scope.monthRevenue = data;
+                    }
+                });
+        }
+
+        function bestitemlist_button() {
+            ProductServices.bestitemlist()
+                .then(function (data) {
+                    if (data.length > 0) {
+                        console.log(data);
+                        $scope.bestitemlist = data;
                     }
                 });
         }

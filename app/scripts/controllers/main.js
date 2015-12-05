@@ -8,8 +8,22 @@
  * Controller of the ndtndtApp
  */
 angular.module('ndtndtApp')
-    .controller('MainCtrl', function ($rootScope, UserServices) {
+    .controller('MainCtrl', function ($rootScope, UserServices, ProductServices, $scope) {
+        ProductServices.staffpicks()
+            .then(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        $scope.staffPicksItems = data[0];
+                    } else {
+                        $scope.staffPicksItems = data;
+                    }
+                }
+
+            });
+
         var main = this;
+
+
     }).config(function ($mdThemingProvider) {
         $mdThemingProvider.definePalette('ndtndt', {
             "50": "#ffffff",

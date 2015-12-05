@@ -5,10 +5,10 @@
                 <md-card>
                     <md-card-header>
                         <md-card-avatar>
-                            <img class="md-user-avatar" data-ng-src="{{employee.personimg}}" />
+                            <img class="md-user-avatar" data-ng-src="{{person.personimg}}" />
                         </md-card-avatar>
                         <md-card-header-text class="name">
-                            <span class="md-subhead"> {{(employee.firstname + " " +employee.lastname) }}'s Profile</span>
+                            <span class="md-subhead"> {{(person.firstname + " " +person.lastname) }}'s Profile</span>
                         </md-card-header-text>
                     </md-card-header>
                     <md-card-content>
@@ -20,12 +20,12 @@
                         <div layout class="profile-info-text">
                             <md-list-item class="secondary-button-padding list-left" flex>
                                 <span class="sub-info">First Name: </span>
-                                <p>{{employee.firstname}}</p>
+                                <p>{{person.firstname}}</p>
                             </md-list-item>
 
                             <md-list-item class="secondary-button-padding list-right" flex>
                                 <span class="sub-info">Last Name: </span>
-                                <p>{{employee.lastname}}</p>
+                                <p>{{person.lastname}}</p>
 
                             </md-list-item>
                         </div>
@@ -33,12 +33,12 @@
                         <div layout class="profile-info-text">
                             <md-list-item class="secondary-button-padding list-left" flex>
                                 <span class="sub-info">Email: </span>
-                                <p>{{employee.email}}</p>
+                                <p>{{person.email}}</p>
                             </md-list-item>
 
                             <md-list-item class="secondary-button-padding list-right" flex>
                                 <span class="sub-info">Address: </span>
-                                <p>{{employee.address}}</p>
+                                <p>{{person.address}}</p>
 
                             </md-list-item>
                         </div>
@@ -46,15 +46,15 @@
                         <div layout class="profile-info-text">
                             <md-list-item class="secondary-button-padding width-short" flex>
                                 <span class="sub-info">City: </span>
-                                <p>{{employee.city}}</p>
+                                <p>{{person.city}}</p>
                             </md-list-item>
                             <md-list-item class="secondary-button-padding width-short" flex>
                                 <span class="sub-info">State: </span>
-                                <p>{{employee.state}}</p>
+                                <p>{{person.state}}</p>
                             </md-list-item>
                             <md-list-item class="secondary-button-padding width-short" flex>
                                 <span class="sub-info">ZipCode: </span>
-                                <p>{{employee.zipcode}}</p>
+                                <p>{{person.zipcode}}</p>
 
                             </md-list-item>
 
@@ -63,12 +63,12 @@
                         <div layout class="profile-info-text">
                             <md-list-item class="secondary-button-padding list-left" flex>
                                 <span class="sub-info">Telephone: </span>
-                                <p>{{employee.telephone}}</p>
+                                <p>{{person.telephone}}</p>
                             </md-list-item>
 
                             <md-list-item class="secondary-button-padding list-left" flex>
                                 <span class="sub-info">Startdate: </span>
-                                <p>{{employee.startdate | date}}</p>
+                                <p>{{person.startdate | date}}</p>
                             </md-list-item>
 
                         </div>

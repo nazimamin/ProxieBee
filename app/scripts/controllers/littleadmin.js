@@ -48,11 +48,13 @@ angular.module('ndtndtApp')
         $scope.user.recordsale = recordsale;
         $scope.user.postStaffPicks = postStaffPicks;
         $scope.user.deletestaffpicks = deletestaffpicks;
+        $scope.user.postuserpicks = postuserpicks;
 
         function signupF() {
             UserServices.signup($scope.user.signup, $scope.f)
                 .then(function (data) {
                     if (data) {
+                        $scope.getCustomerEmailLists();
                         $mdToast.showSimple("Customer Successfully created!");
                         $scope.user.signup = {};
                     } else {
@@ -66,15 +68,16 @@ angular.module('ndtndtApp')
         function deleteEmployee(data) {
             if (data) {
                 data.ssn = data.customerid;
-                console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(data));
                 UserServices.DeleteProfile(data)
                     .then(function (data) {
                         console.log(data);
                         if (data.status == 'success') {
                             console.log(data.status);
+                            $scope.getCustomerEmailLists();
                             $mdToast.showSimple("Customer Deleted Successfully!");
                         } else {
-                            $mdToast.showSimple(data.status);
+                            $mdToast.showSimple("Deletion failed. " + data.status);
                         }
                     }, function () {
                         $mdToast.showSimple("Customer Deletion failed!");
@@ -92,10 +95,10 @@ angular.module('ndtndtApp')
                     .then(function (data) {
                         console.log(data);
                         if (data.status == 'success') {
-                            console.log(data.status);
+                            $scope.getAuctionListsByMonitor($rootScope.currentUser.id);
                             $mdToast.showSimple("Recorded sale Successfully!");
                         } else {
-                            $mdToast.showSimple(data.status);
+                            $mdToast.showSimple("Record sale failed. " + data.status);
                         }
                     }, function () {
                         $mdToast.showSimple("Record sale failed!");
@@ -128,7 +131,7 @@ angular.module('ndtndtApp')
             UserServices.GetEmployees()
                 .then(function (data) {
                     if (data.length > 0) {
-                        $scope.employees = data;
+                        $scope.customerrep = data;
                     }
                 });
 
@@ -147,13 +150,23 @@ angular.module('ndtndtApp')
                     $mdToast.showSimple("Deleted Successfully");
                 });
         }
-        $scope.showUpdateDialog = function (ev, data) {
+
+        function postuserpicks(id) {
+            console.log($scope.user.auctionid1);
+            ProductServices.postuserpicks(id)
+                .then(function (data) {
+                    console.log(data);
+                    $mdToast.showSimple("Added Successfully");
+                });
+        }
+
+        $scope.showCustomerUpdateDialog = function (ev, data) {
             console.log(data);
             $mdDialog.show({
                 locals: {
                     auctionDataFromProductsCtrl: data
                 },
-                controller: UpdateDialogController,
+                controller: UpdateCustomerDialogController,
                 templateUrl: 'views/edituser.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
@@ -161,8 +174,8 @@ angular.module('ndtndtApp')
             });
         }
         $scope.viewperson = function (data, ev) {
-            $scope.employee = data;
-            console.log($scope.employee);
+            $scope.person = data;
+            console.log($scope.person);
             $mdDialog.show({
                 locals: {
                     auctionDataFromProductsCtrl: data
@@ -178,13 +191,13 @@ angular.module('ndtndtApp')
     });
 
 function ViewPersonController($scope, $mdDialog, shareData, auctionDataFromProductsCtrl, UserServices, $mdToast) {
-    $scope.employee = auctionDataFromProductsCtrl;
+    $scope.person = auctionDataFromProductsCtrl;
     $scope.close = function () {
         $mdDialog.hide();
     };
 }
 
-function UpdateDialogController($scope, $mdDialog, shareData, auctionDataFromProductsCtrl, UserServices, $mdToast) {
+function UpdateCustomerDialogController($scope, $mdDialog, shareData, auctionDataFromProductsCtrl, UserServices, $mdToast) {
     $scope.customer = auctionDataFromProductsCtrl;
     $scope.customer.UpdateEmployee = updateEmployee;
     $scope.customer.UpdateImage = updateImage;
@@ -199,6 +212,13 @@ function UpdateDialogController($scope, $mdDialog, shareData, auctionDataFromPro
         UserServices.UpdateProfile(data, $scope.customer.ff)
             .then(function (data) {
                 if (data) {
+                    UserServices.GetCustomers()
+                        .then(function (data) {
+                            if (data.length > 0) {
+                                console.log(data);
+                                // $scope.customer = data;
+                            }
+                        });
                     $mdToast.showSimple("Profile updated successfully!");
                     $scope.close();
                 } else {

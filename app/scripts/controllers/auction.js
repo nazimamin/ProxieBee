@@ -8,7 +8,7 @@
  * Controller of the desktopApp
  */
 angular.module('ndtndtApp')
-    .controller('AuctionCtrl', function ($scope, $rootScope, ProductServices, $q, $mdDialog, $mdToast) {
+    .controller('AuctionCtrl', function ($scope, $rootScope, ProductServices, $q, $mdDialog, $mdToast, $state) {
         $scope.seller = $rootScope.currentUser.restinfo;
 
         $scope.auction = this;
@@ -104,12 +104,13 @@ angular.module('ndtndtApp')
             ProductServices.createAuction($scope.auction.info, $scope.f)
                 .then(function (data) {
                     if (data) {
-                        /*$rootScope.currentUser.id = data.customerid;
-                        $rootScope.currentUser.role = data.role;
-                        $rootScope.currentUser.personimg = data.personimg;
-                        $rootScope.currentUser.restinfo = data;
-                        */
-                        console.log(data);
+                        $mdToast.showSimple("Posting Auction Successfull!");
+                        ProductServices.getAllProducts()
+                            .then(function (data) {
+                                $rootScope.items = data;
+                                $state.go('products');
+                            });
+
                         $scope.close();
                     } else {
                         $rootScope.currentUser = {};

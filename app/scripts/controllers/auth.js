@@ -77,6 +77,13 @@ angular.module('ndtndtApp')
                         $rootScope.currentUser.restinfo = data;
                         $window.sessionStorage.setItem('currentUser', JSON.stringify(data));
                         $scope.close();
+                        if ($rootScope.currentUser.admin == '1') {
+                            $state.go('littleadmin');
+                        } else if ($rootScope.currentUser.admin == '0') {
+                            $state.go('bigadmin')
+                        } else {
+                            $state.go('profile');
+                        }
                     } else {
                         $rootScope.currentUser = {};
                         $mdToast.showSimple("Login failed. Please try again.");

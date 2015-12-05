@@ -46,10 +46,10 @@
                     </div>
                 </div>
                 <div flex>
-                    <form name="bid" ng-submit="bid.$valid && auction.post()" novalidate>
+                    <form name="bid" ng-submit="bid.$valid && product.post()" novalidate>
                         <md-input-container required class="md-block" md-is-error="bid.bidamount.$invalid && (bid.$submitted || bid.bidamount.$touched)">
                             <label class="mdi mdi-cart"> Enter Bid Amount</label>
-                            <input name="bidamount" ng-model="auction.bidprice" required type="number" min="{{auction.bidincrement}}">
+                            <input name="bidamount" ng-model="product.bidprice" required type="number" min="{{auction.bidincrement}}">
                             <div ng-messages=" bid.bidamount.$error " ng-if="bid.$submitted || bid.bidamount.$invalid">
                                 <div ng-message="required ">bidamount can't be empty.</div>
                                 <div ng-message="min">Bid amount atleast be {{auction.bidincrement | currency}}</div>
@@ -63,9 +63,9 @@
     </md-card>
     <div class="product-single create-auction  biddialog">
         <md-content layout-padding>
-            <md-card ng-show="auctionhistory">
+            <md-card ng-if="auctionhistory">
                 <md-subheader class="md-no-sticky">BIDDING HISTORY</md-subheader>
-                <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
+                <!--<md-subheader class="md-no-sticky">Select</md-subheader>
                 <md-list-item ng-repeat="person in auctionhistory.slice().reverse()">
                     <img alt="{{ person.firstname }}" ng-src="../images/placeholder.jpg" class="md-avatar" />
 
@@ -74,13 +74,35 @@
                     <md-icon class="mdi mdi-crown" ng-show="person.currentwinner == person.bidder" aria-label="Delete" class="md-secondary md-hue-3"></md-icon>
                     <md-divider md-inset ng-if="!$last"></md-divider>
                 </md-list-item>
+-->
+                <md-list-item>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Bidder</th>
+                                <th>Current Bid</th>
+                                <th>Bid Increment</th>
+                                <th>Bid Winner</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="person in auctionhistory.slice().reverse()">
+                            <tr>
+                                <td>{{(person.bidder) | uppercase}}</td>
+                                <td>{{person.currentbid | currency}}</td>
+                                <td>{{person.bidincrement | currency}}</td>
+                                <td class="mdi mdi-crown">{{person.currentwinner | uppercase}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-list-item>
+
             </md-card>
         </md-content>
     </div>
 
     <md-card-actions layout="row ">
         <span flex></span>
-        <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="auction.post() ">
+        <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="product.post() ">
             PLACE BID
         </md-button>
     </md-card-actions>

@@ -26,8 +26,10 @@ function ProductServices($q, $http, $rootScope, Upload) {
         recordSale: recordSale,
         staffpicks: staffpicks,
         postStaffpicks: postStaffpicks,
-        deleteStaffpicks: deleteStaffpicks
-
+        deleteStaffpicks: deleteStaffpicks,
+        bestitemlist: bestitemlist,
+        postuserpicks: postuserpicks,
+        getuserpicks: getuserpicks
     };
 
 
@@ -71,7 +73,6 @@ function ProductServices($q, $http, $rootScope, Upload) {
         $http.get($rootScope.restServer + '/topcategory')
             .success(function (res) {
                 defer.resolve(res);
-
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -83,12 +84,13 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function getCategoryOptions() {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/categoryoptions')
-            .success(function (res) {
-                if (res[0].length > 1) {
-                    console.log(res[0]);
-                    defer.resolve(res[0]);
-                } else {
-                    defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
                 }
             })
             .error(function (err, status) {
@@ -124,6 +126,15 @@ function ProductServices($q, $http, $rootScope, Upload) {
             });
         return defer.promise;
     }
+    /*
+                    if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
+    */
 
     //pllace a bid
     function placeBid(data) {
@@ -181,13 +192,15 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function getMonitors() {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/monitors')
-            .success(function (res) {
-                if (res[0].length > 1) {
-                    console.log(res[0]);
-                    defer.resolve(res[0]);
-                } else {
-                    defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
                 }
+
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -200,14 +213,13 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function getAuctionHistory(id) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/auctionhistory/' + id)
-            .success(function (res) {
-                console.log(res);
-                if (res instanceof Array && res[0] && res[0].length > 1) {
-                    console.log(res);
-                    defer.resolve(res[0]);
-                } else {
-                    res = [res];
-                    defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
                 }
             })
             .error(function (err, status) {
@@ -220,8 +232,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function listOfitemsByitemID(id) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/listofsalesbyitemname/' + id)
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -233,8 +251,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function listofsalesbycustomerid(id) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/listofsalesbycustomerid/' + id)
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -246,8 +270,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function SalesReport() {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/salesreport')
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -259,21 +289,32 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function revenueitemtype(id) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/revenuebytype/' + id)
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
             })
-
         return defer.promise;
     }
 
     function revenueitemid(id) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/revenuebyitem/' + id)
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -285,8 +326,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function revenuebysellerid(id) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/revenuebysellerid/' + id)
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -298,8 +345,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function revenuebystaff() {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/staffrevenue')
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -311,8 +364,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function revenuebycustomer() {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/customerrevenue')
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -324,8 +383,33 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function revenuebymonth() {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/salesreport')
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+    function bestitemlist() {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/bestitemlist')
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -337,14 +421,13 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function getListByMonitor(id) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/auctionlistbymonitor/' + id)
-            .success(function (res) {
-                console.log(res);
-                if (res instanceof Array && res[0] && res[0].length > 1) {
-                    console.log(res);
-                    defer.resolve(res[0]);
-                } else {
-                    res = [res];
-                    defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
                 }
             })
             .error(function (err, status) {
@@ -359,8 +442,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
 
         $http.get($rootScope.restServer + '/recordsale/' + data.auctionid)
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -372,8 +461,14 @@ function ProductServices($q, $http, $rootScope, Upload) {
     function staffpicks() {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/staffpicks')
-            .success(function (res) {
-                defer.resolve(res);
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
             })
             .error(function (err, status) {
                 defer.reject(err);
@@ -395,7 +490,6 @@ function ProductServices($q, $http, $rootScope, Upload) {
                 }
             })
             .success(function (res) {
-
                 defer.resolve(res);
             })
             .error(function (err, status) {
@@ -429,4 +523,43 @@ function ProductServices($q, $http, $rootScope, Upload) {
             });
         return defer.promise;
     }
+
+    function postuserpicks(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/userpicks/' + id)
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+        return defer.promise;
+    }
+
+    function getuserpicks(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/getuserpicks/' + id)
+            .success(function (data) {
+                if (data && data.length > 0) {
+                    if (data.length == 1 && data[0][0]) {
+                        defer.resolve(data[0]);
+                    } else {
+                        defer.resolve(data);
+                    }
+                }
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
+
 }

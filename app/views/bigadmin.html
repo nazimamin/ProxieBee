@@ -92,6 +92,7 @@
                                 <md-list-item ng-repeat="person in employees">
                                     <img alt="{{ person.firstname }}" ng-src="{{ person.personimg }}" class="md-avatar" />
                                     <span>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
+                                    <span>{{person.customerid}}</span>
                                     <span>{{person.hourlyrate | currency}}/hr</span>
                                     <md-icon md-svg-icon="../images/pencil.svg" ng-click="showUpdateDialog($event, person)" aria-label="Update" class="md-primary md-hue-3" class="pencil"></md-icon>
                                     <md-icon md-svg-icon="../images/delete.svg" ng-click="user.deleteEmployee(person)" aria-label="Delete" class="md-secondary md-hue-3"></md-icon>
@@ -104,254 +105,276 @@
                 <md-tab id="list-of-items" label="List of Sales">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
-                            <md-card class="fix-card">
+                            <!--   <md-card class="fix-card">-->
+
+                            <md-card>
                                 <md-subheader class="md-no-sticky">Sales Report</md-subheader>
-                                <md-card>
-                                    <md-input-container class="width-fifty">
-                                        <md-button ng-click="user.revenuebymonth_button()" class="md-primary mdi mdi-marker-check" aria-label="Close form">
-                                            Click to generate Sales Report.
-                                        </md-button>
-                                    </md-input-container>
-                                    <md-list-item ng-repeat="person in monthRevenue">
+                                <md-input-container class="width-fifty">
+                                    <md-button ng-click="user.revenuebymonth_button()" class="md-primary mdi mdi-marker-check" aria-label="Close form">
+                                        Click to generate Sales Report.
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="monthRevenue">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Sales Month</th>
+                                                <th>Sales Year</th>
+                                                <th>Total Sales</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in monthRevenue">
+                                            <tr>
+
+                                                <td>{{person.salesmonth - 1 | date:"MMMM"}}</td>
+                                                <td>{{person.salesyear}}</td>
+                                                <td>{{person.totalsales | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </md-list-item>
+                            </md-card>
+                            <md-card>
+                                <md-subheader class="md-no-sticky">Best Item List</md-subheader>
+                                <md-input-container class="width-fifty">
+                                    <md-button ng-click="user.bestitemlist_button()" class="md-primary mdi mdi-marker-check" aria-label="Best Item">
+                                        Click to generate Best Item List
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="bestitemlist">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Item Name</th>
+                                                <th>Copies Sold</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in bestitemlist">
+                                            <tr>
+                                                <td>{{person.itemname | uppercase}}</td>
+                                                <td>{{person.copiessold}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </md-list-item>
+                            </md-card>
+                            <md-card>
+                                <md-subheader class="md-no-sticky">Search for List of Sales by Customer ID</md-subheader>
+                                <md-input-container class="width-fifty">
+                                    <label>Enter customer id</label>
+                                    <input name="listsalecustomer" ng-model="listsalecustomer" type="text">
+                                    <md-button ng-click="user.listsalecustomer_button(listsalecustomer)" class="md-primary md-primary mdi mdi-marker-check" aria-label="Close form">
+                                        Search
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="customerSales">
+                                    <div class="table-responsive">
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>Sales Month</th>
-                                                    <th>Sales Year</th>
-                                                    <th>Total Sales</th>
+                                                    <th>Image</th>
+                                                    <th>Title</th>
+                                                    <th>Category</th>
+                                                    <th>Current Bid</th>
+                                                    <th>Total Bidders</th>
+                                                    <th>Expires in</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody ng-repeat="person in customerSales">
                                                 <tr>
-
-                                                    <td>{{person.salesmonth - 1 | date:"MMMM"}}</td>
-                                                    <td>{{person.salesyear}}</td>
-                                                    <td>{{person.totalsales | currency}}</td>
+                                                    <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
+                                                    <td>{{person.itemname | uppercase}}</td>
+                                                    <td>{{person.itemtype | uppercase}}</td>
+                                                    <td>{{person.currentbid | currency}}</td>
+                                                    <td>{{person.totalbidders}}</td>
+                                                    <td>{{person.expiredates | date}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <md-divider md-inset ng-if="!$last"></md-divider>
-                                    </md-list-item>
-                                </md-card>
-                                <md-subheader class="md-no-sticky">Search for List of Sales by Customer ID</md-subheader>
-                                <md-card>
-                                    <md-input-container class="width-fifty">
-                                        <label>Enter customer id</label>
-                                        <input name="listsalecustomer" ng-model="listsalecustomer" type="text">
-                                        <md-button ng-click="user.listsalecustomer_button(listsalecustomer)" class="md-primary md-primary mdi mdi-marker-check" aria-label="Close form">
-                                            Search
-                                        </md-button>
-                                    </md-input-container>
-                                    <md-list-item ng-repeat="person in customerSales">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Image</th>
-                                                        <th>Title</th>
-                                                        <th>Category</th>
-                                                        <th>Current Bid</th>
-                                                        <th>Total Bidders</th>
-                                                        <th>Expires in</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
-                                                        <td>{{person.itemname | uppercase}}</td>
-                                                        <td>{{person.itemtype | uppercase}}</td>
-                                                        <td>{{person.currentbid | currency}}</td>
-                                                        <td>{{person.totalbidders}}</td>
-                                                        <td>{{person.expiredates | date}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <md-divider md-inset ng-if="!$last"></md-divider>
-                                    </md-list-item>
-                                </md-card>
-                                <md-subheader class="md-no-sticky">Search for List of Sales by Item Name</md-subheader>
-                                <md-card>
-                                    <md-input-container class="width-fifty">
-                                        <label>Enter item name</label>
-                                        <input name="listsalecustomer" ng-model="listsaleitem" type="text">
-                                        <md-button ng-click="user.listsalesitem_button(listsaleitem)" class="md-primary md-primary mdi mdi-marker-check" aria-label="Close form">
-                                            Search
-                                        </md-button>
-                                    </md-input-container>
-                                    <md-list-item>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Image</th>
-                                                        <th>Title</th>
-                                                        <th>Category</th>
-                                                        <th>Current Bid</th>
-                                                        <th>Total Bidders</th>
-                                                        <th>Expires in</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody ng-repeat="person in itemSales">
-                                                    <tr>
-                                                        <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
-                                                        <td>{{person.itemname | uppercase}}</td>
-                                                        <td>{{person.itemtype | uppercase}}</td>
-                                                        <td>{{person.currentbid | currency}}</td>
-                                                        <td>{{person.totalbidders}}</td>
-                                                        <td>{{person.expiredates | date}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <md-divider md-inset ng-if="!$last"></md-divider>
-                                    </md-list-item>
-                                </md-card>
+                                    </div>
+                                </md-list-item>
                             </md-card>
+
+                            <md-card>
+                                <md-subheader class="md-no-sticky">Search for List of Sales by Item Name</md-subheader>
+                                <md-input-container class="width-fifty">
+                                    <label>Enter item name</label>
+                                    <input name="listsalecustomer" ng-model="listsaleitem" type="text">
+                                    <md-button ng-click="user.listsalesitem_button(listsaleitem)" class="md-primary md-primary mdi mdi-marker-check" aria-label="Close form">
+                                        Search
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="itemSales">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Image</th>
+                                                    <th>Title</th>
+                                                    <th>Category</th>
+                                                    <th>Current Bid</th>
+                                                    <th>Total Bidders</th>
+                                                    <th>Expires in</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-repeat="person in itemSales">
+                                                <tr>
+                                                    <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
+                                                    <td>{{person.itemname | uppercase}}</td>
+                                                    <td>{{person.itemtype | uppercase}}</td>
+                                                    <td>{{person.currentbid | currency}}</td>
+                                                    <td>{{person.totalbidders}}</td>
+                                                    <td>{{person.expiredates | date}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </md-list-item>
+                            </md-card>
+                            <!--    </md-card>-->
                         </md-content>
                     </md-content>
                 </md-tab>
                 <md-tab id="list-of-revenue" label="Revenue">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
-                            <md-card class="fix-card">
-                                <md-subheader class="md-no-sticky">Search for revenue by particular item</md-subheader>
-                                <md-card>
-                                    <md-input-container class="width-fifty">
-                                        <label>Enter item name</label>
-                                        <input name="revenueitemid" ng-model="revenueitemid" type="text">
-                                        <md-button ng-click="user.revenueitemid_button(revenueitemid)" class="md-primary mdi mdi-marker-check" aria-label="Close form">
-                                            Search
-                                        </md-button>
-                                    </md-input-container>
-                                    <md-list-item>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Item Image</th>
-                                                    <th>Item Name</th>
-                                                    <th>Total Revenue Generated</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody ng-repeat="person in itemidrevenue">
-                                                <tr>
-                                                    <td> <img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
-                                                    <td>{{person.itemname | uppercase}}</td>
-                                                    <td>{{person.totalsales | currency}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <md-divider md-inset ng-if="!$last"></md-divider>
-                                    </md-list-item>
-                                </md-card>
-                                <md-subheader class="md-no-sticky">Search for revenue by particular item type</md-subheader>
-                                <md-card>
-                                    <md-input-container class="width-fifty">
-                                        <label>Enter item type</label>
-                                        <input name="revenueitemtype" ng-model="revenueitemtype" type="text">
-                                        <md-button ng-click="user.revenueitemtype_button(revenueitemtype)" class="md-primary mdi mdi-marker-check" aria-label="Close form">
-                                            Search
-                                        </md-button>
-                                    </md-input-container>
-                                    <md-list-item>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Category</th>
-                                                    <th>Total Revenue Generated</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody ng-repeat="person in itemtyperevenue">
-                                                <tr>
-                                                    <td>{{person.itemtype | uppercase}}</td>
-                                                    <td>{{person.totalsales | currency}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <md-divider md-inset ng-if="!$last"></md-divider>
-                                    </md-list-item>
-                                </md-card>
-                                <md-subheader class="md-no-sticky">Search for revenue by a particular seller</md-subheader>
-                                <md-card>
-                                    <md-input-container class="width-fifty">
-                                        <label>Enter a seller id</label>
-                                        <input name="revenuebysellerid" ng-model="revenuebysellerid" type="text">
-                                        <md-button ng-click="user.revenuebysellerid_button(revenuebysellerid)" class="md-primary mdi mdi-marker-check" aria-label="Close form">
-                                            Search
-                                        </md-button>
-                                    </md-input-container>
-                                    <md-list-item>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Seller Profile Image</th>
-                                                    <th>Seller Profile Name</th>
-                                                    <th>Renvenue Generated</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody ng-repeat="person in selleridrevenue">
-                                                <tr>
-                                                    <td> <img alt="{{ person.firstname }}" ng-src="{{ person.personimg }}" class="md-avatar" /></td>
-                                                    <td>{{(person.firstname +" "+ person.lastname) | uppercase}}</td>
-                                                    <td>{{person.totalsales | currency}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <md-divider md-inset ng-if="!$last"></md-divider>
-                                    </md-list-item>
-                                </md-card>
-                                <md-subheader class="md-no-sticky">Search for revenue by staffs</md-subheader>
-                                <md-card>
-                                    <md-input-container class="width-fifty">
-                                        <md-button ng-click="user.staffrevenue_button()" class="md-primary mdi mdi-marker-check" aria-label="Close form">
-                                            Click to generate staff revenue report.
-                                        </md-button>
-                                    </md-input-container>
-                                    <md-list-item>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Staff Profile Name</th>
-                                                    <th>Renvenue Generated</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody ng-repeat="person in staffRevenue">
-                                                <tr>
-                                                    <td>{{(person.firstname +" "+ person.lastname) | uppercase}}</td>
-                                                    <td>{{person.revenuegenerated | currency}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <md-divider md-inset ng-if="!$last"></md-divider>
-                                    </md-list-item>
-                                </md-card>
-                                <md-subheader class="md-no-sticky">Search for revenue by staffs</md-subheader>
-                                <md-card>
-                                    <md-input-container class="width-fifty">
-                                        <md-button ng-click="user.customerrevenue_button()" class="md-primary mdi mdi-marker-check" aria-label="Close form">
-                                            Click to generate customer revenue report.
-                                        </md-button>
-                                    </md-input-container>
-                                    <md-list-item>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Customer Profile Name</th>
-                                                    <th>Renvenue Generated</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody ng-repeat="person in customerRevenue">
-                                                <tr>
+                            <!-- <md-card class="fix-card"> -->
+                            <md-subheader class="md-no-sticky">Search for revenue by particular item</md-subheader>
+                            <md-card>
+                                <md-input-container class="width-fifty">
+                                    <label>Enter item name</label>
+                                    <input name="revenueitemid" ng-model="revenueitemid" type="text">
+                                    <md-button ng-click="user.revenueitemid_button(revenueitemid)" class="md-primary mdi mdi-marker-check" aria-label="Close form">
+                                        Search
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="itemidrevenue">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Item Image</th>
+                                                <th>Item Name</th>
+                                                <th>Total Revenue Generated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in itemidrevenue">
+                                            <tr>
+                                                <td> <img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
+                                                <td>{{person.itemname | uppercase}}</td>
+                                                <td>{{person.totalsales | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                                    <td>{{(person.firstname +" "+ person.lastname) | uppercase}}</td>
-                                                    <td>{{person.totalsales | currency}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <md-divider md-inset ng-if="!$last"></md-divider>
-                                    </md-list-item>
-                                </md-card>
+                                </md-list-item>
                             </md-card>
+                            <md-subheader class="md-no-sticky">Search for revenue by particular item type</md-subheader>
+                            <md-card>
+                                <md-input-container class="width-fifty">
+                                    <label>Enter item type</label>
+                                    <input name="revenueitemtype" ng-model="revenueitemtype" type="text">
+                                    <md-button ng-click="user.revenueitemtype_button(revenueitemtype)" class="md-primary mdi mdi-marker-check" aria-label="Close form">
+                                        Search
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="itemtyperevenue">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Category</th>
+                                                <th>Total Revenue Generated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in itemtyperevenue">
+                                            <tr>
+                                                <td>{{person.itemtype | uppercase}}</td>
+                                                <td>{{person.totalsales | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </md-list-item>
+                            </md-card>
+                            <md-subheader class="md-no-sticky">Search for revenue by a particular seller</md-subheader>
+                            <md-card>
+                                <md-input-container class="width-fifty">
+                                    <label>Enter a seller id</label>
+                                    <input name="revenuebysellerid" ng-model="revenuebysellerid" type="text">
+                                    <md-button ng-click="user.revenuebysellerid_button(revenuebysellerid)" class="md-primary mdi mdi-marker-check" aria-label="Close form">
+                                        Search
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="selleridrevenue">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Seller Profile Image</th>
+                                                <th>Seller Profile Name</th>
+                                                <th>Renvenue Generated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in selleridrevenue">
+                                            <tr>
+                                                <td> <img alt="{{ person.firstname }}" ng-src="{{ person.personimg }}" class="md-avatar" /></td>
+                                                <td>{{(person.firstname +" "+ person.lastname) | uppercase}}</td>
+                                                <td>{{person.totalsales | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </md-list-item>
+                            </md-card>
+                            <md-subheader class="md-no-sticky">Staff Generated Most Revenue</md-subheader>
+                            <md-card>
+                                <md-input-container class="width-fifty">
+                                    <md-button ng-click="user.staffrevenue_button()" class="md-primary mdi mdi-marker-check" aria-label="Close form">
+                                        Click to generate staff revenue report.
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="staffRevenue">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Staff Profile Name</th>
+                                                <th>Renvenue Generated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in staffRevenue">
+                                            <tr>
+                                                <td>{{(person.firstname +" "+ person.lastname) | uppercase}}</td>
+                                                <td>{{person.revenuegenerated | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </md-list-item>
+                            </md-card>
+                            <md-subheader class="md-no-sticky">Customer Generated Most Revenue</md-subheader>
+                            <md-card>
+                                <md-input-container class="width-fifty">
+                                    <md-button ng-click="user.customerrevenue_button()" class="md-primary mdi mdi-marker-check" aria-label="Close form">
+                                        Click to generate customer revenue report.
+                                    </md-button>
+                                </md-input-container>
+                                <md-list-item ng-if="customerRevenue">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer Profile Name</th>
+                                                <th>Renvenue Generated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="person in customerRevenue">
+                                            <tr>
+                                                <td>{{(person.firstname +" "+ person.lastname) | uppercase}}</td>
+                                                <td>{{person.totalsales | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </md-list-item>
+                            </md-card>
+                            <!-- </md-card> -->
                         </md-content>
                     </md-content>
                 </md-tab>
@@ -359,20 +382,20 @@
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>
-                                <form name="signup" ng-submit="signup.$valid && user.signupF()" novalidate>
+                                <form name="signup" ng-submit="signup.$valid && user.signupFAdmin()" novalidate>
                                     <md-card-header class="add-employee-header">
                                         <md-card-avatar>
-                                            <img class="md-user-avatar" ngf-src="!f.$error &amp;&amp; f" />
-                                            <md-button class="md-fab" aria-label="upload image" ng-hide="!f.$error &amp;&amp; f">
+                                            <img class="md-user-avatar" ngf-src="!fadmin.$error &amp;&amp; fadmin" />
+                                            <md-button class="md-fab" aria-label="upload image" ng-hide="!fadmin.$error &amp;&amp; fadmin">
                                                 <label for="file-input-admin">
                                                     <md-icon md-svg-icon="../images/camera.svg"></md-icon>
                                                 </label>
                                             </md-button>
-                                            <input id="file-input-admin" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                                            <input id="file-input-admin" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
 
                                         </md-card-avatar>
-                                        <h6 ng-hide="!f.$error &amp;&amp; f" aria-hidden="false">upload employee image</h6>
-                                        <md-card-header-text ng-show="!f.$error &amp;&amp; f">
+                                        <h6 ng-hide="!fadmin.$error &amp;&amp; fadmin" aria-hidden="false">upload employee image</h6>
+                                        <md-card-header-text ng-show="!fadmin.$error &amp;&amp; fadmin">
                                             <span class="md-subhead">Your employee will appear as</span>
                                             <span class="md-title">{{(user.signup.firstname + " " + user.signup.lastname) | uppercase}}</span>
                                         </md-card-header-text>
