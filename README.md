@@ -13,21 +13,26 @@ Technology used:
 
 ## Build & development & Dependencies front-end
 
-Clone `git clone https://github.com/NazimAmin/ndtndt` - 
+1. Clone `git clone https://github.com/NazimAmin/ndtndt` - 
 
-Run `npm install` to install node_modules
+2. Run `npm install` to install node_modules
 
-Run `bower install` to install bower_components
+3. Run `bower install` to install bower_components
 
-Run `grunt ` for building and `grunt serve` for preview.
+4. Run `grunt ` for building and `grunt serve` for preview.
 
 ## Build & development & Dependencies backend
 
-Clone `git clone https://github.com/JunXHuang/api.ndtndt` - 
+1. Clone `git clone https://github.com/JunXHuang/api.ndtndt` - 
 
-Run `pip install -r requirement.txt`
+2. Run `pip install -r requirement.txt`
 
-Run `Python api.py`
+3. Change database connection string in `ndtndt/ndtndt/ndtndt/__init__.py`
+
+4. Run tablequery.sql, insertquery.sql, and trigger.sql to populate the database `ndtndt/db` 
+
+5. Run `Python api.py`
+
 
 ####Logins 
 
