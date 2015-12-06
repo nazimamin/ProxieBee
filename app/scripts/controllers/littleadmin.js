@@ -48,7 +48,6 @@ angular.module('ndtndtApp')
         $scope.user.recordsale = recordsale;
         $scope.user.postStaffPicks = postStaffPicks;
         $scope.user.deletestaffpicks = deletestaffpicks;
-        $scope.user.postuserpicks = postuserpicks;
 
         function signupF() {
             UserServices.signup($scope.user.signup, $scope.f)
