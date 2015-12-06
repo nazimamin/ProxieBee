@@ -1,5 +1,6 @@
 <div class="container">
     <div class="bigadmin-page profile-page loginsignup create-auction">
+        <div cg-busy="bigadminpromise"></div>
         <div ng-controller="BigAdminCtrl" layout="column" ng-cloak>
             <md-tabs md-dynamic-height md-border-bottom md-center-tabs md-border-bottom md-autoselect md-selected="selectedIndex" md-border-bottom="" md-autoselect="">
                 <md-tab id="profile" label="My Profile">
@@ -85,6 +86,7 @@
                     </md-content>
                 </md-tab>
                 <md-tab id="employee-lists" label="Employee Lists">
+                    <div cg-busy="bigadminpromise"></div>
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>

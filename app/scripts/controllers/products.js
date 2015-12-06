@@ -9,7 +9,7 @@
  */
 angular.module('ndtndtApp')
     .controller('ProductsCtrl', function ($scope, ProductServices, $rootScope, $mdDialog, $mdToast) {
-        ProductServices.getAllProducts()
+        $scope.productspromise = ProductServices.getAllProducts()
             .then(function (data) {
                 if (data.length > 0) {
                     //$scope.items = data;

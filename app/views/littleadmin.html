@@ -1,5 +1,6 @@
 <div class="container">
     <div class="bigadmin-page profile-page loginsignup create-auction">
+        <div cg-busy="littleadminpromise"></div>
         <div ng-controller="LittleAdminCtrl" layout="column" ng-cloak>
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab id="profile" label="My Profile">
@@ -86,6 +87,7 @@
                     </md-content>
                 </md-tab>
                 <md-tab id="employee-lists" label="Rep Lists">
+                    <div cg-busy="littleadminpromiseEmployee"></div>
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>
@@ -102,6 +104,7 @@
                     </md-content>
                 </md-tab>
                 <md-tab id="customer-lists" label="Customer Lists">
+                    <div cg-busy="littleadminpromise"></div>
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>
@@ -120,6 +123,7 @@
                     </md-content>
                 </md-tab>
                 <md-tab id="customer-lists-monitors" label="Items to Monitor" ng-if="monitors">
+                    <div cg-busy="littleadminpromiseMonitor"></div>
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card>

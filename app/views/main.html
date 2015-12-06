@@ -1,6 +1,8 @@
 <!--
     Including Slider here.
 -->
+<div cg-busy="myPromise"></div>
+<div cg-busy="{promise:myPromise,message:'It’s not my fault.',templateUrl:'views/loader.html'}"></div>
 <div ng-include="'views/staffPicks.html'" class="container set-container-margin"></div>
 
 <section id="topseller" ng-controller="TopsellercatCtrl as top" flex ng-cloak>

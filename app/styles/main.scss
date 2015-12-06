@@ -70,19 +70,19 @@ $Swatch4: #4E4F69;
 $Swatch5: #DDD9E1;
 $Swatch6: #C5B2C6;
 $Swatch7: #A4AAC5;*/
-
+    
     .browsehappy {
         margin: 0.2em 0;
         background: #ccc;
         color: #000;
         padding: 0.2em 0;
     }
-
+    
     body {
         padding-top: 80px;
         background: $Swatch1;
     }
-
+    
     .navbar-default {
         top: 0;
         padding-top: 22px;
@@ -92,12 +92,12 @@ $Swatch7: #A4AAC5;*/
         color: $Swatch5;
         border-color: $Swatch3;
     }
-
+    
     .navbar-brand img {
         width: 44px;
         height: 34px;
     }
-
+    
     #search {
         width: 100%;
         top: 0;
@@ -108,7 +108,7 @@ $Swatch7: #A4AAC5;*/
         text-align: center;
         height: 34px !important;
     }
-
+    
     .search-input {
         float: left;
         display: inline-block;
@@ -122,33 +122,33 @@ $Swatch7: #A4AAC5;*/
         border-bottom-width: 1px;
         border-bottom-color: $Swatch6-navbar-color;
     }
-
+    
     input.search-input {
         /*width: 520px;*/
         background: url(../images/search-icon.png) no-repeat scroll 9px 9px;
         padding-left: 30px;
     }
-
+    
     ::-webkit-input-placeholder {
         text-align: center;
         color: $Swatch5-TEXT-COLOR;
     }
-
+    
     ::-moz-placeholder {
         text-align: center;
         color: $Swatch5-TEXT-COLOR;
     }
-
+    
     :-ms-input-placeholder {
         text-align: center;
         color: $Swatch5-TEXT-COLOR;
     }
-
+    
     input.search-input:focus {
         outline-width: 0;
         box-shadow: 0 0 0 1pt $Swatch6-navbar-color;
     }
-
+    
     .navbar ul {
         top: 0;
         padding: 0;
@@ -156,7 +156,7 @@ $Swatch7: #A4AAC5;*/
         vertical-align: text-top;
         vertical-align: top;
     }
-
+    
     .navbar-brand {
         padding: 0;
         padding-left: 15px;
@@ -165,13 +165,13 @@ $Swatch7: #A4AAC5;*/
             height: 34px;
         }
     }
-
+    
     .navbar-nav li a {
         display: inline;
         line-height: 0;
         color: $Swatch6-navbar-color !important;
     }
-
+    
     .login {
         line-height: 0;
         margin: 0;
@@ -182,14 +182,14 @@ $Swatch7: #A4AAC5;*/
         background: transparent;
         border: 0;
     }
-
+    
     .round-icond {
         border-radius: 50%;
     }
     /*li a[data-role="mobile"] {
   display: none;
 }*/
-
+    
     .navbar-toggle {
         border: none;
         background: transparent !important;
@@ -208,14 +208,14 @@ $Swatch7: #A4AAC5;*/
             transform: rotate(90deg);
         }
     }
-
+    
     .marketing,
     .footer {
         padding-left: 15px;
         padding-right: 15px;
     }
     /* Custom page header */
-
+    
     .header {
         /*border-bottom: 1px solid #e5e5e5;*/
         margin-bottom: 10px;
@@ -226,46 +226,46 @@ $Swatch7: #A4AAC5;*/
             padding-bottom: 19px;
         }
     }
-
+    
     .main-page {
         opacity: 1;
         background-color: #F8F9FB !important;
     }
-
+    
     .main-page.ng-enter,
     .main-page.ng-leave {
         transition: all 800ms ease-out 80ms;
     }
-
+    
     .main-page.ng-enter {
         opacity: 0;
     }
-
+    
     .main-page.ng-enter-active {
         opacity: 1;
     }
-
+    
     .main-page.ng-leave {
         opacity: 1;
     }
-
+    
     .main-page.ng-leave-active {
         opacity: 0;
     }
     /* Make the masthead heading the same height as the navigation */
     /* Custom page footer */
-
+    
     .footer {
         padding-top: 19px;
         color: #777;
         border-top: 1px solid #e5e5e5;
     }
-
+    
     .container-narrow > hr {
         margin: 30px 0;
     }
     /* Main marketing message and sign up button */
-
+    
     .jumbotron {
         text-align: center;
         border-bottom: 1px solid #e5e5e5;
@@ -275,7 +275,7 @@ $Swatch7: #A4AAC5;*/
         }
     }
     /* Supporting marketing content */
-
+    
     .marketing {
         margin: 40px 0;
         p + h4 {
@@ -283,7 +283,7 @@ $Swatch7: #A4AAC5;*/
         }
     }
     /* Responsive: Portrait tablets and up */
-
+    
     @media not all and (min-width: 768px) {
         .container {
             max-width: 730px;
@@ -304,13 +304,13 @@ $Swatch7: #A4AAC5;*/
             border-bottom: 0;
         }
     }
-
+    
     @media all and (max-width: 1000px) {
         /* input.search-input {
         width: 420px;
     }*/
     }
-
+    
     @media all and (max-width: 768px) {
         .set-container-margin {
             margin-left: 20px;
@@ -350,11 +350,11 @@ $Swatch7: #A4AAC5;*/
             }
         }
     }
-
+    
     .staffPicks-slider .slider {
         height: 88%;
     }
-
+    
     .slick-dots {
         text-align: left !important;
         li {
@@ -367,12 +367,12 @@ $Swatch7: #A4AAC5;*/
             }
         }
     }
-
+    
     .slick-prev:before,
     .slick-next:before {
         color: $Swatch3;
     }
-
+    
     .staffPicks-slider {
         margin-top: 20px;
         margin-bottom: 30px;
@@ -382,7 +382,7 @@ $Swatch7: #A4AAC5;*/
             width: inherit;
         }
     }
-
+    
     .staffpicks-item-container {
         .left-side {
             float: left;
@@ -583,7 +583,7 @@ $Swatch7: #A4AAC5;*/
             }
         }
     }
-
+    
     .verticle-divider {
         height: 4em;
         border-right: 1px solid #534E4F;
@@ -594,7 +594,7 @@ $Swatch7: #A4AAC5;*/
         float: left;
         transform: rotate(25deg);
     }
-
+    
     section#topseller {
         padding-bottom: 60px;
         img {
@@ -678,7 +678,7 @@ $Swatch7: #A4AAC5;*/
             }
         }
     }
-
+    
     section#products {
         padding-top: 30px;
         background: #F8F9FB;
@@ -833,90 +833,90 @@ $Swatch7: #A4AAC5;*/
             }
         }
     }
-
+    
     md-select-menu.md-default-theme,
     md-select-menu md-optgroup {
         z-index: 99999;
     }
-
+    
     //specific to mdi icons
     .mdi::before {
         font-size: 16px;
         line-height: 14px;
     }
-
+    
     .btn .mdi::before {
         position: relative;
         top: 4px;
     }
-
+    
     .btn-xs .mdi::before {
         font-size: 18px;
         top: 3px;
     }
-
+    
     .btn-sm .mdi::before {
         font-size: 18px;
         top: 3px;
     }
-
+    
     .dropdown-menu .mdi {
         width: 18px;
     }
-
+    
     .dropdown-menu .mdi::before {
         position: relative;
         top: 4px;
         left: -8px;
     }
-
+    
     .nav .mdi::before {
         position: relative;
         top: 4px;
     }
-
+    
     .navbar .navbar-toggle .mdi::before {
         position: relative;
         top: 4px;
         color: #FFF;
     }
-
+    
     .breadcrumb .mdi::before {
         position: relative;
         top: 4px;
     }
-
+    
     .breadcrumb a:hover {
         text-decoration: none;
     }
-
+    
     .breadcrumb a:hover span {
         text-decoration: underline;
     }
-
+    
     .alert .mdi::before {
         position: relative;
         top: 4px;
         margin-right: 2px;
     }
-
+    
     .input-group-addon .mdi::before {
         position: relative;
         top: 3px;
     }
-
+    
     .navbar-brand .mdi::before {
         position: relative;
         top: 2px;
         margin-right: 2px;
     }
-
+    
     .list-group-item .mdi::before {
         position: relative;
         top: 3px;
         left: -3px
     }
-
+    
     // this is login and singup page style
     .loginsignup {
         md-card md-card-header:last-child md-card-avatar {
@@ -992,13 +992,13 @@ $Swatch7: #A4AAC5;*/
             background: $Swatch6-navbar-color;
         }
     }
-
+    
     .auction-button {
         .md-button.md-raised:not([disabled]) {
             box-shadow: none !important;
         }
     }
-
+    
     .create-auction {
         #file-input-auction {
             display: none;
@@ -1038,7 +1038,7 @@ $Swatch7: #A4AAC5;*/
             padding-top: 0 !important;
         }
     }
-
+    
     md-card md-card-header md-card-avatar {
         width: 56px;
         height: 56px;
@@ -1048,7 +1048,7 @@ $Swatch7: #A4AAC5;*/
         }
         margin-right: 10px!important;
     }
-
+    
     .biddialog {
         md-dialog {
             margin-top: 50px;
@@ -1107,11 +1107,11 @@ $Swatch7: #A4AAC5;*/
             }
         }
     }
-
+    
     .md-card-image {
         max-height: 250px !important;
     }
-
+    
     .profile-page {
         .width-short {
             float: left;
@@ -1262,7 +1262,7 @@ $Swatch7: #A4AAC5;*/
             float: left !important;
         }
     }
-
+    
     .bigadmin-page {
         .item-image {
             float: right;
@@ -1292,7 +1292,7 @@ $Swatch7: #A4AAC5;*/
             color: rgb(159, 168, 213);
         }
     }
-
+    
     md-list-item > div.md-primary > md-icon:not(.md-avatar-icon),
     md-list-item > div.md-secondary > md-icon:not(.md-avatar-icon),
     md-list-item > md-icon:first-child:not(.md-avatar-icon),
@@ -1307,7 +1307,7 @@ $Swatch7: #A4AAC5;*/
         box-sizing: content-box;
         padding-bottom: 6%;
     }
-
+    
     .create-auction md-icon.md-ndtndt-theme {
         color: rgb(159, 168, 213);
         background-repeat: no-repeat no-repeat;
@@ -1317,7 +1317,7 @@ $Swatch7: #A4AAC5;*/
         height: 24px;
         width: 24px;
     }
-
+    
     .updateDialog {
         #file-inputt {
             display: none;
@@ -1435,29 +1435,29 @@ $Swatch7: #A4AAC5;*/
             margin-right: 5px;
         }
     }
-
+    
     [md-center-tabs] md-pagination-wrapper {
         position: relative;
         width: initial;
         margin: 0 auto;
         text-align: center;
     }
-
+    
     [md-center-tabs] md-pagination-wrapper .md-tab {
         float: none;
         display: inline-block;
     }
-
+    
     md-pagination-wrapper {
         width: auto !important;
     }
-
+    
     md-list-item md-divider[md-inset] {
         left: 70px;
         width: calc(100% - 96px);
         margin: 0;
     }
-
+    
     #list-of-items {
         md-input-container .md-input {
             width: 75% !important;
@@ -1466,7 +1466,7 @@ $Swatch7: #A4AAC5;*/
             width: 75% !important;
         }
     }
-
+    
     .more-padding {
         .md-subheader.md-ndtndt-theme {
             color: rgba(0, 0, 0, 0.54) !important;
@@ -1509,13 +1509,13 @@ $Swatch7: #A4AAC5;*/
             }
         }
     }
-
+    
     .width-control {
         width: 600px !important;
         margin-left: auto;
         margin-right: auto;
     }
-
+    
     .product-single {
         md-dialog md-card .md-title {
             padding-top: 4px;
@@ -1543,11 +1543,11 @@ $Swatch7: #A4AAC5;*/
             border-bottom-right-radius: 10px;
         }
     }
-
+    
     #file-input-admin-customer {
         display: none;
     }
-
+    
     .table > thead > tr > th,
     .table > thead > tr > td,
     .table > tbody > tr > th,
@@ -1559,23 +1559,43 @@ $Swatch7: #A4AAC5;*/
         vertical-align: top;
         border-top: 2px solid #ddd;
     }
-
+    
     .mdi-crown:before {
         color: $Swatch6-navbar-color;
     }
-
+    
     .mdi.mdi-star:before {
         margin-top: -10px;
         color: #645B9A;
     }
-
+    
     .mdi {
         margin-top: -2px;
         height: inherit;
     }
-
+    
     md-icon.pencil-right {
         margin-right: 50px;
         text-align: right;
         right: 0 !important;
+    }
+    
+    .loader {
+        text-align: center;
+        position: absolute;
+        left: 40%;
+        height: 200px;
+        width: 200px;
+        img {
+            background-position: 50% 20px;
+            width: 200px;
+            height: 200px;
+        }
+        .loader-message {
+            top: 100px;
+            width: 100%;
+            text-shadow: 1px 1px 2px white, -1px -1px 2px white, -4px 4px 4px white, -4px 4px 4px white;
+            color: red;
+            font-size: 26px;
+        }
     }

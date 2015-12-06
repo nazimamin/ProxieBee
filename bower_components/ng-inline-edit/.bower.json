@@ -56,7 +56,6 @@
     "commit": "961ee497208939ab44d07073b740ead72751ef2c"
   },
   "_source": "git://github.com/tameraydin/ng-inline-edit.git",
-  "_target": "~0.7.0",
-  "_originalSource": "ng-inline-edit",
-  "_direct": true
+  "_target": "0.7.0",
+  "_originalSource": "ng-inline-edit"
 }

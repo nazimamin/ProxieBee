@@ -24,7 +24,8 @@ angular
     'ng-currency',
     'ProductServices',
     'UserServices',
-    'angularInlineEdit'
+    'angularInlineEdit',
+    'cgBusy'
 	])
     .controller('RootCtrl', ['$rootScope', '$q', '$state', 'UserServices', '$window', '$scope', RootCtrl]);
 

@@ -9,17 +9,6 @@
  */
 angular.module('ndtndtApp')
     .controller('MainCtrl', function ($rootScope, UserServices, ProductServices, $scope) {
-        ProductServices.staffpicks()
-            .then(function (data) {
-                if (data) {
-                    if (data.length == 1 && data[0][0]) {
-                        $scope.staffPicksItems = data[0];
-                    } else {
-                        $scope.staffPicksItems = data;
-                    }
-                }
-
-            });
 
         var main = this;
 

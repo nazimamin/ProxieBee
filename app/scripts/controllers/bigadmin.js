@@ -93,7 +93,7 @@ angular.module('ndtndtApp')
         }
 
         $scope.getAllEmployee = function () {
-            UserServices.GetEmployees()
+            $scope.bigadminpromise = UserServices.GetEmployees()
                 .then(function (data) {
                     if (data) {
                         $scope.employees = data;

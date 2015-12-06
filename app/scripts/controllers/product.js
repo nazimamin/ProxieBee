@@ -37,12 +37,12 @@ angular.module('ndtndtApp')
         }
 
 
-        ProductServices.getProduct($stateParams.auctionId)
+        $scope.productpromise = ProductServices.getProduct($stateParams.auctionId)
             .then(function (data) {
                 $scope.auction = data;
 
             });
-        ProductServices.getAuctionHistory($stateParams.auctionId)
+        $scope.auctionhistorypromise = ProductServices.getAuctionHistory($stateParams.auctionId)
             .then(function (data) {
                 $scope.auctionhistory = data;
 

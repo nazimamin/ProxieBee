@@ -1,4 +1,5 @@
 <div class="staffPicks-slider" ng-controller="StaffPicksCtrl" flex ng-cloak>
+    <div cg-busy="staffpickspromise"></div>
     <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1>
         <div ng-repeat="item in staffPicksItems">
             <div class="staffpicks-item-container">
@@ -7,7 +8,7 @@
                         <h3>{{item.itemname | uppercase}}</h3>
                         <span><i class="mdi mdi-eye"></i> {{item.totalbidders}} 
                             <span ng-if="item.totalbidders > 1">bidders</span>
-                             <span ng-if="item.totalbidders <= 1">bidder</span>
+                        <span ng-if="item.totalbidders <= 1">bidder</span>
                         </span>
                         <span><i class="mdi mdi-timer "></i>expires on {{item.expiredates | date}} </span>
 

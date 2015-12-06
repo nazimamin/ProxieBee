@@ -1,4 +1,5 @@
 <div class="product-single width-control create-auction  biddialog" ng-controller="ProductCtrl as product" ng-cloak>
+    <div cg-busy="productpromise"></div>
     <md-card ng-if='auction.itemname'>
         <div class="reserved-top" ng-if="auction.reserveprice">
             THIS ITEM HAS RESERVED PRICE SET BY SELLER
@@ -67,8 +68,8 @@
             </md-button>
         </md-card-actions>
     </md-card>
-    <md-card ng-if='!auction.itemname'>
-        <md-card-title style="text-align:center; color: #9E7393">
+    <md-card ng-if='productpromise'>
+        <md-card-title style="text-align:center; color: #9E7393" ng-if="!auction.itemname">
             <md-card-title-text>
                 <h4>This associated item is SOLD!</h4>
                 <h4 ng-if="auctionhistory">Though, the bidding activity is avilable below!</h4>
@@ -76,8 +77,9 @@
 
         </md-card-title>
     </md-card>
-    <md-card ng-if="auctionhistory">
 
+    <md-card ng-if="auctionhistorypromise">
+        <div cg-busy="auctionhistorypromise"></div>
         <md-subheader class="">BIDDING HISTORY</md-subheader>
         <!--<md-subheader class="md-no-sticky">Select</md-subheader>
                 <md-list-item ng-repeat="person in auctionhistory.slice().reverse()">

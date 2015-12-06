@@ -108,7 +108,7 @@ angular.module('ndtndtApp')
         }
 
         $scope.getCustomerEmailLists = function () {
-            UserServices.GetCustomers()
+            $scope.littleadminpromise = UserServices.GetCustomers()
                 .then(function (data) {
                     if (data.length > 0) {
                         //console.log(data);
@@ -118,7 +118,7 @@ angular.module('ndtndtApp')
 
         }
         $scope.getAuctionListsByMonitor = function (id) {
-            ProductServices.getListByMonitor(id)
+            $scope.littleadminpromiseMonitor = ProductServices.getListByMonitor(id)
                 .then(function (data) {
                     if (data.length > 0) {
                         $scope.monitors = data;
@@ -127,7 +127,7 @@ angular.module('ndtndtApp')
         }
 
         $scope.getAllEmployee = function () {
-            UserServices.GetEmployees()
+            $scope.littleadminpromiseEmployee = UserServices.GetEmployees()
                 .then(function (data) {
                     if (data.length > 0) {
                         $scope.customerrep = data;

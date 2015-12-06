@@ -1,4 +1,5 @@
-<section flex id="products" ng-cloak>
+<section flex id="products">
+    <div cg-busy="productspromise"></div>
     <div class="container filter-sort" ng-show="items">
         <div class="search-bar" layout="column">
             <input class="search-input" placeholder="Search for products" type="text" ng-model="searchText">
@@ -67,10 +68,6 @@
     </div>
     <div class="container ">
         <div class="products-page ">
-            <div ng-show="!items">
-                <h2>LOADING...</h2>
-            </div>
-
             <a class="card " ng-href="{{item.url}} " ng-repeat="item in filtered=(items | filter:filterByCategory) | filter:searchText | orderBy:[orderByPrice, orderByBids ,orderByYear, orderByPost, orderByExp] ">
                 <md-card>
                     <div class="reserved-top" ng-show="{{item.reserveprice}}">
