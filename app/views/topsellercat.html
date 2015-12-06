@@ -5,7 +5,7 @@
             TOP SELLER ITEMS
         </div>
         <div class="categories">
-            <a class="card" ng-repeat="category in topsellercategory">
+            <a class="card" ng-repeat="category in topsellercategory" ui-sref="product({ auctionId: category.auctionid })">
                 <md-card>
                     <img class="md-card-image" ng-src="{{category.itemimg}}">
                     <!--<md-icon md-svg-src="../images/categories/{{category.itemtype}}.svg"></md-icon>-->
