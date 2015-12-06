@@ -81,5 +81,5 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootS
         });
 
     $urlRouterProvider.otherwise('/');
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 }
