@@ -42,10 +42,10 @@ angular.module('ndtndtApp')
                     };
                     $scope.orderByBids = function (item) {
                         if ($scope.orderBy == 'bids-high-low') {
-                            return -parseFloat(item.totalbids);
+                            return -parseInt(item.totalbidders);
                         }
                         if ($scope.orderBy == 'bids-low-high') {
-                            return parseFloat(item.totalbids);
+                            return parseInt(item.totalbidders);
                         }
                     };
                     $scope.orderByYear = function (item) {

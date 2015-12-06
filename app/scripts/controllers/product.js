@@ -10,7 +10,8 @@
 angular.module('ndtndtApp')
     .controller('ProductCtrl', function ($scope, ProductServices, $rootScope, $mdDialog, $mdToast, $stateParams, shareData) {
         $scope.auctionId = $stateParams.auctionId;
-        $scope.auction = shareData.getAuctionData();
+        $scope.auction = null;
+
         $scope.product = this;
         $scope.product.post = post;
 
@@ -21,12 +22,11 @@ angular.module('ndtndtApp')
             $scope.PostData.bidprice = $scope.product.bidprice;
             ProductServices.placeBid($scope.PostData)
                 .then(function (data) {
-                    console.log(data);
                     if (data) {
-                        ProductServices.getAuctionHistory()
-                            .then(function (data) {
-                                $scope.auctionhistory = data;
-                                $mdToast.showSimple("Bidding Successfull!");
+                        $mdToast.showSimple("Bidding Successfull!");
+                        ProductServices.getAuctionHistory($stateParams.auctionId)
+                            .then(function (adata) {
+                                $scope.auctionhistory = adata;
                             });
                     } else {
                         $mdToast.showSimple("Bidding failes. Please try again.");
@@ -40,6 +40,7 @@ angular.module('ndtndtApp')
         ProductServices.getProduct($stateParams.auctionId)
             .then(function (data) {
                 $scope.auction = data;
+
             });
         ProductServices.getAuctionHistory($stateParams.auctionId)
             .then(function (data) {

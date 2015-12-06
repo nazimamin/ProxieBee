@@ -1,7 +1,7 @@
 <div class="container">
     <div class="bigadmin-page profile-page loginsignup create-auction">
         <div ng-controller="LittleAdminCtrl" layout="column" ng-cloak>
-            <md-tabs md-dynamic-height md-border-bottom md-center-tabs md-border-bottom md-autoselect md-selected="selectedIndex" md-border-bottom="" md-autoselect="">
+            <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab id="profile" label="My Profile">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding card-stuff">
@@ -11,7 +11,7 @@
                                         <img class="md-user-avatar" data-ng-src="{{profile.personimg}}" />
                                     </md-card-avatar>
                                     <md-card-header-text class="name">
-                                        <span class="md-subhead"> Hello, {{(profile.firstname + " " +profile.lastname) }}! Thank you for your service!</span>
+                                        <span class="md-subhead"> HELLO, {{(profile.firstname + " " +profile.lastname) | uppercase}}! Thank you for your service!</span>
                                     </md-card-header-text>
                                 </md-card-header>
                                 <md-card-content>
@@ -111,7 +111,7 @@
                                     <span>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
                                     <span>{{person.customerid}}</span>
                                     <span>{{person.email}}</span>
-                                    <md-icon md-svg-icon="../images/pencil.svg" ng-click="showCustomerUpdateDialog($event, person)" aria-label="Update" class="md-primary md-hue-3" class="pencil"></md-icon>
+                                    <md-icon md-svg-icon="../images/pencil.svg" ng-click="showCustomerUpdateDialog($event, person)" aria-label="Update" class="pencil-right" class="pencil"></md-icon>
                                     <md-icon md-svg-icon="../images/delete.svg" ng-click="user.deleteEmployee(person)" aria-label="Delete" class="md-secondary md-hue-3"></md-icon>
                                     <md-divider md-inset ng-if="!$last"></md-divider>
                                 </md-list-item>

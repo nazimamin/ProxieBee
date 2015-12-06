@@ -68,12 +68,12 @@ angular.module('ndtndtApp')
         function deleteEmployee(data) {
             if (data) {
                 data.ssn = data.customerid;
-                //console.log(JSON.stringify(data));
+                ////console.log(JSON.stringify(data));
                 UserServices.DeleteProfile(data)
                     .then(function (data) {
-                        console.log(data);
+                        //console.log(data);
                         if (data.status == 'success') {
-                            console.log(data.status);
+                            //console.log(data.status);
                             $scope.getCustomerEmailLists();
                             $mdToast.showSimple("Customer Deleted Successfully!");
                         } else {
@@ -90,10 +90,10 @@ angular.module('ndtndtApp')
         function recordsale(data) {
             if (data) {
                 data.ssn = data.customerid;
-                console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(data));
                 ProductServices.recordSale(data)
                     .then(function (data) {
-                        console.log(data);
+                        //console.log(data);
                         if (data.status == 'success') {
                             $scope.getAuctionListsByMonitor($rootScope.currentUser.id);
                             $mdToast.showSimple("Recorded sale Successfully!");
@@ -112,7 +112,7 @@ angular.module('ndtndtApp')
             UserServices.GetCustomers()
                 .then(function (data) {
                     if (data.length > 0) {
-                        console.log(data);
+                        //console.log(data);
                         $scope.customers = data;
                     }
                 });
@@ -151,17 +151,8 @@ angular.module('ndtndtApp')
                 });
         }
 
-        function postuserpicks(id) {
-            console.log($scope.user.auctionid1);
-            ProductServices.postuserpicks(id)
-                .then(function (data) {
-                    console.log(data);
-                    $mdToast.showSimple("Added Successfully");
-                });
-        }
-
         $scope.showCustomerUpdateDialog = function (ev, data) {
-            console.log(data);
+            //console.log(data);
             $mdDialog.show({
                 locals: {
                     auctionDataFromProductsCtrl: data
@@ -175,7 +166,7 @@ angular.module('ndtndtApp')
         }
         $scope.viewperson = function (data, ev) {
             $scope.person = data;
-            console.log($scope.person);
+            //console.log($scope.person);
             $mdDialog.show({
                 locals: {
                     auctionDataFromProductsCtrl: data
@@ -203,7 +194,7 @@ function UpdateCustomerDialogController($scope, $mdDialog, shareData, auctionDat
     $scope.customer.UpdateImage = updateImage;
 
     function updateImage(data, errFiles) {
-        console.log(data);
+        //console.log(data);
         $scope.customer.ff = data;
     }
 
@@ -215,7 +206,7 @@ function UpdateCustomerDialogController($scope, $mdDialog, shareData, auctionDat
                     UserServices.GetCustomers()
                         .then(function (data) {
                             if (data.length > 0) {
-                                console.log(data);
+                                //console.log(data);
                                 // $scope.customer = data;
                             }
                         });

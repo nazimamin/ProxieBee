@@ -1,7 +1,7 @@
 <div class="container">
     <div class="profile-page loginsignup create-auction">
         <div ng-controller="ProfileCtrl" layout="column" ng-cloak>
-            <md-tabs md-dynamic-height md-border-bottom md-center-tabs md-border-bottom md-autoselect>
+            <md-tabs md-dynamic-height md-border-bottom md-center-tabs md-autoselect>
                 <md-tab id="profile" label="My Profile">
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding card-stuff">
@@ -11,7 +11,7 @@
                                         <img class="md-user-avatar" data-ng-src="{{profile.personimg}}" />
                                     </md-card-avatar>
                                     <md-card-header-text class="name">
-                                        <span class="md-subhead"> Hello, {{(profile.firstname + " " +profile.lastname) }}</span>
+                                        <span class="md-subhead"> HELLO, {{(profile.firstname + " " +profile.lastname)|uppercase }}</span>
                                     </md-card-header-text>
                                     <div class="item-image">
                                         <img class="md-user-avatar" ngf-src="!f.$error &amp;&amp; f" />
@@ -134,7 +134,7 @@
                                                 <th>Expire Date</th>
                                             </tr>
                                         </thead>
-                                        <tbody ng-repeat="person in bidhistory">
+                                        <tbody ng-repeat="person in bidhistory" ui-sref="product({ auctionId: person.auctionid })" style="cursor:pointer;">
                                             <tr>
                                                 <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
                                                 <td>{{person.itemname}}</td>

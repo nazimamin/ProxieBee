@@ -1,3 +1,4 @@
+'use strict';
 /**
  * @ngdoc service
  * @name desktopApp.shareData

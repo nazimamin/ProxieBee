@@ -1,6 +1,6 @@
-<div class="product-single width-control create-auction  biddialog" ng-controller="ProductCtrl as product">
-    <md-card>
-        <div class="reserved-top" ng-show="{{auction.reserveprice}}">
+<div class="product-single width-control create-auction  biddialog" ng-controller="ProductCtrl as product" ng-cloak>
+    <md-card ng-if='auction.itemname'>
+        <div class="reserved-top" ng-if="auction.reserveprice">
             THIS ITEM HAS RESERVED PRICE SET BY SELLER
         </div>
         <img ng-src="{{auction.itemimg}}" class="md-card-image" alt="{{auction.itemname}}">
@@ -45,7 +45,7 @@
                         </ul>
                     </div>
                 </div>
-                <div flex>
+                <div flex ng-if="currentUser.id">
                     <form name="bid" ng-submit="bid.$valid && product.post()" novalidate>
                         <md-input-container required class="md-block" md-is-error="bid.bidamount.$invalid && (bid.$submitted || bid.bidamount.$touched)">
                             <label class="mdi mdi-cart"> Enter Bid Amount</label>
@@ -60,18 +60,26 @@
                 </div>
             </div>
         </md-card-content>
-        <md-card-actions layout="row ">
+        <md-card-actions layout="row " ng-if="currentUser.id">
             <span flex></span>
             <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="product.post() ">
                 PLACE BID
             </md-button>
         </md-card-actions>
     </md-card>
-    <div class="product-single create-auction  biddialog">
-        <md-content layout-padding>
-            <md-card ng-if="auctionhistory">
-                <md-subheader class="md-no-sticky">BIDDING HISTORY</md-subheader>
-                <!--<md-subheader class="md-no-sticky">Select</md-subheader>
+    <md-card ng-if='!auction.itemname'>
+        <md-card-title style="text-align:center; color: #9E7393">
+            <md-card-title-text>
+                <h4>This associated item is SOLD!</h4>
+                <h4 ng-if="auctionhistory">Though, the bidding activity is avilable below!</h4>
+            </md-card-title-text>
+
+        </md-card-title>
+    </md-card>
+    <md-card ng-if="auctionhistory">
+
+        <md-subheader class="">BIDDING HISTORY</md-subheader>
+        <!--<md-subheader class="md-no-sticky">Select</md-subheader>
                 <md-list-item ng-repeat="person in auctionhistory.slice().reverse()">
                     <img alt="{{ person.firstname }}" ng-src="../images/placeholder.jpg" class="md-avatar" />
 
@@ -81,28 +89,27 @@
                     <md-divider md-inset ng-if="!$last"></md-divider>
                 </md-list-item>
 -->
-                <md-list-item>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Bidder</th>
-                                <th>Current Bid</th>
-                                <th>Bid Increment</th>
-                                <th>Bid Winner</th>
-                            </tr>
-                        </thead>
-                        <tbody ng-repeat="person in auctionhistory.slice().reverse()">
-                            <tr>
-                                <td>{{(person.bidder) | uppercase}}</td>
-                                <td>{{person.currentbid | currency}}</td>
-                                <td>{{person.bidincrement | currency}}</td>
-                                <td class="mdi mdi-crown">{{person.currentwinner | uppercase}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </md-list-item>
+        <md-list-item>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Bidder</th>
+                        <th>Current Bid</th>
+                        <th>Bid Increment</th>
+                        <th>Bid Winner</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="person in auctionhistory.slice().reverse()">
+                    <tr>
+                        <td>{{(person.bidder) | uppercase}}</td>
+                        <td>{{person.currentbid | currency}}</td>
+                        <td>{{person.bidincrement | currency}}</td>
+                        <td class="mdi mdi-crown">{{person.currentwinner | uppercase}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-list-item>
 
-            </md-card>
-        </md-content>
-    </div>
+    </md-card>
+    <br>
 </div>

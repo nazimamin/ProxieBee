@@ -21,7 +21,6 @@ angular
     'ngTouch',
     'slick',
     'ngMaterial',
-    'mb-adaptive-backgrounds',
     'ng-currency',
     'ProductServices',
     'UserServices',

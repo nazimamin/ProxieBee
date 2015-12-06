@@ -24,7 +24,7 @@ angular.module('ndtndtApp')
             aDay.getFullYear(),
             aDay.getMonth(),
             aDay.getDate() + 30);
-        console.log($scope.minDate);
+        //console.log($scope.minDate);
         $scope.PostImage = function (data, errFiles) {
             $scope.f = data;
             /*  ProductServices.PostImage(data)
@@ -35,7 +35,7 @@ angular.module('ndtndtApp')
                         $rootScope.currentUser.personimg = data.personimg;
                         $rootScope.currentUser.restinfo = data;
                         
-                        console.log(data);
+                        //console.log(data);
                         // $scope.close();
                     } else {
                         $rootScope.currentUser.personimg = null;

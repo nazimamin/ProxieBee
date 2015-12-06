@@ -39,6 +39,7 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
       'bower_components/ng-currency/dist/ng-currency.min.js',
+      'bower_components/ng-inline-edit/dist/ng-inline-edit.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
