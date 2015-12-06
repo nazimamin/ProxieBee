@@ -1,9 +1,7 @@
 ## An ebay like Proxy Bidding System 
 
-in collaboration with [@Jun Huang](http://github.com/JunXHuang)
 
-
-#### ndtndt - NOT DUE TODAY, NOT DO TODAY   -   [@Jun Huang](http://github.com/JunXHuang)
+#### ndtndt - NOT DUE TODAY, NOT DO TODAY 
 
   - Includes multiple system level service roles.
   - Options such as add/edit/delete, search, filter, bid, report etc. with an intuitive look.
@@ -30,6 +28,15 @@ Clone `git clone https://github.com/NazimAmin/api.ndtndt` -
 Run `pip install -r requirement.txt`
 
 Run `Python api.py`
+
+####Logins 
+
+-  Admin -  Username : `789-12-3456` , Pass: `666666`
+-  Customer Rep - Username: `nazimamin`, Pass: `main1212`  or Username: `jun` , Pass: `main1212`  or create one by logging in as admin.
+-  Customer - Username: `main` , Pass: `main`  or crate one your own! 
+
+##### *Some of the options will not be visible to the newly created user. They will be visible based on user's activity*
+
 
 ## Contributors
 
