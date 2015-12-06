@@ -13,7 +13,7 @@ Technology used:
 
 ## Build & development & Dependencies front-end
 
-Clone `git clone https://github.com/NazimAmin/notduetodaynotdotoday` - 
+Clone `git clone https://github.com/NazimAmin/ndtndt` - 
 
 Run `npm install` to install node_modules
 
@@ -23,7 +23,7 @@ Run `grunt ` for building and `grunt serve` for preview.
 
 ## Build & development & Dependencies backend
 
-Clone `git clone https://github.com/NazimAmin/api.ndtndt` - 
+Clone `git clone https://github.com/JunXHuang/api.ndtndt` - 
 
 Run `pip install -r requirement.txt`
 
