@@ -32,7 +32,7 @@ angular.module('ndtndtApp')
                          $rootScope.currentUser.personimg = data.personimg;
                          $rootScope.currentUser.restinfo = data;
                          
-                         //console.log(data);
+                         ////console.log(data);
                          // $scope.close();
                      } else {
                          $rootScope.currentUser.personimg = null;
@@ -69,7 +69,7 @@ angular.module('ndtndtApp')
         function loginF() {
             UserServices.login($scope.user.login)
                 .then(function (data) {
-                    //console.log(data);
+                    ////console.log(data);
                     if (data.customerid) {
                         $rootScope.currentUser.id = data.customerid;
                         $rootScope.currentUser.personimg = data.personimg;

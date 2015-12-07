@@ -60,7 +60,7 @@ angular.module('ndtndtApp')
                 UserServices.DeleteProfile($scope.profile)
                     .then(function (data) {
                         if (data.status == 'success') {
-                            //console.log(data.status);
+                            ////console.log(data.status);
                             $rootScope.currentUser = {};
                             $window.sessionStorage.removeItem('currentUser');
                             $mdToast.showSimple("Account Deleted Successfully!");
@@ -80,7 +80,7 @@ angular.module('ndtndtApp')
                 ProductServices.getuserpicks($rootScope.currentUser.id)
                     .then(function (data) {
                         $scope.itemSuggestions = data;
-                        console.log(data);
+                        //console.log(data);
                     });
             });
 

@@ -22,7 +22,7 @@ angular.module('ndtndtApp')
             $scope.PostData.bidprice = $scope.auction.bidprice;
             ProductServices.placeBid($scope.PostData)
                 .then(function (data) {
-                    //console.log(data);
+                    ////console.log(data);
                     if (data) {
                         ProductServices.getAllProducts()
                             .then(function (data) {

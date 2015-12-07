@@ -91,7 +91,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/topcategory')
             .success(function (data) {
-            console.log(JSON.stringify(data));
+            //console.log(JSON.stringify(data));
                 if (data) {
                     if (data.length === 1 && data[0][0]) {
                         defer.resolve(data[0]);
@@ -133,7 +133,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
     //create an auciton
     function createAuction(data, file) {
         var randomString = Math.random().toString(36).substring(7);
-        //console.log(data);
+        ////console.log(data);
         var FilePath = "item" + data.sellerid + randomString + ".jpg";
         data.itemimg = $rootScope.restServer + "/uploads/" + FilePath;
         var defer = $q.defer();
@@ -194,8 +194,8 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         if (file) {
             Upload.rename(file, FilePath);
-            //console.log(FilePath);
-            //console.log(file);
+            ////console.log(FilePath);
+            ////console.log(file);
             file.upload = Upload.upload({
                 url: $rootScope.restServer + '/upload',
                 data: {
@@ -585,7 +585,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/userpicks/' + id)
             .success(function (data) {
-                console.log(data);
+                //console.log(data);
                 if (data) {
                     if (data.length === 1 && data[0][0]) {
                         defer.resolve(data[0]);
