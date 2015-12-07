@@ -85,14 +85,14 @@ angular.module('ndtndtApp')
             });
 
 */
-        $scope.profileprofmie = UserServices.getCustomerBidHistory($scope.currentUser.id)
+        $scope.profilepromise = UserServices.getCustomerBidHistory($scope.currentUser.id)
             .then(function (data) {
                 if (data) {
                     $scope.bidhistory = data;
                 }
             });
 
-        $scope.profilepromise = UserServices.getCustomerSellHistory($scope.currentUser.id)
+        $scope.profilepromisehistory = UserServices.getCustomerSellHistory($scope.currentUser.id)
             .then(function (data) {
                 if (data) {
                     $scope.sellhistory = data;

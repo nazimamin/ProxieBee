@@ -91,11 +91,11 @@
                         <md-content layout-padding class="more-padding">
                             <md-card>
                                 <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
-                                <md-list-item ng-repeat="person in employees">
+                                <md-list-item ng-repeat="person in employees" flex>
                                     <img alt="{{ person.firstname }}" ng-src="{{ person.personimg }}" class="md-avatar" />
-                                    <span>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
-                                    <span>{{person.customerid}}</span>
-                                    <span>{{person.hourlyrate | currency}}/hr</span>
+                                    <span flex>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
+                                    <span flex>{{person.customerid}}</span>
+                                    <span flex>{{person.hourlyrate | currency}}/hr</span>
                                     <md-icon md-svg-icon="../images/pencil.svg" ng-click="showUpdateDialog($event, person)" aria-label="Update" class="pencil-right" class="pencil"></md-icon>
                                     <md-icon md-svg-icon="../images/delete.svg" ng-click="user.deleteEmployee(person)" aria-label="Delete" class="md-secondary md-hue-3"></md-icon>
                                     <md-divider md-inset ng-if="!$last"></md-divider>

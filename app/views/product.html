@@ -59,13 +59,18 @@
                         </md-input-container>
                     </form>
                 </div>
+                <div ng-if="!currentUser.id " ng-controller="AuthCtrl as auth ">
+                    <md-button class="md-primary md-raised md-button-override" flex="15 " ng-click="showLoginSignupDialog($event)" flex>CLICK HERE TO BID</md-button>
+                </div>
             </div>
         </md-card-content>
-        <md-card-actions layout="row " ng-if="currentUser.id">
-            <span flex></span>
-            <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="product.post() ">
+        <md-card-actions layout="row">
+            <span flex>  </span>
+            <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="product.post() " ng-if="currentUser.id">
                 PLACE BID
             </md-button>
+
+
         </md-card-actions>
     </md-card>
     <md-card ng-if='productpromise'>
@@ -78,7 +83,7 @@
         </md-card-title>
     </md-card>
 
-    <md-card ng-if="auctionhistorypromise">
+    <md-card ng-if="auctionhistory">
         <div cg-busy="auctionhistorypromise"></div>
         <md-subheader class="">BIDDING HISTORY</md-subheader>
         <!--<md-subheader class="md-no-sticky">Select</md-subheader>

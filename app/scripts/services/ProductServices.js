@@ -91,6 +91,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/topcategory')
             .success(function (data) {
+            console.log(JSON.stringify(data));
                 if (data) {
                     if (data.length === 1 && data[0][0]) {
                         defer.resolve(data[0]);

@@ -17,7 +17,7 @@ angular
     }
 ])
     .run(function ($rootScope) {
-        $rootScope.restServer = 'https://microsoft-apiapp7b31e05f68a549329859bed2bfaa83a7.azurewebsites.net';
+        $rootScope.restServer = 'http://api-ndtndt.azurewebsites.net';
         //$rootScope.restServer = 'http://192.168.1.131:3000/api';
     });
 

@@ -1,5 +1,4 @@
 <div class="container">
-    <div cg-busy="profilepromise"></div>
     <div class="profile-page loginsignup create-auction">
         <div ng-controller="ProfileCtrl" layout="column" ng-cloak>
             <md-tabs md-dynamic-height md-border-bottom md-center-tabs md-autoselect>
@@ -109,6 +108,7 @@
                     </md-content>
                 </md-tab>
                 <md-tab id="order-history" label="Activity History" ng-if="bidhistory || sellhistory">
+                    <div cg-busy="profilepromise"></div>
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
 
@@ -191,6 +191,7 @@
                     </md-content>
                 </md-tab>
                 <md-tab id="item-suggestions-foryou" label="Item Suggestions" ng-if="getuserpicks">
+                    <div cg-busy="profilepromisehistory"></div>
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
                             <md-card ng-show="bidhistory[0]">

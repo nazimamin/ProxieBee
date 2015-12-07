@@ -7,8 +7,8 @@
                     <div class="item-title ">
                         <h3>{{item.itemname | uppercase}}</h3>
                         <span><i class="mdi mdi-eye"></i> {{item.totalbidders}} 
-                            <span ng-if="item.totalbidders > 1">bidders</span>
-                        <span ng-if="item.totalbidders <= 1">bidder</span>
+                            <span ng-if="item.totalbidders > 1">bids</span>
+                        <span ng-if="item.totalbidders <= 1">bid</span>
                         </span>
                         <span><i class="mdi mdi-timer "></i>expires on {{item.expiredates | date}} </span>
 

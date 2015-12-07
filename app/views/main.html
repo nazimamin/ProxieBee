@@ -1,17 +1,14 @@
 <!--
     Including Slider here.
 -->
-<div cg-busy="myPromise"></div>
-<div cg-busy="{promise:myPromise,message:'It’s not my fault.',templateUrl:'views/loader.html'}"></div>
 <div ng-include="'views/staffPicks.html'" class="container set-container-margin"></div>
-
 <section id="topseller" ng-controller="TopsellercatCtrl as top" flex ng-cloak>
-    <div class="container">
-        <div class="title">
+    <div class="container" ng-if="topsellerpromise">
+        <div class="title" ng-if="topsellercategory">
             TOP SELLER ITEMS
         </div>
         <div class="categories">
-            <a ng-href="{{category.url}}" class="card" ng-repeat="category in topsellercategory">
+            <a class="card" ng-repeat="category in topsellercategory" ui-sref="product({ auctionId: category.auctionid })">
                 <md-card>
                     <img class="md-card-image" ng-src="{{category.itemimg}}">
                     <!--<md-icon md-svg-src="../images/categories/{{category.itemtype}}.svg"></md-icon>-->

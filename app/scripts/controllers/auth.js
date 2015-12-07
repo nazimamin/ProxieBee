@@ -81,8 +81,6 @@ angular.module('ndtndtApp')
                             $state.go('littleadmin');
                         } else if ($rootScope.currentUser.admin == '0') {
                             $state.go('bigadmin')
-                        } else {
-                            $state.go('profile');
                         }
                     } else {
                         $rootScope.currentUser = {};
