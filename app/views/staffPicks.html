@@ -1,5 +1,3 @@
-<div help-overlay="showHelp" style="height: 100%;">
-
     <div class="staffPicks-slider" ng-controller="StaffPicksCtrl" flex ng-cloak>
         <div cg-busy="staffpickspromise"></div>
         <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1>
@@ -9,17 +7,16 @@
                     <div class=" left-side ">
                         <div class="item-title ">
                             <h3>{{item.itemname | uppercase}}</h3>
-                            <span><i class="mdi mdi-eye"></i> {{item.totalbidders}} 
+                            <span><i class="mdi mdi-eye"></i> {{item.totalbidders}}
                             <span ng-if="item.totalbidders > 1">bids</span>
                             <span ng-if="item.totalbidders <= 1">bid</span>
                             </span>
-                            <span><i class="mdi mdi-timer"></i>expires on {{item.expiredates | date}} <span data-intro="Shows closing date." data-position="right"></span></span>
+                            <span><i class="mdi mdi-timer"></i>expires on {{item.expiredates | date}}</span>
 
                         </div>
                         <div class="item-image " adaptive-background>
                             <div class="staffpicks-container-title ">
                                 STAFF PICKS
-                                <span data-intro="staff picks indication" data-position="right"></span>
                             </div>
                             <img ng-src="{{item.itemimg}} ">
                         </div>
@@ -29,7 +26,7 @@
                             <div class="profile-info ">
                                 <a ng-href="{{item.bidder.url}} ">
                                     <!-- <img ng-src="{{item.bidder.image}} " alt="Profile Image ">-->
-                                    <div class="profile-desc " data-intro="name of the seller" data-position="bottom">
+                                    <div class="profile-desc">
                                         <h4>{{(item.firstname + " "+ item.lastname)| uppercase}}</h4>
                                         <!-- <div class="rate ">{{item.bidder.rating}} <i class="mdi mdi-star-outline "></i></div>-->
                                     </div>
@@ -66,10 +63,10 @@
                             </span>
                             </div>
                             <div class="price-and-buy ">
-                                <span class="price-button "><h1>{{item.currentbid | currency}}</h1><h6  data-intro="Current bid of the item" data-position="bottom">Current bid</h6></span>
+                                <span class="price-button "><h1>{{item.currentbid | currency}}</h1><h6>Current bid</h6></span>
                                 <span class="price-button ">
                             <span class="bid-button hvr-underline-from-right "  ui-sref="product({ auctionId: item.auctionid }) ">
-                                <h4  data-intro="Button to open product page." data-position="bottom">BID THIS NOW</h4>
+                                <h4>BID THIS NOW</h4>
                              <img ng-src="../images/bidnow.svg ">
                             </span>
                                 </span>
@@ -80,4 +77,3 @@
             </div>
         </slick>
     </div>
-    <a href="#" class="btn btn-large primary" ng-click="toggleHelp()">Show Help</a>
