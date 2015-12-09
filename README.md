@@ -47,4 +47,5 @@ Technology used:
 
 Made with :hotsprings: by [@Nazim](http://github.com/nazimamin) [@Jun Huang](http://github.com/JunXHuang)
 
-## :star: 3rd place among all course projects for outstanding performance in CSE305 Principles of Database Systems. 
+
+###### :star: 3rd place among all course projects for outstanding performance in CSE305 Principles of Database Systems. 
