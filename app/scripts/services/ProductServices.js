@@ -38,7 +38,8 @@ function ProductServices($q, $http, $rootScope, Upload) {
         deleteStaffpicks: deleteStaffpicks,
         bestitemlist: bestitemlist,
         postuserpicks: postuserpicks,
-        getuserpicks: getuserpicks
+        getuserpicks: getuserpicks,
+        deleteauction: deleteauction
     };
 
 
@@ -91,7 +92,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/topcategory')
             .success(function (data) {
-            //console.log(JSON.stringify(data));
+
                 if (data) {
                     if (data.length === 1 && data[0][0]) {
                         defer.resolve(data[0]);
@@ -133,7 +134,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
     //create an auciton
     function createAuction(data, file) {
         var randomString = Math.random().toString(36).substring(7);
-        ////console.log(data);
+
         var FilePath = "item" + data.sellerid + randomString + ".jpg";
         data.itemimg = $rootScope.restServer + "/uploads/" + FilePath;
         var defer = $q.defer();
@@ -194,8 +195,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         if (file) {
             Upload.rename(file, FilePath);
-            ////console.log(FilePath);
-            ////console.log(file);
+
             file.upload = Upload.upload({
                 url: $rootScope.restServer + '/upload',
                 data: {
@@ -243,6 +243,10 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/auctionhistory/' + id)
             .success(function (data) {
+                if (data == null) {
+                    data = [];
+                    defer.resolve(data);
+                }
                 if (data) {
                     if (data.length === 1 && data[0][0]) {
                         defer.resolve(data[0]);
@@ -585,7 +589,7 @@ function ProductServices($q, $http, $rootScope, Upload) {
         var defer = $q.defer();
         $http.get($rootScope.restServer + '/userpicks/' + id)
             .success(function (data) {
-                //console.log(data);
+
                 if (data) {
                     if (data.length === 1 && data[0][0]) {
                         defer.resolve(data[0]);
@@ -622,6 +626,20 @@ function ProductServices($q, $http, $rootScope, Upload) {
 
         return defer.promise;
     }
+
+    function deleteauction(id) {
+        var defer = $q.defer();
+        $http.get($rootScope.restServer + '/deleteauction/' + id)
+            .success(function (data) {
+                defer.resolve(data);
+            })
+            .error(function (err, status) {
+                defer.reject(err);
+            })
+
+        return defer.promise;
+    }
+
 
 
 }

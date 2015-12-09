@@ -28,6 +28,11 @@ angular.module('ndtndtApp')
                             .then(function (adata) {
                                 $scope.auctionhistory = adata;
                             });
+                        ProductServices.getProduct($stateParams.auctionId)
+                            .then(function (data) {
+                                $scope.auction = data;
+
+                            });
                     } else {
                         $mdToast.showSimple("Bidding failes. Please try again.");
                     }

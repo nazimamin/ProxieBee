@@ -9,6 +9,9 @@
  */
 angular.module('ndtndtApp')
     .controller('ProductsCtrl', function ($scope, ProductServices, $rootScope, $mdDialog, $mdToast) {
+        $scope.delete = this;
+        $scope.delete.deleteAuction = deleteAuction;
+
         $scope.productspromise = ProductServices.getAllProducts()
             .then(function (data) {
                 if (data.length > 0) {
@@ -75,6 +78,18 @@ angular.module('ndtndtApp')
                 }
             });
 
+        function deleteAuction(id) {
+            ProductServices.deleteauction(id)
+                .then(function (data) {
+                    $mdToast.showSimple("Deleted Successfully");
+                    ProductServices.getAllProducts()
+                        .then(function (data) {
+                            $rootScope.items = data;
+                        });
+                }, function () {
+                    $mdToast.showSimple("Delete failed. Please try again.");
+                });
+        }
         //shows the modal to login/signup
         $scope.showBidDialog = function (ev) {
             $mdDialog.show({

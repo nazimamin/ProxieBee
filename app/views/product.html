@@ -69,22 +69,19 @@
             <md-button class="md-primary mdi mdi-checkbox-marked-circle " ng-click="product.post() " ng-if="currentUser.id">
                 PLACE BID
             </md-button>
-
-
         </md-card-actions>
     </md-card>
-    <md-card ng-if='productpromise'>
+    <md-card>
         <md-card-title style="text-align:center; color: #9E7393" ng-if="!auction.itemname">
             <md-card-title-text>
                 <h4>This associated item is SOLD!</h4>
-                <h4 ng-if="auctionhistory">Though, the bidding activity is avilable below!</h4>
+                <h4 ng-if="auctionhistory.length">Though, the bidding activity is avilable below!</h4>
             </md-card-title-text>
 
         </md-card-title>
     </md-card>
-
-    <md-card ng-if="auctionhistory">
-        <div cg-busy="auctionhistorypromise"></div>
+    <div cg-busy="auctionhistorypromise"></div>
+    <md-card ng-if="auctionhistory.length">
         <md-subheader class="">BIDDING HISTORY</md-subheader>
         <!--<md-subheader class="md-no-sticky">Select</md-subheader>
                 <md-list-item ng-repeat="person in auctionhistory.slice().reverse()">
@@ -97,7 +94,7 @@
                 </md-list-item>
 -->
         <md-list-item>
-            <table class="table">
+            <table class="table bidding-history">
                 <thead>
                     <tr>
                         <th>Bidder</th>
@@ -111,7 +108,7 @@
                         <td>{{(person.bidder) | uppercase}}</td>
                         <td>{{person.currentbid | currency}}</td>
                         <td>{{person.bidincrement | currency}}</td>
-                        <td class="mdi mdi-crown">{{person.currentwinner | uppercase}}</td>
+                        <td class="auction-history" ng-class="{'mdi mdi-crown': $first}">{{person.currentwinner | uppercase}}</td>
                     </tr>
                 </tbody>
             </table>

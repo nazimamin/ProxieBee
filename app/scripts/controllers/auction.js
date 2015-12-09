@@ -24,7 +24,7 @@ angular.module('ndtndtApp')
             aDay.getFullYear(),
             aDay.getMonth(),
             aDay.getDate() + 30);
-        ////console.log($scope.minDate);
+
         $scope.PostImage = function (data, errFiles) {
             $scope.f = data;
             /*  ProductServices.PostImage(data)
@@ -35,7 +35,7 @@ angular.module('ndtndtApp')
                         $rootScope.currentUser.personimg = data.personimg;
                         $rootScope.currentUser.restinfo = data;
                         
-                        ////console.log(data);
+                       
                         // $scope.close();
                     } else {
                         $rootScope.currentUser.personimg = null;
@@ -67,10 +67,10 @@ angular.module('ndtndtApp')
  }, {
                 "itemtype": "SILVERWARE"
  }, {
-                "itemtype": "SPORT MEMORABILA"
+                "itemtype": "SPORT"
  },
             {
-                "itemtype": "CLEANING PRODUCTS"
+                "itemtype": "CLEANING"
  }];
         ProductServices.getMonitors()
             .then(function (data) {
@@ -101,6 +101,9 @@ angular.module('ndtndtApp')
             );
 
             $scope.auction.info.sellerid = $rootScope.currentUser.id;
+            if (!$scope.auction.info.monitor) {
+                $scope.auction.info.monitor = $scope.monitors[0].monitorssn;
+            }
             ProductServices.createAuction($scope.auction.info, $scope.f)
                 .then(function (data) {
                     if (data) {

@@ -1609,3 +1609,31 @@ $Swatch7: #A4AAC5;*/
         color: white;
         box-shadow: none;
     }
+    
+    .auction-history {
+        margin-left: -16px;
+    }
+    
+    .item-suggestions {
+        cursor: pointer;
+    }
+    
+    .delete-auction {
+        md-menu {
+            height: 20px;
+            margin: 10px;
+            padding: 0px !important;
+            right: 0px;
+            z-index: 2;
+            position: absolute;
+        }
+        .mdi-dots-vertical {
+            width: 37px;
+            height: 20px;
+            background-color: #F8F9FB;
+            &:hover {
+                opacity: 1;
+                background-color: #F8F9FB;
+            }
+        }
+    }

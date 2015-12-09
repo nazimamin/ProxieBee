@@ -50,14 +50,14 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
 
     function signup(data, file) {
         if (file) {
-            ////console.log(file);
+
             var randomString = Math.random().toString(36).substring(7);
             var FilePath = "profile" + data.ssn + randomString + ".jpg";
             data.personimg = $rootScope.restServer + "/uploads/" + FilePath;
         } else {
             data.personimg = $rootScope.restServer + "/uploads/profile.jpg";
         }
-        ////console.log(JSON.stringify(data));
+
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -87,7 +87,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
             var FilePath = "profile" + data.ssn + randomString + ".jpg";
             data.personimg = $rootScope.restServer + "/uploads/" + FilePath;
         }
-        ////console.log(JSON.stringify(data));
+
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -160,8 +160,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
         var defer = $q.defer();
         if (file) {
             Upload.rename(file, FilePath);
-            ////console.log(FilePath);
-            ////console.log(file);
+
             file.upload = Upload.upload({
                 url: $rootScope.restServer + '/upload',
                 data: {
@@ -220,14 +219,14 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
 
     function CreateEmployee(data, file) {
         if (file) {
-            ////console.log(file);
+
             var randomString = Math.random().toString(36).substring(7);
             var FilePath = "profile" + data.ssn + randomString + ".jpg";
             data.personimg = $rootScope.restServer + "/uploads/" + FilePath;
         } else {
             data.personimg = $rootScope.restServer + "/uploads/profile.jpg";
         }
-        //console.log(JSON.stringify(data));
+
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -238,7 +237,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
                 }
             })
             .success(function (res) {
-                //console.log(res);
+
                 if (file) {
                     PostImage(file, FilePath);
                 }
@@ -258,7 +257,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
             var FilePath = "profile" + data.ssn + randomString + ".jpg";
             data.personimg = $rootScope.restServer + "/uploads/" + FilePath;
         }
-        ////console.log(JSON.stringify(data));
+
         var defer = $q.defer();
         $http({
                 method: 'POST',
@@ -284,7 +283,7 @@ function UserServices($http, $q, $rootScope, Upload, $window) {
 
     function DeleteEmployee(data) {
         var defer = $q.defer();
-        ////console.log(JSON.stringify(data));
+
         $http({
                 method: 'POST',
                 url: $rootScope.restServer + '/deleteemployee',

@@ -75,16 +75,19 @@ angular.module('ndtndtApp')
             }
 
         }
-        /*   ProductServices.postuserpicks($rootScope.currentUser.id)
+        $scope.itemSuggestionsPromise = ProductServices.postuserpicks($rootScope.currentUser.id)
             .then(function (data) {
-                ProductServices.getuserpicks($rootScope.currentUser.id)
-                    .then(function (data) {
-                        $scope.itemSuggestions = data;
-                        //console.log(data);
-                    });
+                if (data) {
+                    ProductServices.getuserpicks($rootScope.currentUser.id)
+                        .then(function (adata) {
+                            $scope.itemSuggestions = adata;
+                            console.log(JSON.stringify(adata));
+                        });
+                }
+
             });
 
-*/
+
         $scope.profilepromise = UserServices.getCustomerBidHistory($scope.currentUser.id)
             .then(function (data) {
                 if (data) {

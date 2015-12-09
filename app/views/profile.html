@@ -107,8 +107,8 @@
                         </md-content>
                     </md-content>
                 </md-tab>
+                <div cg-busy="profilepromise"></div>
                 <md-tab id="order-history" label="Activity History" ng-if="bidhistory || sellhistory">
-                    <div cg-busy="profilepromise"></div>
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
 
@@ -190,11 +190,11 @@
                         </md-content>
                     </md-content>
                 </md-tab>
-                <md-tab id="item-suggestions-foryou" label="Item Suggestions" ng-if="getuserpicks">
-                    <div cg-busy="profilepromisehistory"></div>
+                <md-tab id="item-suggestions-foryou" label="Item Suggestions" ng-if="itemSuggestions.length">
+                    <div cg-busy="itemSuggestionsPromise"></div>
                     <md-content class="md-padding center-card">
                         <md-content layout-padding class="more-padding">
-                            <md-card ng-show="bidhistory[0]">
+                            <md-card ng-show="itemSuggestions.length">
                                 <md-subheader class="md-no-sticky">Item Suggestions for You!</md-subheader>
                                 <md-list-item>
                                     <table class="table">
@@ -208,8 +208,8 @@
                                                 <th>Expire Date</th>
                                             </tr>
                                         </thead>
-                                        <tbody ng-repeat="person in getuserpicks">
-                                            <tr>
+                                        <tbody ng-repeat="person in itemSuggestions">
+                                            <tr ui-sref="product({ auctionId: person.auctionid })" class="item-suggestions">
                                                 <td><img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" /></td>
                                                 <td>{{person.itemname}}</td>
                                                 <td>{{person.itemtype}}</td>
