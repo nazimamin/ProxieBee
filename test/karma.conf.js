@@ -41,6 +41,7 @@ module.exports = function(config) {
       'bower_components/ng-currency/dist/ng-currency.min.js',
       'bower_components/ng-inline-edit/dist/ng-inline-edit.js',
       'bower_components/angular-busy/dist/angular-busy.js',
+      'bower_components/angular-help-overlay/lib/angular-help-overlay.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

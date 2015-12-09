@@ -25,7 +25,8 @@ angular
     'ProductServices',
     'UserServices',
     'angularInlineEdit',
-    'cgBusy'
+    'cgBusy',
+    'angularHelpOverlay'
 	])
     .controller('RootCtrl', ['$rootScope', '$q', '$state', 'UserServices', '$window', '$scope', RootCtrl]);
 
@@ -46,6 +47,11 @@ function RootCtrl($rootScope, $q, $state, UserServices, $window, $scope) {
         $rootScope.currentUser = {};
         $state.go('mainpage');
     }
+
+    $scope.showHelp = false;
+    $scope.toggleHelp = function () {
+        $scope.showHelp = !$scope.showHelp;
+    };
 
 
 }

@@ -1,78 +1,83 @@
-<div class="staffPicks-slider" ng-controller="StaffPicksCtrl" flex ng-cloak>
-    <div cg-busy="staffpickspromise"></div>
-    <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1>
-        <div ng-repeat="item in staffPicksItems">
-            <div class="staffpicks-item-container">
-                <div class=" left-side ">
-                    <div class="item-title ">
-                        <h3>{{item.itemname | uppercase}}</h3>
-                        <span><i class="mdi mdi-eye"></i> {{item.totalbidders}} 
-                            <span ng-if="item.totalbidders > 1">bids</span>
-                        <span ng-if="item.totalbidders <= 1">bid</span>
-                        </span>
-                        <span><i class="mdi mdi-timer "></i>expires on {{item.expiredates | date}} </span>
+<div help-overlay="showHelp" style="height: 100%;">
 
-                    </div>
-                    <div class="item-image " adaptive-background>
-                        <div class="staffpicks-container-title ">
-                            STAFF PICKS
+    <div class="staffPicks-slider" ng-controller="StaffPicksCtrl" flex ng-cloak>
+        <div cg-busy="staffpickspromise"></div>
+        <slick init-onload=true data="staffPicksItems" accessibility=true dots=true infinite=true speed=300 slides-to-show=1 touch-move=true slides-to-scroll=1>
+
+            <div ng-repeat="item in staffPicksItems">
+                <div class="staffpicks-item-container">
+                    <div class=" left-side ">
+                        <div class="item-title ">
+                            <h3>{{item.itemname | uppercase}}</h3>
+                            <span><i class="mdi mdi-eye"></i> {{item.totalbidders}} 
+                            <span ng-if="item.totalbidders > 1">bids</span>
+                            <span ng-if="item.totalbidders <= 1">bid</span>
+                            </span>
+                            <span><i class="mdi mdi-timer"></i>expires on {{item.expiredates | date}} <span data-intro="Shows closing date." data-position="right"></span></span>
+
                         </div>
-                        <img ng-src="{{item.itemimg}} ">
-                    </div>
-                </div>
-                <div class="right-side ">
-                    <div class="item-and-profile ">
-                        <div class="profile-info ">
-                            <a ng-href="{{item.bidder.url}} ">
-                                <!-- <img ng-src="{{item.bidder.image}} " alt="Profile Image ">-->
-                                <div class="profile-desc ">
-                                    <h4>{{(item.firstname + " "+ item.lastname)| uppercase}}</h4>
-                                    <!-- <div class="rate ">{{item.bidder.rating}} <i class="mdi mdi-star-outline "></i></div>-->
-                                </div>
-                            </a>
-                            <hr>
+                        <div class="item-image " adaptive-background>
+                            <div class="staffpicks-container-title ">
+                                STAFF PICKS
+                                <span data-intro="staff picks indication" data-position="right"></span>
+                            </div>
+                            <img ng-src="{{item.itemimg}} ">
                         </div>
                     </div>
-                    <!--<div class="item-desc "><i class="fa fa-align-left "></i> {{item.desc}}
+                    <div class="right-side ">
+                        <div class="item-and-profile ">
+                            <div class="profile-info ">
+                                <a ng-href="{{item.bidder.url}} ">
+                                    <!-- <img ng-src="{{item.bidder.image}} " alt="Profile Image ">-->
+                                    <div class="profile-desc " data-intro="name of the seller" data-position="bottom">
+                                        <h4>{{(item.firstname + " "+ item.lastname)| uppercase}}</h4>
+                                        <!-- <div class="rate ">{{item.bidder.rating}} <i class="mdi mdi-star-outline "></i></div>-->
+                                    </div>
+                                </a>
+                                <hr>
+                            </div>
+                        </div>
+                        <!--<div class="item-desc "><i class="fa fa-align-left "></i> {{item.desc}}
 
                         </div>
                         <div class="quantity ">
                             Quantity - <span> {{item.quantity}} available</span></div>-->
-                    <div class="item-cont ">
-                        <div class="hold-tags ">
-                            <span class="item-condition ">
+                        <div class="item-cont ">
+                            <div class="hold-tags ">
+                                <span class="item-condition ">
                                 <img ng-src="../images/tags.svg ">
                                 <h5>New with Tags</h5>
                                 <h6>Condition</h6>
                             </span>
-                            <span class="item-condition-del ">
+                                <span class="item-condition-del ">
                                 <img ng-src="../images/fastmail.svg ">
                                 <h5>USPS First Class Mail</h5>
                                 <h6>Shipping Service</h6>
                             </span>
-                            <span class="item-condition-ship ">
+                                <span class="item-condition-ship ">
                                 <img ng-src="../images/delivery.svg ">
                                 <h5>2-5 Business Days</h5>
                                 <h6>Delivery</h6>
                             </span>
-                            <span class="item-condition-policy ">
+                                <span class="item-condition-policy ">
                                 <img ng-src="../images/moneyback.svg ">
                                 <h5>30 Days Money Back</h5>
                                 <h6>Return Policy</h6>
                             </span>
-                        </div>
-                        <div class="price-and-buy ">
-                            <span class="price-button "><h1>{{item.currentbid | currency}}</h1><h6>Current bid</h6></span>
-                            <span class="price-button ">
+                            </div>
+                            <div class="price-and-buy ">
+                                <span class="price-button "><h1>{{item.currentbid | currency}}</h1><h6  data-intro="Current bid of the item" data-position="bottom">Current bid</h6></span>
+                                <span class="price-button ">
                             <span class="bid-button hvr-underline-from-right "  ui-sref="product({ auctionId: item.auctionid }) ">
-                                <h4>BID THIS NOW</h4>
+                                <h4  data-intro="Button to open product page." data-position="bottom">BID THIS NOW</h4>
                              <img ng-src="../images/bidnow.svg ">
                             </span>
-                            </span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </slick>
-</div>
+        </slick>
+    </div>
+    <a href="#" class="btn btn-large primary" ng-click="toggleHelp()">Show Help</a>

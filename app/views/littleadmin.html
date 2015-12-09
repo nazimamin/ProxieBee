@@ -1,300 +1,319 @@
 <div class="container">
-    <div class="bigadmin-page profile-page loginsignup create-auction">
-        <div cg-busy="littleadminpromise"></div>
-        <div ng-controller="LittleAdminCtrl" layout="column" ng-cloak>
-            <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab id="profile" label="My Profile">
-                    <md-content class="md-padding center-card">
-                        <md-content layout-padding class="more-padding card-stuff">
-                            <md-card>
-                                <md-card-header>
-                                    <md-card-avatar>
-                                        <img class="md-user-avatar" data-ng-src="{{profile.personimg}}" />
-                                    </md-card-avatar>
-                                    <md-card-header-text class="name">
-                                        <span class="md-subhead"> HELLO, {{(profile.firstname + " " +profile.lastname) | uppercase}}! Thank you for your service!</span>
-                                    </md-card-header-text>
-                                </md-card-header>
-                                <md-card-content>
-                                    <div class="contact-info">
-                                        <div class="title">
-                                            <div class="info">Contact Information </div>
-                                        </div>
-                                    </div>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">First Name:</span>
-                                            <p>{{profile.firstname}}</p>
-                                        </md-list-item>
+  <div class="bigadmin-page profile-page loginsignup create-auction">
+    <div cg-busy="littleadminpromise"></div>
+    <div layout="column" ng-cloak ng-controller="LittleAdminCtrl">
+      <md-tabs md-border-bottom md-dynamic-height>
+        <md-tab id="profile" label="My Profile">
+          <md-content class="md-padding center-card">
+            <md-content class="more-padding card-stuff" layout-padding>
+              <md-card>
+                <md-card-header>
+                  <md-card-avatar>
+                    <img class="md-user-avatar" data-ng-src="{{profile.personimg}}"/>
+                  </md-card-avatar>
+                  <md-card-header-text class="name">
+                    <span class="md-subhead">
+                      HELLO,
+                      {{(profile.firstname + " " +profile.lastname) | uppercase}}! Thank you for your service!</span>
+                  </md-card-header-text>
+                </md-card-header>
+                <md-card-content>
+                  <div class="contact-info">
+                    <div class="title">
+                      <div class="info">Contact Information
+                      </div>
+                    </div>
+                  </div>
+                  <div class="profile-info-text" layout>
+                    <md-list-item class="secondary-button-padding list-left" flex>
+                      <span class="sub-info">First Name:</span>
+                      <p>{{profile.firstname}}</p>
+                    </md-list-item>
 
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">Last Name:</span>
-                                            <p>{{profile.lastname}}</p>
-                                        </md-list-item>
-                                    </div>
-                                    <md-divider></md-divider>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">Email:</span>
-                                            <p>{{profile.email}}</p>
-                                        </md-list-item>
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">Phone:</span>
-                                            <p>{{profile.telephone}}</p>
-                                        </md-list-item>
-                                    </div>
+                    <md-list-item class="secondary-button-padding list-right" flex>
+                      <span class="sub-info">Last Name:</span>
+                      <p>{{profile.lastname}}</p>
+                    </md-list-item>
+                  </div>
+                  <md-divider></md-divider>
+                  <div class="profile-info-text" layout>
+                    <md-list-item class="secondary-button-padding list-left" flex>
+                      <span class="sub-info">Email:</span>
+                      <p>{{profile.email}}</p>
+                    </md-list-item>
+                    <md-list-item class="secondary-button-padding list-right" flex>
+                      <span class="sub-info">Phone:</span>
+                      <p>{{profile.telephone}}</p>
+                    </md-list-item>
+                  </div>
 
-                                    <md-divider></md-divider>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">Address:</span>
-                                            <p>{{profile.address}}</p>
+                  <md-divider></md-divider>
+                  <div class="profile-info-text" layout>
+                    <md-list-item class="secondary-button-padding list-left" flex>
+                      <span class="sub-info">Address:</span>
+                      <p>{{profile.address}}</p>
 
-                                        </md-list-item>
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">City: </span>
-                                            <p>{{profile.city}}</p>
-                                        </md-list-item>
-                                    </div>
-                                    <md-divider></md-divider>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">State: </span>
-                                            <p>{{profile.state}}</p>
+                    </md-list-item>
+                    <md-list-item class="secondary-button-padding list-right" flex>
+                      <span class="sub-info">City:
+                      </span>
+                      <p>{{profile.city}}</p>
+                    </md-list-item>
+                  </div>
+                  <md-divider></md-divider>
+                  <div class="profile-info-text" layout>
+                    <md-list-item class="secondary-button-padding list-left" flex>
+                      <span class="sub-info">State:
+                      </span>
+                      <p>{{profile.state}}</p>
 
-                                        </md-list-item>
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">ZipCode: </span>
-                                            <p>{{profile.zipcode}}</p>
-                                    </div>
-                                    <md-divider></md-divider>
-                                    <div layout class="profile-info-text">
-                                        <md-list-item class="secondary-button-padding list-left" flex>
-                                            <span class="sub-info">Start Date: </span>
-                                            <p>{{profile.startdate |date:"MM/dd/yyyy"}}</p>
+                    </md-list-item>
+                    <md-list-item class="secondary-button-padding list-right" flex>
+                      <span class="sub-info">ZipCode:
+                      </span>
+                      <p>{{profile.zipcode}}</p>
+                    </div>
+                    <md-divider></md-divider>
+                    <div class="profile-info-text" layout>
+                      <md-list-item class="secondary-button-padding list-left" flex>
+                        <span class="sub-info">Start Date:
+                        </span>
+                        <p>{{profile.startdate |date:"MM/dd/yyyy"}}</p>
 
-                                        </md-list-item>
-                                        <md-list-item class="secondary-button-padding list-right" flex>
-                                            <span class="sub-info">Hourly Rate: </span>
-                                            <p>{{profile.hourlyrate | currency}}</p>
-                                        </md-list-item>
-                                    </div>
+                      </md-list-item>
+                      <md-list-item class="secondary-button-padding list-right" flex>
+                        <span class="sub-info">Hourly Rate:
+                        </span>
+                        <p>{{profile.hourlyrate | currency}}</p>
+                      </md-list-item>
+                    </div>
 
+                  </md-card-content>
+                </md-card>
+              </md-content>
+            </md-content>
+          </md-tab>
+          <md-tab id="employee-lists" label="Rep Lists">
+            <div cg-busy="littleadminpromiseEmployee"></div>
+            <md-content class="md-padding center-card">
+              <md-content class="more-padding" layout-padding>
+                <md-card>
+                  <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
+                  <md-list-item ng-click="viewperson(person, $event)" ng-repeat="person in customerrep">
+                    <img alt="{{ person.firstname }}" class="md-avatar" ng-src="{{ person.personimg }}"/>
+                    <span flex>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
+                    <span flex>{{person.email}}</span>
+                    <span flex>{{person.telephone}}</span>
+                    <md-divider md-inset ng-if="!$last"></md-divider>
+                  </md-list-item>
+                </md-card>
+              </md-content>
+            </md-content>
+          </md-tab>
+          <md-tab id="customer-lists" label="Customer Lists">
+            <div cg-busy="littleadminpromise"></div>
+            <md-content class="md-padding center-card">
+              <md-content class="more-padding" layout-padding>
+                <md-card>
+                  <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
+                  <md-list-item flex ng-repeat="person in customers">
+                    <img alt="{{ person.firstname }}" class="md-avatar" ng-src="{{ person.personimg }}"/>
+                    <span flex>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
+                    <span flex>{{person.customerid}}</span>
+                    <span flex>{{person.email}}</span>
+                    <md-icon aria-label="Update" class="pencil" class="pencil-right" md-svg-icon="../images/pencil.svg" ng-click="showCustomerUpdateDialog($event, person)"></md-icon>
+                    <md-icon aria-label="Delete" class="md-secondary md-hue-3" md-svg-icon="../images/delete.svg" ng-click="user.deleteEmployee(person)"></md-icon>
+                    <md-divider md-inset ng-if="!$last"></md-divider>
+                  </md-list-item>
+                </md-card>
+              </md-content>
+            </md-content>
+          </md-tab>
+          <md-tab id="customer-lists-monitors" label="Items to Monitor" ng-if="monitors">
+            <div cg-busy="littleadminpromiseMonitor"></div>
+            <md-content class="md-padding center-card">
+              <md-content class="more-padding" layout-padding>
+                <md-card>
+                  <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
+                  <md-list-item flex ng-repeat="person in monitors">
+                    <img alt="{{ person.itemname }}" class="md-avatar" ng-src="{{ person.itemimg }}"/>
+                    <span flex>{{(person.itemname) | uppercase}}</span>
+                    <span flex>Current:
+                      {{person.currentbid | currency}}</span>
+                    <span flex>Reserve:
+                      {{person.reserveprice | currency}}</span>
+                    <md-button class="view-item" flex ui-sref="product({ auctionId: person.auctionid })">View Item</md-button>
+                    <md-button class="md-warn record-sale" flex ng-click="user.recordsale(person)">Record Sale</md-button>
+                    <md-divider md-inset ng-if="!$last"></md-divider>
+                  </md-list-item>
+                </md-card>
+              </md-content>
+            </md-content>
+          </md-tab>
+          <md-tab id="customer-lists-staffpicks" label="Add Staff Picks">
+            <md-content class="md-padding center-card">
+              <md-content class="more-padding" layout-padding>
+                <md-card>
+                  <md-subheader class="md-no-sticky">Generate StaffPicks</md-subheader>
+                  <md-input-container>
+                    <input aria-label="add staff" class="mdi mdi-tag-text-outline" name="auctionid" ng-model="user.signup.auctionid" placeholder="Enter Auction ID" type="text">
+                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.postStaffPicks(user.signup.auctionid)">ADD STAFF PICKS</md-button>
+                  </md-input-container>
+                  <md-subheader class="md-no-sticky">Delete StaffPicks</md-subheader>
+                  <md-input-container>
+                    <input aria-label="add staff" class="mdi mdi-tag-text-outline" name="deleteauctionid" ng-model="user.signup.deleteauctionid" placeholder="Enter Auction ID" type="text">
+                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.deletestaffpicks(user.signup.deleteauctionid)">DELETE STAFF PICKS</md-button>
+                  </md-input-container>
+                </md-card>
+                <md-card>
+                  <md-subheader class="md-no-sticky">
+                    Generate UserPicks
+                  </md-subheader>
+                  <md-input-container>
+                    <input aia-label="add staff" name="auctionid" ng-model="user.signup.auctionid1" placeholder="Enter Customer ID" type="text">
+                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.postuserpicks(user.signup.auctionid1)">ADD USER PICKS</md-button>
+                  </md-input-container>
+                </md-card>
+              </md-content>
+            </md-content>
+          </md-tab>
+          <md-tab id="add-employee" label="Add Customer">
+            <md-content class="md-padding center-card">
+              <md-content class="more-padding" layout-padding>
+                <md-card>
+                  <form name="signup" ng-submit="signup.$valid && user.signupF()" novalidate>
+                    <md-card-header class="add-employee-header">
+                      <md-card-avatar>
+                        <img class="md-user-avatar" ngf-src="!ffff.$error &amp;&amp; ffff"/>
+                        <md-button aria-label="upload image" class="md-fab" ng-hide="!ffff.$error &amp;&amp; ffff">
+                          <label for="file-input-admin-customer">
+                            <md-icon md-svg-icon="../images/camera.svg"></md-icon>
+                          </label>
+                        </md-button>
+                        <input accept="image/*" id="file-input-admin-customer" ngf-max-size="1MB" ngf-select="PostImage($file, $invalidFiles)" type="file">
 
-                                </md-card-content>
-                            </md-card>
-                        </md-content>
-                    </md-content>
-                </md-tab>
-                <md-tab id="employee-lists" label="Rep Lists">
-                    <div cg-busy="littleadminpromiseEmployee"></div>
-                    <md-content class="md-padding center-card">
-                        <md-content layout-padding class="more-padding">
-                            <md-card>
-                                <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
-                                <md-list-item ng-repeat="person in customerrep" ng-click="viewperson(person, $event)">
-                                    <img alt="{{ person.firstname }}" ng-src="{{ person.personimg }}" class="md-avatar" />
-                                    <span flex>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
-                                    <span flex>{{person.email}}</span>
-                                    <span flex>{{person.telephone}}</span>
-                                    <md-divider md-inset ng-if="!$last"></md-divider>
-                                </md-list-item>
-                            </md-card>
-                        </md-content>
-                    </md-content>
-                </md-tab>
-                <md-tab id="customer-lists" label="Customer Lists">
-                    <div cg-busy="littleadminpromise"></div>
-                    <md-content class="md-padding center-card">
-                        <md-content layout-padding class="more-padding">
-                            <md-card>
-                                <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
-                                <md-list-item ng-repeat="person in customers" flex>
-                                    <img alt="{{ person.firstname }}" ng-src="{{ person.personimg }}" class="md-avatar" />
-                                    <span flex>{{(person.firstname +" "+person.lastname) | uppercase}}</span>
-                                    <span flex>{{person.customerid}}</span>
-                                    <span flex>{{person.email}}</span>
-                                    <md-icon md-svg-icon="../images/pencil.svg" ng-click="showCustomerUpdateDialog($event, person)" aria-label="Update" class="pencil-right" class="pencil"></md-icon>
-                                    <md-icon md-svg-icon="../images/delete.svg" ng-click="user.deleteEmployee(person)" aria-label="Delete" class="md-secondary md-hue-3"></md-icon>
-                                    <md-divider md-inset ng-if="!$last"></md-divider>
-                                </md-list-item>
-                            </md-card>
-                        </md-content>
-                    </md-content>
-                </md-tab>
-                <md-tab id="customer-lists-monitors" label="Items to Monitor" ng-if="monitors">
-                    <div cg-busy="littleadminpromiseMonitor"></div>
-                    <md-content class="md-padding center-card">
-                        <md-content layout-padding class="more-padding">
-                            <md-card>
-                                <!--<md-subheader class="md-no-sticky">Select</md-subheader> -->
-                                <md-list-item ng-repeat="person in monitors" flex>
-                                    <img alt="{{ person.itemname }}" ng-src="{{ person.itemimg }}" class="md-avatar" />
-                                    <span flex>{{(person.itemname) | uppercase}}</span>
-                                    <span flex>Current bid: {{person.currentbid | currency}}</span>
-                                    <md-button ui-sref="product({ auctionId: person.auctionid })" class="view-item" flex>View Item</md-button>
-                                    <md-button class="md-warn record-sale" ng-click="user.recordsale(person)" flex>Record sale.</md-button>
-                                    <md-divider md-inset ng-if="!$last"></md-divider>
-                                </md-list-item>
-                            </md-card>
-                        </md-content>
-                    </md-content>
-                </md-tab>
-                <md-tab id="customer-lists-staffpicks" label="Add Staff Picks">
-                    <md-content class="md-padding center-card">
-                        <md-content layout-padding class="more-padding">
-                            <md-card>
-                                <md-subheader class="md-no-sticky">Generate StaffPicks</md-subheader>
-                                <md-input-container>
-                                    <input class="mdi mdi-tag-text-outline" name="auctionid" ng-model="user.signup.auctionid" type="text" aria-label="add staff" placeholder="Enter Auction ID">
-                                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.postStaffPicks(user.signup.auctionid)">ADD STAFF PICKS</md-button>
-                                </md-input-container>
-                                <md-subheader class="md-no-sticky">Delete StaffPicks</md-subheader>
-                                <md-input-container>
-                                    <input class="mdi mdi-tag-text-outline" name="deleteauctionid" ng-model="user.signup.deleteauctionid" type="text" aria-label="add staff" placeholder="Enter Auction ID">
-                                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.deletestaffpicks(user.signup.deleteauctionid)">DELETE STAFF PICKS</md-button>
-                                </md-input-container>
-                            </md-card>
-                            <md-card>
-                                <md-subheader class="md-no-sticky"> Generate UserPicks </md-subheader>
-                                <md-input-container>
-                                    <input name="auctionid" ng-model="user.signup.auctionid1" type="text" aia-label="add staff" placeholder="Enter Customer ID">
-                                    <md-button class="md-primary mdi mdi-checkbox-marked-circle" ng-click="user.postuserpicks(user.signup.auctionid1)">ADD USER PICKS</md-button>
-                                </md-input-container>
-                            </md-card>
-                        </md-content>
-                    </md-content>
-                </md-tab>
-                <md-tab id="add-employee" label="Add Customer">
-                    <md-content class="md-padding center-card">
-                        <md-content layout-padding class="more-padding">
-                            <md-card>
-                                <form name="signup" ng-submit="signup.$valid && user.signupF()" novalidate>
-                                    <md-card-header class="add-employee-header">
-                                        <md-card-avatar>
-                                            <img class="md-user-avatar" ngf-src="!ffff.$error &amp;&amp; ffff" />
-                                            <md-button class="md-fab" aria-label="upload image" ng-hide="!ffff.$error &amp;&amp; ffff">
-                                                <label for="file-input-admin-customer">
-                                                    <md-icon md-svg-icon="../images/camera.svg"></md-icon>
-                                                </label>
-                                            </md-button>
-                                            <input id="file-input-admin-customer" type="file" ngf-select="PostImage($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">
+                      </md-card-avatar>
+                      <h6 aria-hidden="false" ng-hide="!ffff.$error &amp;&amp; ffff">upload customer profile image</h6>
+                      <md-card-header-text ng-show="!ffff.$error &amp;&amp; ffff">
+                        <span class="md-subhead">Customer will appear as</span>
+                        <span class="md-title">{{(user.signup.firstname + " " + user.signup.lastname) | uppercase}}</span>
+                      </md-card-header-text>
+                    </md-card-header>
+                    <br></br>
+                    <div layout layout="column">
+                      <md-input-container flex md-is-error="signup.userID.$invalid && (signup.$submitted || signup.userID.$touched)" required>
+                        <label class="mdi mdi-account">
+                          UserID</label>
+                        <input name="userID" ng-model="user.signup.ssn" ng-required="true" type="text">
+                        <div ng-if="signup.$submitted" ng-messages="signup.userID.$error">
+                          <div ng-message="required">UserID is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container flex md-is-error="signup.userpassword.$invalid && (signup.$submitted || signup.userpassword.$touched)" required>
+                        <label class="mdi mdi-account-key" name="userpassword">
+                          Password</label>
+                        <input name="userpassword" ng-model="user.signup.userpassword" ng-required="true" type="password">
+                        <div ng-if="signup.$submitted" ng-messages="signup.userpassword.$error">
+                          <div ng-message="required">Password is required.</div>
+                        </div>
+                      </md-input-container>
+                    </div>
 
-                                        </md-card-avatar>
-                                        <h6 ng-hide="!ffff.$error &amp;&amp; ffff" aria-hidden="false">upload customer profile image</h6>
-                                        <md-card-header-text ng-show="!ffff.$error &amp;&amp; ffff">
-                                            <span class="md-subhead">Customer will appear as</span>
-                                            <span class="md-title">{{(user.signup.firstname + " " + user.signup.lastname) | uppercase}}</span>
-                                        </md-card-header-text>
-                                    </md-card-header>
-                                    <br></br>
-                                    <div layout layout="column">
-                                        <md-input-container required md-is-error="signup.userID.$invalid && (signup.$submitted || signup.userID.$touched)" flex>
-                                            <label class="mdi mdi-account"> UserID</label>
-                                            <input name="userID" ng-model="user.signup.ssn" ng-required="true" type="text">
-                                            <div ng-messages="signup.userID.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">UserID is required.</div>
-                                            </div>
-                                        </md-input-container>
-                                        <md-input-container required md-is-error="signup.userpassword.$invalid && (signup.$submitted || signup.userpassword.$touched)" flex>
-                                            <label name="userpassword" class="mdi mdi-account-key"> Password</label>
-                                            <input name="userpassword" ng-model="user.signup.userpassword" ng-required="true" type="password">
-                                            <div ng-messages="signup.userpassword.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">Password is required.</div>
-                                            </div>
-                                        </md-input-container>
-                                    </div>
+                    <div layout layout="column">
+                      <md-input-container flex md-is-error="signup.firstname.$invalid && (signup.$submitted || signup.firstname.$touched)" required>
+                        <label class="mdi mdi-account" name="firstname">
+                          First Name</label>
+                        <input name="firstname" ng-model="user.signup.firstname" ng-required="true" type="text">
+                        <div ng-if="signup.$submitted" ng-messages="signup.firstname.$error">
+                          <div ng-message="required">Firstname is required.</div>
+                        </div>
+                      </md-input-container>
 
+                      <md-input-container flex md-is-error="signup.lastname.$invalid && (signup.$submitted || signup.lastname.$touched)" required>
+                        <label class="mdi mdi-account" name="lastname">
+                          Last Name</label>
+                        <input name="lastname" ng-model="user.signup.lastname" ng-required="true" type="text">
+                        <div ng-if="signup.$submitted" ng-messages="signup.lastname.$error">
+                          <div ng-message="required">Last name is required.</div>
+                        </div>
+                      </md-input-container>
+                    </div>
+                    <div layout layout="column">
+                      <md-input-container class="md-block" flex md-is-error="signup.email.$invalid && (signup.$submitted || signup.email.$touched)" required>
+                        <label class="mdi mdi-email" name="email">
+                          Email</label>
+                        <input name="email" ng-model="user.signup.email" ng-required="true" type="email">
+                        <div ng-if="signup.$submitted" ng-messages="signup.email.$error">
+                          <div ng-message="required">Email is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container class="md-block" flex md-is-error="signup.address.$invalid && (signup.$submitted || signup.address.$touched)" required>
+                        <label class="mdi mdi-home-variant" name="address">
+                          Address</label>
+                        <input name="address" ng-model="user.signup.address" ng-required="true" type="text">
+                        <div ng-if="signup.$submitted" ng-messages="signup.address.$error">
+                          <div ng-message="required">Address is required.</div>
+                        </div>
+                      </md-input-container>
 
+                    </div>
 
-                                    <div layout layout="column">
-                                        <md-input-container flex required md-is-error="signup.firstname.$invalid && (signup.$submitted || signup.firstname.$touched)">
-                                            <label name="firstname" class="mdi mdi-account"> First Name</label>
-                                            <input name="firstname" ng-model="user.signup.firstname" ng-required="true" type="text">
-                                            <div ng-messages="signup.firstname.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">Firstname is required.</div>
-                                            </div>
-                                        </md-input-container>
-
-                                        <md-input-container flex required md-is-error="signup.lastname.$invalid && (signup.$submitted || signup.lastname.$touched)">
-                                            <label name="lastname" class="mdi mdi-account"> Last Name</label>
-                                            <input name="lastname" ng-model="user.signup.lastname" ng-required="true" type="text">
-                                            <div ng-messages="signup.lastname.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">Last name is required.</div>
-                                            </div>
-                                        </md-input-container>
-                                    </div>
-                                    <div layout layout="column">
-                                        <md-input-container flex class="md-block" required md-is-error="signup.email.$invalid && (signup.$submitted || signup.email.$touched)">
-                                            <label name="email" class="mdi mdi-email"> Email</label>
-                                            <input name="email" ng-model="user.signup.email" type="email" ng-required="true">
-                                            <div ng-messages="signup.email.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">Email is required.</div>
-                                            </div>
-                                        </md-input-container>
-                                        <md-input-container flex class="md-block" required md-is-error="signup.address.$invalid && (signup.$submitted || signup.address.$touched)">
-                                            <label name="address" class="mdi mdi-home-variant"> Address</label>
-                                            <input name="address" ng-model="user.signup.address" ng-required="true" type="text">
-                                            <div ng-messages="signup.address.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">Address is required.</div>
-                                            </div>
-                                        </md-input-container>
-
-                                    </div>
-
-
-                                    <div layout layout="column">
-                                        <md-input-container flex required md-is-error="signup.city.$invalid && (signup.$submitted || signup.city.$touched)">
-                                            <label name="city" class="mdi mdi-city"> City</label>
-                                            <input name="city" ng-model="user.signup.city" ng-required="true" type="text">
-                                            <div ng-messages="signup.city.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">City is required.</div>
-                                            </div>
-                                        </md-input-container>
-                                        <md-input-container flex>
-                                            <label>State</label>
-                                            <md-select ng-model="user.signup.state">
-                                                <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-                                                    {{state.abbrev}}
-                                                </md-option>
-                                            </md-select>
-                                        </md-input-container>
-                                        <md-input-container flex required md-is-error="signup.zipcode.$invalid && (signup.$submitted || signup.zipcode.$touched)">
-                                            <label name="zipcode" class="mdi mdi-map-marker"> ZipCode</label>
-                                            <input name="zipcode" ng-model="user.signup.zipcode" ng-required="true" type="text" ng-pattern="/^[0-9]{5}$/" maxlength="5">
-                                            <div ng-messages="signup.zipcode.$error" role="alert" ng-if="signup.$submitted">
-                                                <div ng-message="required">ZipCode is required.</div>
-                                                <div ng-message="pattern">Not a valid zipcode.</div>
-                                            </div>
-                                        </md-input-container>
-                                    </div>
-                                    <div layout layout="column">
-                                        <md-input-container flex required md-is-error="signup.telephone.$invalid && (signup.$submitted || signup.telephone.$touched)">
-                                            <label name="telephone" class="mdi mdi-phone"> Telephone</label>
-                                            <input name="telephone" ng-model="user.signup.telephone" ng-required="true" type="tel">
-                                            <div ng-messages="signup.telephone.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">Telephone is required.</div>
-                                            </div>
-                                        </md-input-container>
-                                        <md-input-container flex required md-is-error="signup.creditcard.$invalid && (signup.$submitted || signup.creditcard.$touched)">
-                                            <label name="creditcard" class="mdi mdi-credit-card"> CreditCard number</label>
-                                            <input name="creditcard" ng-model="user.signup.creditcardnum" ng-required="true" type="text">
-                                            <div ng-messages="signup.creditcard.$error" ng-if="signup.$submitted">
-                                                <div ng-message="required">CreditCard is required.</div>
-                                            </div>
-                                        </md-input-container>
-                                    </div>
-                                    <md-input-container layout="column" flex>
-                                        <md-button class="md-primary mdi mdi-account-check" type="submit">
-                                            SUBMIT
-                                        </md-button>
-                                    </md-input-container>
-                                </form>
-                            </md-card>
-                        </md-content>
-                    </md-content>
-                </md-tab>
-            </md-tabs>
-        </div>
+                    <div layout layout="column">
+                      <md-input-container flex md-is-error="signup.city.$invalid && (signup.$submitted || signup.city.$touched)" required>
+                        <label class="mdi mdi-city" name="city">
+                          City</label>
+                        <input name="city" ng-model="user.signup.city" ng-required="true" type="text">
+                        <div ng-if="signup.$submitted" ng-messages="signup.city.$error">
+                          <div ng-message="required">City is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container flex>
+                        <label>State</label>
+                        <md-select ng-model="user.signup.state">
+                          <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                            {{state.abbrev}}
+                          </md-option>
+                        </md-select>
+                      </md-input-container>
+                      <md-input-container flex md-is-error="signup.zipcode.$invalid && (signup.$submitted || signup.zipcode.$touched)" required>
+                        <label class="mdi mdi-map-marker" name="zipcode">
+                          ZipCode</label>
+                        <input maxlength="5" name="zipcode" ng-model="user.signup.zipcode" ng-pattern="/^[0-9]{5}$/" ng-required="true" type="text">
+                        <div ng-if="signup.$submitted" ng-messages="signup.zipcode.$error" role="alert">
+                          <div ng-message="required">ZipCode is required.</div>
+                          <div ng-message="pattern">Not a valid zipcode.</div>
+                        </div>
+                      </md-input-container>
+                    </div>
+                    <div layout layout="column">
+                      <md-input-container flex md-is-error="signup.telephone.$invalid && (signup.$submitted || signup.telephone.$touched)" required>
+                        <label class="mdi mdi-phone" name="telephone">
+                          Telephone</label>
+                        <input name="telephone" ng-model="user.signup.telephone" ng-required="true" type="tel">
+                        <div ng-if="signup.$submitted" ng-messages="signup.telephone.$error">
+                          <div ng-message="required">Telephone is required.</div>
+                        </div>
+                      </md-input-container>
+                      <md-input-container flex md-is-error="signup.creditcard.$invalid && (signup.$submitted || signup.creditcard.$touched)" required>
+                        <label class="mdi mdi-credit-card" name="creditcard">
+                          CreditCard number</label>
+                        <input name="creditcard" ng-model="user.signup.creditcardnum" ng-required="true" type="text">
+                        <div ng-if="signup.$submitted" ng-messages="signup.creditcard.$error">
+                          <div ng-message="required">CreditCard is required.</div>
+                        </div>
+                      </md-input-container>
+                    </div>
+                    <md-input-container flex layout="column">
+                      <md-button class="md-primary mdi mdi-account-check" type="submit">
+                        SUBMIT
+                      </md-button>
+                    </md-input-container>
+                  </form>
+                </md-card>
+              </md-content>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+      </div>
     </div>
-</div>
+  </div>

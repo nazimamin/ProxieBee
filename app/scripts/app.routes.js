@@ -17,7 +17,7 @@ angular
     }
 ])
     .run(function ($rootScope) {
-        $rootScope.restServer = 'http://api-ndtndt.azurewebsites.net';
+        $rootScope.restServer = 'https://api-ndtndt.azurewebsites.net';
         //$rootScope.restServer = 'http://192.168.1.131:3000/api';
     });
 
@@ -82,5 +82,5 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootS
 
     $urlRouterProvider.otherwise('/');
     //$locationProvider.html5Mode(true);
-    
+
 }
