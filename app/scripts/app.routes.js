@@ -18,7 +18,6 @@ angular
 ])
     .run(function ($rootScope) {
         $rootScope.restServer = 'https://api-ndtndt.azurewebsites.net';
-        //$rootScope.restServer = 'http://192.168.1.131:3000/api';
     });
 
 function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootScope) {
@@ -33,21 +32,11 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider, $rootS
             templateUrl: 'views/auth.html',
             controller: 'AuthCtrl as auth'
         })
-        /*  .state('product', {
-              url: '/product/{auctionid}',
-              templateUrl: 'views/product.html',
-              controller: 'ProductCtrl as product'
-          })*/
         .state('product', {
             url: '/auction?auctionId',
             templateUrl: 'views/product.html',
             controller: 'ProductCtrl as product'
         })
-        /* .state('product', {
-             url: '/product/{id}',
-             templateUrl: 'views/product.html',
-             controller: 'ProductCtrl as product'
-         })*/
         .state('products', {
             url: '/products',
             templateUrl: 'views/products.html',

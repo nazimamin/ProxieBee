@@ -14,10 +14,8 @@ angular.module('ndtndtApp')
                 if (data) {
                     if (data.length == 1 && data[0][0]) {
                         $scope.topsellercategory = data[0];
-                        $scope.topsellercategory.avilable = true;
                     } else {
                         $scope.topsellercategory = data;
-                        $scope.topsellercategory.avilable = true;
                     }
                 }
             });

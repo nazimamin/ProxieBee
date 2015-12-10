@@ -78,7 +78,6 @@ angular.module('ndtndtApp')
                 UserServices.DeleteEmployee(data)
                     .then(function (data) {
                         if (data.status == 'success') {
-                            ////console.log(data.status);
                             $scope.getAllEmployee();
                             $mdToast.showSimple("Employee Deleted Successfully!");
                         } else {
@@ -106,7 +105,6 @@ angular.module('ndtndtApp')
             ProductServices.listofsalesbycustomerid(id)
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.customerSales = data;
                     }
                 });
@@ -116,7 +114,6 @@ angular.module('ndtndtApp')
             ProductServices.listOfitemsByitemID(id)
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.itemSales = data;
                     }
                 });
@@ -126,7 +123,6 @@ angular.module('ndtndtApp')
             ProductServices.revenueitemtype(id)
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.itemtyperevenue = data;
                     }
                 });
@@ -136,7 +132,6 @@ angular.module('ndtndtApp')
             ProductServices.revenueitemid(id)
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.itemidrevenue = data;
                     }
                 });
@@ -146,7 +141,6 @@ angular.module('ndtndtApp')
             ProductServices.revenuebysellerid(id)
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.selleridrevenue = data;
                     }
                 });
@@ -156,7 +150,6 @@ angular.module('ndtndtApp')
             ProductServices.revenuebystaff()
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.staffRevenue = data;
                     }
                 });
@@ -166,7 +159,6 @@ angular.module('ndtndtApp')
             ProductServices.revenuebycustomer()
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.customerRevenue = data;
                     }
                 });
@@ -176,7 +168,6 @@ angular.module('ndtndtApp')
             ProductServices.revenuebymonth()
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.monthRevenue = data;
                     }
                 });
@@ -186,7 +177,6 @@ angular.module('ndtndtApp')
             ProductServices.bestitemlist()
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.bestitemlist = data;
                     }
                 });
@@ -194,7 +184,6 @@ angular.module('ndtndtApp')
 
         $scope.showUpdateDialog = function (ev, data) {
             $scope.employee = data;
-            ////console.log($scope.employee);
             $mdDialog.show({
                 locals: {
                     auctionDataFromProductsCtrl: data
@@ -215,10 +204,8 @@ function UpdateDialogController($scope, $mdDialog, shareData, auctionDataFromPro
     $scope.employee.UpdateImage = updateImage;
 
     function updateImage(data, errFiles) {
-        ////console.log(data);
         $scope.employee.ff = data;
     }
-    ////console.log(JSON.stringify($scope.employee));
 
     function updateEmployee(data) {
         data.ssn = data.customerid;

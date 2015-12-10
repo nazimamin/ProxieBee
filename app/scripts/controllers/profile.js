@@ -33,7 +33,6 @@ angular.module('ndtndtApp')
                             $rootScope.currentUser.personimg = $scope.profile.personimg;
                             $rootScope.currentUser.admin = $scope.profile.maglevel;
 
-                            //$window.sessionStorage.removeItem('currentUser');
                             $window.sessionStorage.setItem('currentUser', JSON.stringify($scope.profile));
                             $mdToast.showSimple("Profile updated successfully!");
                         } else {
@@ -60,7 +59,6 @@ angular.module('ndtndtApp')
                 UserServices.DeleteProfile($scope.profile)
                     .then(function (data) {
                         if (data.status == 'success') {
-                            ////console.log(data.status);
                             $rootScope.currentUser = {};
                             $window.sessionStorage.removeItem('currentUser');
                             $mdToast.showSimple("Account Deleted Successfully!");
@@ -81,13 +79,10 @@ angular.module('ndtndtApp')
                     ProductServices.getuserpicks($rootScope.currentUser.id)
                         .then(function (adata) {
                             $scope.itemSuggestions = adata;
-                            console.log(JSON.stringify(adata));
                         });
                 }
 
             });
-
-
         $scope.profilepromise = UserServices.getCustomerBidHistory($scope.currentUser.id)
             .then(function (data) {
                 if (data) {

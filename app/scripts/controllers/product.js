@@ -69,12 +69,3 @@ function BidController($scope, $mdDialog) {
         $mdDialog.hide();
     };
 }
-
-function isPresent(filter) {
-    for (var value in filter) {
-        if (filter[value]) {
-            return false;
-        }
-    }
-    return true;
-}

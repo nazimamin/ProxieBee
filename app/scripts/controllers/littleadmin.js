@@ -111,7 +111,6 @@ angular.module('ndtndtApp')
             $scope.littleadminpromise = UserServices.GetCustomers()
                 .then(function (data) {
                     if (data.length > 0) {
-                        ////console.log(data);
                         $scope.customers = data;
                     }
                 });
@@ -151,7 +150,7 @@ angular.module('ndtndtApp')
         }
 
         $scope.showCustomerUpdateDialog = function (ev, data) {
-            ////console.log(data);
+
             $mdDialog.show({
                 locals: {
                     auctionDataFromProductsCtrl: data
@@ -165,7 +164,7 @@ angular.module('ndtndtApp')
         }
         $scope.viewperson = function (data, ev) {
             $scope.person = data;
-            ////console.log($scope.person);
+
             $mdDialog.show({
                 locals: {
                     auctionDataFromProductsCtrl: data
@@ -193,7 +192,6 @@ function UpdateCustomerDialogController($scope, $mdDialog, shareData, auctionDat
     $scope.customer.UpdateImage = updateImage;
 
     function updateImage(data, errFiles) {
-        ////console.log(data);
         $scope.customer.ff = data;
     }
 
@@ -202,13 +200,6 @@ function UpdateCustomerDialogController($scope, $mdDialog, shareData, auctionDat
         UserServices.UpdateProfile(data, $scope.customer.ff)
             .then(function (data) {
                 if (data) {
-                    UserServices.GetCustomers()
-                        .then(function (data) {
-                            if (data.length > 0) {
-                                ////console.log(data);
-                                // $scope.customer = data;
-                            }
-                        });
                     $mdToast.showSimple("Profile updated successfully!");
                     $scope.close();
                 } else {

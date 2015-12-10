@@ -69,7 +69,6 @@ angular.module('ndtndtApp')
         function loginF() {
             UserServices.login($scope.user.login)
                 .then(function (data) {
-                    ////console.log(data);
                     if (data.customerid) {
                         $rootScope.currentUser.id = data.customerid;
                         $rootScope.currentUser.personimg = data.personimg;
