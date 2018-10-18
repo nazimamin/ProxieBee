@@ -7,9 +7,9 @@
   - Options such as add/edit/delete, search, filter, bid, report etc. with an intuitive look.
 
 Technology used:
- - Front-end - AngularJS
- - [Backend REST  - Python](https://github.com/NazimAmin/api.ndtndt)  
- - DB - SQL
+ # - Front-end - AngularJS
+ # - [Backend REST  - Python](https://github.com/NazimAmin/api.ndtndt)  
+ # - DB - SQL
 
 ## Build & development & Dependencies front-end
 
